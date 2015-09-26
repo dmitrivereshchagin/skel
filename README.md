@@ -1,0 +1,2 @@
+# skel
+Various configuration files
