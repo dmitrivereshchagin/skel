@@ -15,7 +15,7 @@ cp "$file" "$tmpdir" || exit 1
 (
     trap 'rm -Rf "$tmpdir"; exit 1' 1 2 15
     printf '%s' "$tmpdir/${file##*/}" | xargs -I {} "$@"
-    rm -rf "$tmpdir"
+    rm -Rf "$tmpdir"
 ) &
 
 trap 0 1 2 15
