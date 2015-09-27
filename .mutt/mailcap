@@ -1,0 +1,27 @@
+#
+# ~/.mutt/mailcap
+#
+
+application/pdf; muttv %s gv {}; test=test -n "$DISPLAY"
+application/pdf; pdftotext %s - | fold -s; copiousoutput
+
+application/postscript; muttv %s gv {}; test=test -n "$DISPLAY"
+application/postscript; ps2ascii | fold -s; copiousoutput
+application/x-gzpostscript; muttv %s gv {}; test=test -n "$DISPLAY"
+application/x-gzpostscript; gzip -cd | ps2ascii | fold -s; copiousoutput
+
+application/x-dvi; muttv %s xdvi {}; test=test -n "$DISPLAY"
+application/x-dvi; dvi2tty -q %s; copiousoutput
+
+application/zip; unzip -l %s; copiousoutput
+application/x-tar; tar tvf -; copiousoutput
+application/x-gtar; gzip -cd | tar tvf -; copiousoutput
+
+image/*; muttv %s feh {}; test=test -n "$DISPLAY"
+image/*; cacaview %s; needsterminal
+
+text/html; muttv %s firefox {}; test=test -n "$DISPLAY"; nametemplate=%s.html
+text/html; w3m -I %{charset} -T %t; needsterminal
+text/html; w3m -I %{charset} -T %t -dump; copiousoutput
+
+text/plain; vim -R %s; edit=vim %s; compose=vim %s; needsterminal

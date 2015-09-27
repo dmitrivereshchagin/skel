@@ -1,0 +1,35 @@
+#
+# ~/.gitconfig
+#
+
+[core]
+	excludesfile = ~/.cvsignore
+	pager = less -S
+
+[alias]
+	br = branch
+	ca = commit --all
+	ci = commit
+	co = checkout
+	di = diff
+	ls = list-files
+	st = status --short --branch
+
+[color]
+	ui = true
+
+[grep]
+	extendedRegexp = true
+	lineNumber = true
+
+[merge]
+	tool = vimdiff
+
+[mergetool]
+	prompt = false
+
+[push]
+	default = current
+
+[include]
+	path = ~/.gitconfig.local

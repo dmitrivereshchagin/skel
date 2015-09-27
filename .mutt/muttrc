@@ -1,0 +1,90 @@
+#
+# ~/.mutt/muttrc
+#
+
+source ~/.mutt/muttrc.account
+source "gpg --quiet --decrypt ~/.mutt/muttrc.pass.gpg |"
+
+set imap_authenticators="login"
+set imap_user="$my_user"
+set imap_pass="$my_pass"
+
+set smtp_authenticators="login"
+set smtp_url="smtps://$my_user@smtp.gmail.com"
+set smtp_pass="$my_pass"
+
+set from="$my_from"
+set realname="$my_realname"
+set hostname="$my_hostname"
+set nouse_domain
+
+set folder="imaps://imap.gmail.com"
+set spoolfile="=INBOX"
+set mbox="=[Gmail]/All Mail" move=ask-yes
+set postponed="=[Gmail]/Drafts" postpone=ask-no
+set record="" copy=no
+
+set imap_check_subscribed
+set noimap_passive
+set mail_check=120
+set read_inc=100
+
+set send_charset="us-ascii:utf-8"
+
+set ascii_chars
+set nohelp
+set index_format="%4C %Z %2M %[%m%d] %-15.15F (%4c) %s"
+set menu_scroll
+set narrow_tree
+set pager_context=1
+set pager_index_lines=4
+set pager_stop
+set reverse_alias
+set tilde
+
+set sort=threads
+set sort_aux=reverse-last-date-received
+set strict_threads
+
+set attribution="* %f [%(%F %R)]:"
+set edit_headers
+set ispell="aspell --mode=email check"
+set signature="~/.mutt/signature"
+
+set mailcap_path="~/.mutt/mailcap"
+set quote_regexp="^([ \t]*>)+"
+
+set alias_file="~/.mutt/muttrc.aliases"
+set header_cache="~/.mutt/cache/headers"
+set message_cachedir="~/.mutt/cache/messages"
+
+set crypt_replysign
+set crypt_replysignencrypted
+set crypt_use_gpgme
+
+unalternative_order *
+alternative_order text/plain text/html
+
+auto_view application/zip application/x-tar application/x-gtar text/html
+
+ignore *
+unignore date from: reply-to to cc subject
+
+unhdr_order *
+hdr_order date from reply-to to cc subject
+
+bind index G imap-fetch-mail
+
+macro attach,compose,index,pager \cB "\
+<enter-command>set my_pipe_decode=\$pipe_decode pipe_decode<Enter>\
+<pipe-message>w3m<Enter>\
+<enter-command>set pipe_decode=\$my_pipe_decode; unset my_pipe_decode<Enter>\
+" "call w3m to browse URLs"
+
+macro generic,pager <F1> "\
+<shell-escape>w3m /usr/share/doc/mutt/manual.html<Enter>\
+" "show Mutt documentation"
+
+source ~/.mutt/muttrc.aliases
+source ~/.mutt/muttrc.colors
+source ~/.mutt/muttrc.mlists

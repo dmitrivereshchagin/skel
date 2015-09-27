@@ -1,0 +1,95 @@
+#
+# ~/.zsh/.zshrc.local
+#
+
+READNULLCMD=less
+
+if [[ $TERM == ([Ex]term|rxvt|screen)* ]]; then
+  unset TMOUT
+else
+  TMOUT=600
+fi
+
+export BLOCK_SIZE=human-readable
+
+export GPG_TTY=$(tty)
+
+export LESS=iMQR
+export LESSHISTFILE=/dev/null
+
+export MANOPT='--no-hyphenation --no-justification'
+export MANWIDTH=80
+
+export MPD_HOST=~/.mpd/socket
+
+export GLHACKOPTIONS=mode:1024x768,depth:32,windowed
+export NETHACKOPTIONS=!autopickup,autoquiver,fruit:plum,color,!splash_screen
+
+export NPM_CONFIG_PREFIX=~/.npm-packages
+
+export PERLDOC=-oman
+if [[ -d ~/perl5/lib/perl5 ]]; then
+  eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
+fi
+
+path=(~/.local/bin ~/.composer/vendor/bin $NPM_CONFIG_PREFIX/bin $path)
+
+cdpath=(.. ~)
+
+alias -g C='| wc -l'
+alias -g F='| fold -s'
+alias -g G='| grep -Ei'
+alias -g GE='|& grep -Ei'
+alias -g H='| head'
+alias -g K='| keep'
+alias -g L='| less'
+alias -g LE='|& less'
+alias -g N='>&/dev/null'
+alias -g R='| tr A-Za-z N-ZA-Mn-za-m'
+alias -g S='| sort'
+alias -g T='| tail'
+alias -g V='| vim -'
+alias -g X='| xargs'
+
+alias d='dirs -v'
+alias h=history
+alias j=jobs
+alias po=popd
+alias pu=pushd
+
+alias CH='./configure --help'
+alias CO=./configure
+alias bc='bc -lq'
+alias crawl='telnet crawl.develz.org 345'
+alias free='free -hl'
+alias g='grep -Ei'
+alias gdb='gdb -q'
+alias info='info --vi-keys'
+alias news='newsbeuter -q'
+alias phpunit='phpunit --colors=auto'
+alias psu='ps -U $UID'
+alias startx='startx -- -nolisten tcp -keeptty >&/dev/null'
+alias topu='top -U $UID'
+alias txr=transmission-remote
+alias unnethack='telnet eu.un.nethack.nu'
+alias vi=vim
+alias view='vim -R'
+alias w3m='w3m -B'
+
+if (( ${+commands[ack-grep]} )); then
+  alias ack=ack-grep
+fi
+
+unalias screen
+
+bindkey -M menuselect h vi-backward-char
+bindkey -M menuselect j vi-down-line-or-history
+bindkey -M menuselect k vi-up-line-or-history
+bindkey -M menuselect l vi-forward-char
+
+grml_theme_add_token path-tail '%1~ ' '%B%F{blue}' '%f%b'
+grml_theme_add_token remote-host "${${STY-${SSH_CONNECTION+%m }}#$STY}"
+zstyle ':prompt:grml:left:setup' items rc remote-host path-tail vcs percent
+zstyle ':prompt:grml:right:setup' use-rprompt false
+
+# vim:set shiftwidth=2:

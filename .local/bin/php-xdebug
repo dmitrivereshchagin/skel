@@ -1,0 +1,8 @@
+#!/bin/sh
+
+export XDEBUG_CONFIG=${XDEBUG_CONFIG:-idekey=xdebug}
+
+case $# in
+0) exec php -S localhost:8000 ;;
+*) exec php "$@"
+esac

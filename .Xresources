@@ -1,0 +1,35 @@
+! ~/.Xresources
+
+*customization:	-color
+
+XDvi.expertMode:	3
+XDvi.noInitFile:	True
+
+XScreenSaver.lock:		True
+XScreenSaver.dpmsEnabled:	True
+XScreenSaver.dpmsQuickOff:	True
+XScreenSaver.splash:		False
+XScreenSaver.newLoginCommand:
+XScreenSaver.fade:		False
+XScreenSaver.captureStderr:	False
+XScreenSaver.mode:		blank
+
+XTerm.termName:			xterm-256color
+XTerm*vt100.background:		black
+XTerm*vt100.color4:		DodgerBlue1
+XTerm*vt100.color12:		SteelBlue1
+XTerm*vt100.faceName:		DejaVu Sans Mono
+XTerm*vt100.faceSize:		12
+XTerm*vt100.foreground:		gray90
+XTerm*vt100.highlightSelection:	True
+XTerm*vt100.metaSendsEscape:	True
+XTerm*vt100.scrollBar:		False
+XTerm*vt100.showBlinkAsBold:	True
+XTerm*vt100.trimSelection:	True
+XTerm*vt100.visualBell:		True
+xmutt*vt100.geometry:		80x43
+xterm*vt100.saveLines:		2048
+
+Xft.hintstyle:	hintfull
+Xft.lcdfilter:	lcddefault
+Xft.rgba:	rgb

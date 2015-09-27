@@ -1,0 +1,25 @@
+#!/bin/sh
+
+dump() {
+    printf "git clone '%s' \"\${PATHOGEN_BUNDLE:-\$HOME/.vim/bundle}\"'/%s'\n" \
+	"$(git --git-dir="$1"/.git config --get remote.origin.url)" "${1##*/}"
+}
+
+pull() {
+    printf '## Pulling %s...\n' "${1##*/}"
+    git --git-dir="$1"/.git --work-tree="$1" pull
+}
+
+case "${1:-pull}" in
+d*) process=dump ;;
+p*) process=pull ;;
+*) printf 'Usage: vim-vaccine [dump|pull]\n' >&2; exit 1
+esac
+
+for dir in "${PATHOGEN_BUNDLE:-$HOME/.vim/bundle}"/*
+do
+    if test -d "$dir"/.git
+    then
+	"$process" "$dir"
+    fi
+done

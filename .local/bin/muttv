@@ -1,0 +1,21 @@
+#!/bin/sh
+
+case $# in
+0|1) printf 'Usage: muttv file utility [argument ...] {}\n' >&2; exit 2
+esac
+
+file=$1; shift
+
+trap 'rm -Rf "$tmpdir"' 0
+trap 'rm -Rf "$tmpdir"; exit 1' 1 2 15
+tmpdir=$(mktemp -d /tmp/muttv.XXXXXXXX) || exit 1
+
+cp "$file" "$tmpdir" || exit 1
+
+(
+    trap 'rm -Rf "$tmpdir"; exit 1' 1 2 15
+    printf '%s' "$tmpdir/${file##*/}" | xargs -I {} "$@"
+    rm -rf "$tmpdir"
+) &
+
+trap 0 1 2 15

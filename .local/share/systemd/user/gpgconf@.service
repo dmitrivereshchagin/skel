@@ -1,0 +1,12 @@
+[Unit]
+Description=GnuPG Component (%i)
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/gpgconf --launch %i
+ExecReload=/usr/bin/gpgconf --reload %i
+ExecStop=/usr/bin/gpgconf --kill %i
+
+[Install]
+WantedBy=default.target
