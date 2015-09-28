@@ -1,6 +1,7 @@
 #!/bin/sh
 
-export XDEBUG_CONFIG=${XDEBUG_CONFIG:-idekey=xdebug}
+: ${XDEBUG_CONFIG:=idekey=xdebug}
+export XDEBUG_CONFIG
 
 case $# in
 0) exec php -S localhost:8000 ;;
