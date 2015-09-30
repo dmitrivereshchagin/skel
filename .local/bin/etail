@@ -1,3 +1,3 @@
 #!/bin/sh
 
-tail -f "$@" | perl -pe 's/\b(error|warning)s?\b/\e[7m$&\e[m/ing'
+tail -f "$@" | perl -pe 's/\b(?:error|warning)s?\b/\e[7m$&\e[m/ig'
