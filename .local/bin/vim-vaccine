@@ -18,8 +18,5 @@ esac
 
 for dir in "${PATHOGEN_BUNDLE:-$HOME/.vim/bundle}"/*
 do
-    if test -d "$dir"/.git
-    then
-	"$process" "$dir"
-    fi
+    test -d "$dir"/.git && "$process" "$dir"
 done
