@@ -14,7 +14,7 @@ check_gajim_running() {
 get_unread_msgs_number() {
     dbus-send --dest="$name" --print-reply \
 	"$object_path" "$interface".get_unread_msgs_number |
-    sed -n '2s/[^"]\+"\([^"]\+\)"/\1/p'
+    sed -n '2s/.*"\([^"]*\)"/\1/p'
 }
 
 show_next_pending_event() {
