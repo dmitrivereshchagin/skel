@@ -156,7 +156,8 @@ let g:perl_fold = 1
 
 let g:php_folding = 1
 
-let g:python_highlight_all = 1
+let g:ruby_fold = 1
+let g:ruby_no_comment_fold = 1
 
 let g:is_posix = 1
 let g:sh_fold_enabled = 3
@@ -168,7 +169,6 @@ nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
 
 nnoremap j gj
 nnoremap k gk
-
 nnoremap gj j
 nnoremap gk k
 
