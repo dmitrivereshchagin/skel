@@ -83,13 +83,18 @@ bindkey -M menuselect j vi-down-line-or-history
 bindkey -M menuselect k vi-up-line-or-history
 bindkey -M menuselect l vi-forward-char
 
-remote_host_prompt() {
+hostname_prompt() {
   REPLY=${${STY-${SSH_CONNECTION+%m }}#$STY}
 }
 
-grml_theme_add_token path-tail '%1~ ' '%B%F{blue}' '%f%b'
-grml_theme_add_token remote-host -i remote_host_prompt
-zstyle ':prompt:grml:left:setup' items rc remote-host path-tail vcs percent
+virtual_env_prompt() {
+  REPLY=${VIRTUAL_ENV+(${VIRTUAL_ENV:t}) }
+}
+
+grml_theme_add_token cwd '%1~ ' '%B%F{blue}' '%f%b'
+grml_theme_add_token hostname -i hostname_prompt
+grml_theme_add_token virtual-env -f virtual_env_prompt '%B' '%b'
+zstyle ':prompt:grml:left:setup' items rc virtual-env hostname cwd vcs percent
 zstyle ':prompt:grml:right:setup' use-rprompt false
 
 # vim:set shiftwidth=2:
