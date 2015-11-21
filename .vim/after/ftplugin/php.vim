@@ -1,5 +1,6 @@
 " ~/.vim/after/ftplugin/php.vim
 
+setlocal define=^\\s*const
 setlocal matchpairs-=<:>
 setlocal shiftwidth=4 softtabstop=4 expandtab
 
