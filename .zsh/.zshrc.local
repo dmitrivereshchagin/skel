@@ -78,10 +78,16 @@ if (( ${+commands[ack-grep]} )); then
   alias ack=ack-grep
 fi
 
-bindkey -M menuselect h vi-backward-char
-bindkey -M menuselect j vi-down-line-or-history
-bindkey -M menuselect k vi-up-line-or-history
-bindkey -M menuselect l vi-forward-char
+bindkey '\eq' push-line-or-edit
+bindkey '^XN' history-beginning-search-forward-end
+bindkey '^XP' history-beginning-search-backward-end
+bindkey '^Xn' history-beginning-search-forward
+bindkey '^Xp' history-beginning-search-backward
+
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
 
 hostname_prompt() {
   REPLY=${${STY-${SSH_CONNECTION+%m }}#$STY}
