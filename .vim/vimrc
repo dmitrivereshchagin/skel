@@ -109,7 +109,6 @@ let g:ctrlp_user_command = ['.git', 'git --git-dir=%s/.git ls-files']
 
 let g:user_emmet_leader_key = '<C-\>'
 
-let g:netrw_banner = 0
 let g:netrw_liststyle = 1
 let g:netrw_timefmt = '%a %d %b %Y %H:%M:%S'
 

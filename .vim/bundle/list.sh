@@ -20,3 +20,4 @@ git clone 'https://github.com/majutsushi/tagbar.git' "${PATHOGEN_BUNDLE:-$HOME/.
 git clone 'https://github.com/marijnh/tern_for_vim.git' "${PATHOGEN_BUNDLE:-$HOME/.vim/bundle}"'/tern'
 git clone 'https://github.com/tpope/vim-unimpaired.git' "${PATHOGEN_BUNDLE:-$HOME/.vim/bundle}"'/unimpaired'
 git clone 'https://github.com/joonty/vdebug.git' "${PATHOGEN_BUNDLE:-$HOME/.vim/bundle}"'/vdebug'
+git clone 'https://github.com/tpope/vim-vinegar.git' "${PATHOGEN_BUNDLE:-$HOME/.vim/bundle}"'/vinegar'
