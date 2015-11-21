@@ -1,6 +1,5 @@
 " ~/.vim/after/ftplugin/c.vim
 
-setlocal textwidth=80
 setlocal foldmethod=syntax
 
 iabbrev <buffer> #d #define
