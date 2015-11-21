@@ -14,7 +14,7 @@ export BLOCK_SIZE=human-readable
 
 export GPG_TTY=$(tty)
 
-export LESS=iMQR
+export LESS=-iMQR
 export LESSHISTFILE=/dev/null
 
 export MANOPT='--no-hyphenation --no-justification'

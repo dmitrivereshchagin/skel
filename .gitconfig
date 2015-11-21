@@ -4,7 +4,7 @@
 
 [core]
 	excludesfile = ~/.cvsignore
-	pager = less -S
+	pager = less -eFRSX
 
 [alias]
 	br = branch

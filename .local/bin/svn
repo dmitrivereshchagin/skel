@@ -13,7 +13,7 @@ di|diff|log)
 	t
 	s/^@.*/$e[36m&$e[m/
 	}
-    " | less -FRSX ;;
-ann|h|st) /usr/bin/svn "$@" | less -FSX ;;
+    " | less -eFRSX ;;
+ann|h|st) /usr/bin/svn "$@" | less -eFSX ;;
 *) exec /usr/bin/svn "$@"
 esac
