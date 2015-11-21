@@ -3,8 +3,6 @@
 set columns=80
 set lines=35
 
-set cursorline
-
 set guicursor=i-ci:hor15,r-cr:hor30,a:blinkon0
 set title
 
@@ -18,6 +16,8 @@ set guioptions-=e guioptions-=T guioptions-=r guioptions-=L guioptions+=c
 set t_vb=
 
 behave xterm
+
+colorscheme desert
 
 map <S-Insert> <MiddleMouse>
 map! <S-Insert> <MiddleMouse>
