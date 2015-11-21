@@ -10,6 +10,7 @@ git clone 'https://github.com/othree/html5.vim.git' "${PATHOGEN_BUNDLE:-$HOME/.v
 git clone 'https://github.com/mitsuhiko/vim-jinja.git' "${PATHOGEN_BUNDLE:-$HOME/.vim/bundle}"'/jinja'
 git clone 'https://github.com/vim-latex/vim-latex.git' "${PATHOGEN_BUNDLE:-$HOME/.vim/bundle}"'/latex'
 git clone 'https://github.com/tpope/vim-pathogen.git' "${PATHOGEN_BUNDLE:-$HOME/.vim/bundle}"'/pathogen'
+git clone 'https://github.com/tpope/vim-ragtag.git' "${PATHOGEN_BUNDLE:-$HOME/.vim/bundle}"'/ragtag'
 git clone 'https://github.com/tpope/vim-repeat.git' "${PATHOGEN_BUNDLE:-$HOME/.vim/bundle}"'/repeat'
 git clone 'https://github.com/kovisoft/slimv.git' "${PATHOGEN_BUNDLE:-$HOME/.vim/bundle}"'/slimv'
 git clone 'https://github.com/justinmk/vim-sneak.git' "${PATHOGEN_BUNDLE:-$HOME/.vim/bundle}"'/sneak'
