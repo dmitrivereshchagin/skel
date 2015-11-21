@@ -6,4 +6,4 @@ setlocal shiftwidth=4 softtabstop=4 expandtab
 
 let b:commentary_format = '// %s'
 
-nmap <buffer> <LocalLeader>F :execute '!php-cs-fixer fix' expand('%:p')<CR>
+nmap <buffer> <LocalLeader>F :!php-cs-fixer fix <C-R>=shellescape(expand('%:p'))<CR><CR>

@@ -71,7 +71,7 @@ set foldopen+=jump
 
 set diffopt=filler,context:4
 
-set ttimeout
+set timeoutlen=3000
 set ttimeoutlen=100
 
 set modeline
@@ -168,19 +168,18 @@ let g:tex_flavor = 'latex'
 inoremap <C-U> <C-G>u<C-U>
 nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
 
-nnoremap j gj
-nnoremap k gk
 nnoremap gj j
-nnoremap gk k
+nnoremap j gj
 
-nmap + <C-W>+
-nmap _ <C-W>-
+nnoremap gk k
+nnoremap k gk
+
+nmap <Leader>S :mksession! <C-R>=fnameescape(v:this_session)<CR><CR>
+nmap <Leader>Y :syntax <C-R>=exists('g:syntax_on') ? 'off' : 'enable'<CR><CR>
+
+nmap <silent> <Leader>T :TagbarOpenAutoClose<CR>
 
 nmap cX <Plug>(ExchangeClear)
-
-nmap <silent> <Leader>E :Explore<CR>
-nmap <silent> <Leader>S :execute 'mksession!' v:this_session<CR>
-nmap <silent> <Leader>T :TagbarOpenAutoClose<CR>
 
 map! <F3> <C-^>
 
