@@ -2,6 +2,8 @@
 # ~/.zsh/.zshrc.local
 #
 
+setopt NO_AUTO_PUSHD CSH_NULL_GLOB
+
 READNULLCMD=less
 
 if [[ $TERM == ([Ex]term|rxvt|screen)* ]]; then
@@ -26,6 +28,7 @@ export NETHACKOPTIONS=!autopickup,autoquiver,fruit:plum,color,!splash_screen
 export NPM_CONFIG_PREFIX=~/.npm-packages
 
 export PERLDOC=-oman
+
 if [[ -d ~/perl5/lib/perl5 ]]; then
   eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
 fi
@@ -50,7 +53,7 @@ alias -g V='| vim -'
 alias -g X='| xargs'
 
 alias d='dirs -v'
-alias h=history
+alias h='history -d'
 alias j=jobs
 alias po=popd
 alias pu=pushd
@@ -63,8 +66,8 @@ alias free='free -hl'
 alias g='grep -Ei'
 alias gdb='gdb -q'
 alias info='info --vi-keys'
+alias mkdir='mkdir -p'
 alias news='newsbeuter -q'
-alias phpunit='phpunit --colors=auto'
 alias psu='ps -U $UID'
 alias startx='ssh-agent startx -- -keeptty >&/dev/null'
 alias topu='top -U $UID'
@@ -90,7 +93,7 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 
 hostname_prompt() {
-  REPLY=${${STY-${SSH_CONNECTION+%m }}#$STY}
+  REPLY=${${${+STY}#1}/0/${SSH_CONNECTION+%m }}
 }
 
 virtual_env_prompt() {
@@ -100,6 +103,7 @@ virtual_env_prompt() {
 grml_theme_add_token cwd '%1~ ' '%B%F{blue}' '%f%b'
 grml_theme_add_token hostname -i hostname_prompt
 grml_theme_add_token virtual-env -f virtual_env_prompt '%B' '%b'
+
 zstyle ':prompt:grml:left:setup' items rc virtual-env hostname cwd vcs percent
 zstyle ':prompt:grml:right:setup' use-rprompt false
 
