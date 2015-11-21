@@ -32,6 +32,7 @@ set read_inc=100
 set send_charset="us-ascii:utf-8"
 
 set ascii_chars
+set nobeep
 set nohelp
 set index_format="%4C %Z %2M %[%m%d] %-15.15F (%4c) %s"
 set menu_scroll
@@ -52,7 +53,6 @@ set ispell="aspell --mode=email check"
 set signature="~/.mutt/signature"
 
 set mailcap_path="~/.mutt/mailcap"
-set quote_regexp="^([ \t]*>)+"
 
 set alias_file="~/.mutt/muttrc.aliases"
 set header_cache="~/.mutt/cache/headers"
