@@ -9,9 +9,9 @@ set guicursor=i-ci:hor15,r-cr:hor30,a:blinkon0
 set title
 
 if has('gui_gtk')
-  set guifont=DejaVu\ Sans\ Mono\ 12
+  set guifont=DejaVu\ Sans\ Mono\ 14
 elseif has('gui_win32')
-  set guifont=Courier_New:h12:cRUSSIAN
+  set guifont=Consolas:h14:cRUSSIAN,Courier_New:h14:cRUSSIAN
 endif
 set guioptions-=e guioptions-=T guioptions-=r guioptions-=L guioptions+=c
 
