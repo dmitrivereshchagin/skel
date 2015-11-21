@@ -150,6 +150,8 @@ let g:c_no_comment_fold = 1
 let g:html_exclude_tags = ['html', 'script', 'style']
 let g:html_no_rendering = 1
 
+let g:markdown_fenced_languages = ['css', 'html', 'js=javascript', 'php']
+
 let g:perl_string_as_statement = 1
 let g:perl_fold = 1
 
