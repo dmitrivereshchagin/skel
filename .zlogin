@@ -1,5 +1,5 @@
 #
-# ~/.zsh/.zlogin
+# ~/.zlogin
 #
 
 if (( ${+commands[fortune]} )); then

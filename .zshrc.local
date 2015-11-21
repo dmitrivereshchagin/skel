@@ -1,5 +1,5 @@
 #
-# ~/.zsh/.zshrc.local
+# ~/.zshrc.local
 #
 
 setopt NO_AUTO_PUSHD CSH_NULL_GLOB
