@@ -23,8 +23,6 @@ then
 fi
 
 xscreensaver -no-splash &
+xterm -geometry 80x43 &
 
-case X"$SSH_AGENT_PID" in
-X) exec ssh-agent wmaker ;;
-*) exec wmaker
-esac
+exec wmaker
