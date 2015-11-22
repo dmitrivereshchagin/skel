@@ -3,7 +3,7 @@
 #
 
 source ~/.mutt/muttrc.account
-source "gpg --quiet --decrypt ~/.mutt/muttrc.pass.gpg |"
+source "gpg2 --quiet --decrypt ~/.mutt/muttrc.pass.gpg |"
 
 set imap_authenticators="login"
 set imap_user="$my_user"
