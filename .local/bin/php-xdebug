@@ -4,6 +4,7 @@
 export XDEBUG_CONFIG
 
 case $# in
-0) exec php -S localhost:8000 ;;
-*) exec php "$@"
+0) set -- -S localhost:8000
 esac
+
+exec "${PHP_BINARY:-php}" "$@"
