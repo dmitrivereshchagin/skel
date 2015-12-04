@@ -8,6 +8,7 @@ git clone 'https://github.com/tommcdo/vim-exchange.git' "${PATHOGEN_BUNDLE:-$HOM
 git clone 'https://github.com/tpope/vim-fugitive.git' "${PATHOGEN_BUNDLE:-$HOME/.vim/bundle}"'/fugitive'
 git clone 'https://github.com/othree/html5.vim.git' "${PATHOGEN_BUNDLE:-$HOME/.vim/bundle}"'/html5'
 git clone 'https://github.com/mitsuhiko/vim-jinja.git' "${PATHOGEN_BUNDLE:-$HOME/.vim/bundle}"'/jinja'
+git clone 'https://github.com/elzr/vim-json.git' "${PATHOGEN_BUNDLE:-$HOME/.vim/bundle}"'/json'
 git clone 'https://github.com/vim-latex/vim-latex.git' "${PATHOGEN_BUNDLE:-$HOME/.vim/bundle}"'/latex'
 git clone 'https://github.com/tpope/vim-pathogen.git' "${PATHOGEN_BUNDLE:-$HOME/.vim/bundle}"'/pathogen'
 git clone 'https://github.com/tpope/vim-ragtag.git' "${PATHOGEN_BUNDLE:-$HOME/.vim/bundle}"'/ragtag'
