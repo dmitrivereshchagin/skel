@@ -6,25 +6,25 @@ interface=org.gajim.dbus.RemoteInterface
 
 check_gajim_running() {
     dbus-send --dest=org.freedesktop.DBus --print-reply \
-	/org/freedesktop/DBus org.freedesktop.DBus.NameHasOwner \
-	string:"$name" |
+        /org/freedesktop/DBus org.freedesktop.DBus.NameHasOwner \
+        string:"$name" |
     grep -Fq 'boolean true'
 }
 
 get_unread_msgs_number() {
     dbus-send --dest="$name" --print-reply \
-	"$object_path" "$interface".get_unread_msgs_number |
+        "$object_path" "$interface".get_unread_msgs_number |
     sed -n '2s/.*"\([^"]*\)"/\1/p'
 }
 
 show_next_pending_event() {
     dbus-send --dest="$name" --type=method_call \
-	"$object_path" "$interface".show_next_pending_event
+        "$object_path" "$interface".show_next_pending_event
 }
 
 toggle_roster_appearance() {
     dbus-send --dest="$name" --type=method_call \
-	"$object_path" "$interface".toggle_roster_appearance
+        "$object_path" "$interface".toggle_roster_appearance
 }
 
 check_gajim_running || exec gajim "$@"

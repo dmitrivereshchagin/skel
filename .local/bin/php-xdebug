@@ -1,10 +1,10 @@
 #!/bin/sh
 
-: ${XDEBUG_CONFIG:=idekey=xdebug}
-export XDEBUG_CONFIG
+export XDEBUG_CONFIG=${XDEBUG_CONFIG-remote_enable=1}
 
 case $# in
 0) set -- -S localhost:8000
 esac
 
-exec "${PHP_BINARY:-php}" "$@"
+exec "${PHP_BINARY:-php}" \
+    -d "zend_extension=${XDEBUG_EXTENSION:-xdebug.so}" "$@"
