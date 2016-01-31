@@ -5,6 +5,4 @@
 --pager=less -R
 --smart-case
 --sort-files
---type-add=cpp=.C,.H
---type-set=coffee=.coffee
 --type-set=twig=.twig
