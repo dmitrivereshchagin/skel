@@ -8,4 +8,4 @@ syntax match javaScriptFloat '\<\d\+[eE][-+]\=\d\+'
 syntax match javaScriptFloat '\<\d\+\.\d*\([eE][-+]\=\d\+\)\='
 
 highlight link javaScriptNumber Number
-highlight link javaScriptFloat Float
+highlight link javaScriptFloat  Float

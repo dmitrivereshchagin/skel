@@ -1,4 +1,7 @@
 " ~/.vim/after/ftplugin/javascript.vim
 
-setlocal shiftwidth=2 softtabstop=2 expandtab
 setlocal iskeyword+=$
+
+nmap <silent> <buffer> <LocalLeader>d :TernDef<CR>
+
+call undo#ftplugin('setlocal iskeyword<', 'nunmap <buffer> <LocalLeader>d')

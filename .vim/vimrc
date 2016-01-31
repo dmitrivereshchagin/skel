@@ -1,14 +1,15 @@
 " ~/.vim/vimrc
 
+runtime bundle/pathogen/autoload/pathogen.vim
+silent! execute pathogen#infect()
+
 language messages C
 
 if empty(&termencoding)
   let &termencoding = exists('$MSYSTEM') ? 'cp1251' : &encoding
 endif
 set encoding=utf-8
-
-let &fileencodings = 'ucs-bom,utf-8,' .
-      \ (has('win32') || has('win32unix') ? 'cp1251' : 'koi8-r')
+set fileencodings=ucs-bom,utf-8,cp1251
 
 set pastetoggle=<F2>
 
@@ -18,9 +19,6 @@ set smartcase
 
 set tags=./tags;,tags
 set showfulltag
-set cscopetag
-set cscopeverbose
-set cscopequickfix=c-,d-,e-,i-,s-,t-
 
 set scrolloff=1
 if has('patch-7.4.338')
@@ -39,13 +37,13 @@ set spelllang=en_us,ru_yo
 set spellsuggest=fast,10
 
 set laststatus=2
-set statusline=%<%.25f%(\ [%H%M%R%{FugitiveStatusline()}]%)%=%-14.(%l,%c%V%)\ %P
-
-set tabpagemax=25
+set statusline=%<%.20f\ (%n)%(\ [%H%M%R%W%{S('fugitive#statusline')}%{S('SyntasticStatuslineFlag')}]%)%=%-14.(%l,%c%V%)\ %P
 
 set notitle
 
-set mouse=a
+if has('mouse')
+  set mouse=a
+endif
 
 set shortmess+=I
 set showcmd
@@ -61,12 +59,14 @@ set infercase
 set showmatch
 set nrformats-=octal
 
+set shiftwidth=4
+set softtabstop=4
+set expandtab
 set autoindent
-set smarttab
 
-set foldopen+=jump
-
-set diffopt=filler,context:4
+if has('folding')
+  set foldopen+=jump
+endif
 
 set timeoutlen=3000
 set ttimeoutlen=100
@@ -75,13 +75,9 @@ set modeline
 set autowrite
 set autoread
 
-set history=1000
+set history=200
 set wildmode=longest,full
 set wildmenu
-
-if has('unix')
-  set grepprg=grep\ -Hn\ $*\ /dev/null
-endif
 
 set keymap=russian-jcukenwin
 set iminsert=0
@@ -91,42 +87,26 @@ set virtualedit=block
 set sessionoptions-=blank sessionoptions-=options sessionoptions+=slash,unix
 set viminfo=!,'20,<50,s10,h
 
-silent! execute pathogen#infect()
-
 syntax on
 filetype plugin indent on
 
-highlight link SneakPluginTarget IncSearch
-
 let g:ack_default_options = ' -H --column --smart-case --sort-files'
 
-let g:ctrlp_map = '<Leader>P'
-let g:ctrlp_by_filename = 1
-let g:ctrlp_user_command = ['.git', 'git --git-dir=%s/.git ls-files']
+let g:ctrlp_map = '<Leader>p'
+let g:ctrlp_lazy_update = 1
 
 let g:user_emmet_leader_key = '<C-\>'
 
+let g:netrw_bufsettings = 'noma nomod nonu nobl nowrap ro rnu'
 let g:netrw_liststyle = 1
 let g:netrw_timefmt = '%a %d %b %Y %H:%M:%S'
-
-let g:paredit_leader = '\'
-
-let g:slimv_preferred = 'clisp'
-let g:slimv_leader = '\'
 
 let g:sneak#s_next = 1
 let g:sneak#map_netrw = 0
 
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_stl_format = ',SYN(%t)'
 
-let g:tagbar_compact = 1
-let g:tagbar_indent = 1
-let g:tagbar_show_linenumbers = 2
-let g:tagbar_iconchars = ['+', '-']
-
+let g:tern#command = ['tern', '--no-port-file']
 let g:tern_show_signature_in_pum = 1
 
 let g:vdebug_options = {
@@ -137,9 +117,6 @@ let g:vdebug_options = {
       \ 'continuous_mode': 1
       \ }
 
-let g:vim_json_syntax_conceal = 0
-let g:vim_json_warnings = 0
-
 let g:c_gnu = 1
 let g:c_no_curly_error = 1
 let g:c_syntax_for_h = 1
@@ -148,20 +125,13 @@ let g:c_no_comment_fold = 1
 let g:html_exclude_tags = ['html', 'script', 'style']
 let g:html_no_rendering = 1
 
-let g:markdown_fenced_languages = ['css', 'html', 'js=javascript', 'php']
-
 let g:perl_string_as_statement = 1
 let g:perl_fold = 1
 
 let g:php_folding = 1
 
-let g:ruby_fold = 1
-let g:ruby_no_comment_fold = 1
-
 let g:is_posix = 1
 let g:sh_fold_enabled = 3
-
-let g:tex_flavor = 'latex'
 
 inoremap <C-U> <C-G>u<C-U>
 nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
@@ -172,14 +142,15 @@ nnoremap j gj
 nnoremap gk k
 nnoremap k gk
 
-nmap <Leader>S :mksession! <C-R>=fnameescape(v:this_session)<CR><CR>
-nmap <Leader>Y :syntax <C-R>=exists('g:syntax_on') ? 'off' : 'enable'<CR><CR>
-
-nmap <silent> <Leader>T :TagbarOpenAutoClose<CR>
-
-nmap cX <Plug>(ExchangeClear)
+map  <F1> <Esc>
+map! <F1> <Esc>
 
 map! <F3> <C-^>
+
+nmap <Leader>s :mksession! <C-R>=fnameescape(v:this_session)<CR><CR>
+nmap <Leader>y :syntax <C-R>=exists('g:syntax_on') ? 'off' : 'enable'<CR><CR>
+
+nmap <Leader>e :Errors<CR>
 
 if exists('#fedora')
   autocmd! fedora BufReadPost *
@@ -187,27 +158,8 @@ elseif exists('#redhat')
   autocmd! redhat BufReadPost *
 endif
 
-augroup cursorline
-  autocmd!
-  autocmd WinEnter * call CursorlineRestore()
-  autocmd WinLeave * call CursorlineDisable()
-augroup END
-
-function! CursorlineDisable()
-  let w:cursorline_save = &l:cursorline
-  setlocal nocursorline
-endfunction
-
-function! CursorlineRestore()
-  if exists('w:cursorline_save')
-    let &l:cursorline = w:cursorline_save
-  endif
-endfunction
-
-function! FugitiveStatusline()
-  return exists('g:loaded_fugitive') ? fugitive#statusline() : ''
+function! S(funcname)
+  return exists('*' . a:funcname) ? call(a:funcname, []) : ''
 endfunction
 
 runtime macros/matchit.vim
-
-" vim:set shiftwidth=2:

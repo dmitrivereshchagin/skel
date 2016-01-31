@@ -3,4 +3,4 @@
 setlocal spell
 setlocal formatoptions+=n1
 
-normal! }
+call undo#ftplugin('setlocal spell< formatoptions<')

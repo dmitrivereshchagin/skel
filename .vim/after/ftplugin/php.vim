@@ -1,9 +1,13 @@
 " ~/.vim/after/ftplugin/php.vim
 
-setlocal define=^\\s*const
 setlocal matchpairs-=<:>
-setlocal shiftwidth=4 softtabstop=4 expandtab
 
 let b:commentary_format = '// %s'
 
-nmap <buffer> <LocalLeader>F :!php-cs-fixer fix <C-R>=shellescape(expand('%:p'))<CR><CR>
+nmap <buffer> <LocalLeader>= :!php-cs-fixer fix <C-R>=shellescape(expand('%:p'))<CR><CR>
+
+call undo#ftplugin(
+      \ 'setlocal matchpairs<',
+      \ 'unlet b:commentary_format',
+      \ 'nunmap <buffer> <LocalLeader>='
+      \ )
