@@ -3,5 +3,6 @@
 #
 
 gtk-font-name = "DejaVu Sans 10"
+gtk-icon-theme-name = "Adwaita"
 gtk-key-theme-name = "Emacs"
-gtk-theme-name = "Raleigh"
+gtk-theme-name = "Adwaita"
