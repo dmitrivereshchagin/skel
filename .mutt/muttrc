@@ -49,7 +49,6 @@ set strict_threads
 
 set attribution="* %f [%(%F %R)]:"
 set edit_headers
-set ispell="aspell --mode=email check"
 set signature="~/.mutt/signature"
 
 set mailcap_path="~/.mutt/mailcap"
@@ -80,10 +79,6 @@ macro attach,compose,index,pager \cB "\
 <pipe-message>w3m<Enter>\
 <enter-command>set pipe_decode=\$my_pipe_decode; unset my_pipe_decode<Enter>\
 " "call w3m to browse URLs"
-
-macro generic,pager <F1> "\
-<shell-escape>w3m /usr/share/doc/mutt/manual.html<Enter>\
-" "show Mutt documentation"
 
 source ~/.mutt/muttrc.aliases
 source ~/.mutt/muttrc.colors

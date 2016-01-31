@@ -5,16 +5,7 @@
 application/pdf; muttv %s gv {}; test=test -n "$DISPLAY"
 application/pdf; pdftotext %s - | fold -s; copiousoutput
 
-application/postscript; muttv %s gv {}; test=test -n "$DISPLAY"
-application/postscript; ps2ascii | fold -s; copiousoutput
-application/x-gzpostscript; muttv %s gv {}; test=test -n "$DISPLAY"
-application/x-gzpostscript; gzip -cd | ps2ascii | fold -s; copiousoutput
-
-application/x-dvi; muttv %s xdvi {}; test=test -n "$DISPLAY"
-application/x-dvi; dvi2tty -q %s; copiousoutput
-
 application/zip; unzip -l %s; copiousoutput
-application/x-tar; tar tvf -; copiousoutput
 application/x-gtar; gzip -cd | tar tvf -; copiousoutput
 
 image/*; muttv %s feh {}; test=test -n "$DISPLAY"
