@@ -16,5 +16,5 @@ hardstatus alwayslastline '%-Lw%{=b bw}%50>%n*%f %t%{-}%+Lw%<'
 time '%D %d %M %Y %0c:%s %H%? %l%?'
 
 bind % collapse
-bind G screen w3m https://duckduckgo.com
-bind V screen vim
+bind ( bumpleft
+bind ) bumpright
