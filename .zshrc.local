@@ -7,9 +7,9 @@ setopt NO_AUTO_PUSHD CSH_NULL_GLOB
 READNULLCMD=less
 
 if [[ $TERM == ([Ex]term|rxvt|screen)* ]]; then
-  unset TMOUT
+    unset TMOUT
 else
-  TMOUT=600
+    TMOUT=600
 fi
 
 export BLOCK_SIZE=human-readable
@@ -30,7 +30,7 @@ export NPM_CONFIG_PREFIX=~/.npm-packages
 export PERLDOC=-oman
 
 if [[ -d ~/perl5/lib/perl5 ]]; then
-  eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
+    eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
 fi
 
 path=(~/.local/bin ~/.composer/vendor/bin $NPM_CONFIG_PREFIX/bin $path)
@@ -58,8 +58,6 @@ alias j=jobs
 alias po=popd
 alias pu=pushd
 
-alias CH='./configure --help'
-alias CO=./configure
 alias bc='bc -lq'
 alias crawl='telnet crawl.develz.org 345'
 alias free='free -hl'
@@ -74,11 +72,6 @@ alias txr=transmission-remote
 alias unnethack='telnet eu.un.nethack.nu'
 alias vi=vim
 alias view='vim -R'
-alias w3m='w3m -B'
-
-if (( ${+commands[ack-grep]} )); then
-  alias ack=ack-grep
-fi
 
 bindkey '\eq' push-line-or-edit
 bindkey '^XN' history-beginning-search-forward-end
@@ -92,11 +85,11 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 
 hostname_prompt() {
-  REPLY=${${${+STY}#1}/0/${SSH_CONNECTION+%m }}
+    REPLY=${${${+STY}#1}/0/${SSH_CONNECTION+%m }}
 }
 
 virtual_env_prompt() {
-  REPLY=${VIRTUAL_ENV+(${VIRTUAL_ENV:t}) }
+    REPLY=${VIRTUAL_ENV+(${VIRTUAL_ENV:t}) }
 }
 
 grml_theme_add_token cwd '%1~ ' '%B%F{blue}' '%f%b'
@@ -105,5 +98,3 @@ grml_theme_add_token virtual-env -f virtual_env_prompt '%B' '%b'
 
 zstyle ':prompt:grml:left:setup' items rc virtual-env hostname cwd vcs percent
 zstyle ':prompt:grml:right:setup' use-rprompt false
-
-# vim:set shiftwidth=2:
