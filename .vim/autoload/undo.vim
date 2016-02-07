@@ -1,10 +1,5 @@
 " ~/.vim/autoload/undo.vim
 
-if exists('g:autoloaded_undo')
-  finish
-endif
-let g:autoloaded_undo = 1
-
 function! s:undo(plugin, commands)
   let commands = copy(a:commands)
   if exists('b:undo_' . a:plugin)
