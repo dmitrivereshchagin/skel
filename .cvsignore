@@ -1,5 +1,6 @@
 *~
 .*.sw[nop]
 .sw[nop]
+.projections.json
 Session.vim
 tags
