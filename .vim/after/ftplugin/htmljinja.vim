@@ -2,4 +2,4 @@
 
 let b:commentary_format = '{# %s #}'
 
-call undo#ftplugin('unlet b:commentary_format')
+call undo#ftplugin('unlet! b:commentary_format')

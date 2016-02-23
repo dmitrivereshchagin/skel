@@ -133,13 +133,16 @@ let g:php_folding = 1
 let g:is_posix = 1
 let g:sh_fold_enabled = 3
 
+if has('digraphs')
+  digraphs -. 8230  " HORIZONTAL ELLIPSIS
+endif
+
 inoremap <C-U> <C-G>u<C-U>
 nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
 
 nnoremap gj j
-nnoremap j gj
-
 nnoremap gk k
+nnoremap j gj
 nnoremap k gk
 
 map  <F1> <Esc>
@@ -147,15 +150,12 @@ map! <F1> <Esc>
 
 map! <F3> <C-^>
 
+nmap <Leader>e :Errors<CR>
 nmap <Leader>s :mksession! <C-R>=fnameescape(v:this_session)<CR><CR>
 nmap <Leader>y :syntax <C-R>=exists('g:syntax_on') ? 'off' : 'enable'<CR><CR>
 
-nmap <Leader>e :Errors<CR>
-
 if exists('#fedora')
   autocmd! fedora BufReadPost *
-elseif exists('#redhat')
-  autocmd! redhat BufReadPost *
 endif
 
 function! S(funcname)

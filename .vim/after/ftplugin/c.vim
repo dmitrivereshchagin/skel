@@ -12,9 +12,9 @@ iabbrev <buffer> #u #undef
 
 call undo#ftplugin(
       \ 'setlocal shiftwidth< softtabstop< expandtab< foldmethod<',
-      \ 'unlet b:surround_56',
-      \ 'iunabbrev <buffer> #d',
-      \ 'iunabbrev <buffer> #i',
-      \ 'iunabbrev <buffer> #p',
-      \ 'iunabbrev <buffer> #u'
+      \ 'unlet! b:surround_56',
+      \ 'silent! iunabbrev <buffer> #d',
+      \ 'silent! iunabbrev <buffer> #i',
+      \ 'silent! iunabbrev <buffer> #p',
+      \ 'silent! iunabbrev <buffer> #u'
       \ )
