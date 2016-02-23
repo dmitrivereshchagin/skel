@@ -1,7 +1,7 @@
 #!/bin/sh
 
 dump() {
-    printf "git clone '%s' \"\${VIMBUNDLE:-\$HOME/.vim/bundle}\"/'%s'\n" \
+    printf "git clone '%s' \"\$HOME\"/.vim/bundle/'%s'\n" \
         "$(git --git-dir="$1"/.git config --get remote.origin.url)" "${1##*/}"
 }
 
@@ -10,13 +10,18 @@ pull() {
     git --git-dir="$1"/.git --work-tree="$1" pull
 }
 
-case "${1:-pull}" in
-d*) process=dump ;;
-p*) process=pull ;;
-*)  printf 'Usage: vim-vaccine [dump|pull]\n' >&2; exit 2
+usage() {
+    printf 'Usage: vim-vaccine [-d]\n' >&2
+    exit 2
+}
+
+case $# in
+0) process=pull ;;
+1) case "$1" in -d) process=dump ;; *) usage ;; esac ;;
+*) usage
 esac
 
-for dir in "${VIMBUNDLE:-$HOME/.vim/bundle}"/*
+for dir in "$HOME"/.vim/bundle/*
 do
     test -d "$dir"/.git && "$process" "$dir"
 done
