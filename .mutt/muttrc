@@ -64,7 +64,7 @@ set crypt_use_gpgme
 unalternative_order *
 alternative_order text/plain text/html
 
-auto_view application/zip application/x-tar application/x-gtar text/html
+auto_view application/zip application/x-gtar text/html
 
 ignore *
 unignore date from: reply-to to cc subject
