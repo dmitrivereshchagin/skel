@@ -1,3 +1,4 @@
+git clone 'https://github.com/tpope/vim-abolish.git' "$HOME"/.vim/bundle/'abolish'
 git clone 'https://github.com/mileszs/ack.vim.git' "$HOME"/.vim/bundle/'ack'
 git clone 'https://github.com/tpope/vim-commentary.git' "$HOME"/.vim/bundle/'commentary'
 git clone 'https://github.com/ctrlpvim/ctrlp.vim.git' "$HOME"/.vim/bundle/'ctrlp'
