@@ -110,6 +110,7 @@ let g:tern#command = ['tern', '--no-port-file']
 let g:tern_show_signature_in_pum = 1
 
 let g:vdebug_options = {
+      \ 'path_maps': {'/vagrant': '.'},
       \ 'watch_window_style': 'compact',
       \ 'marker_default': '*',
       \ 'marker_closed_tree': '+',
