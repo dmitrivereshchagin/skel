@@ -33,7 +33,7 @@ if [[ -d ~/perl5/lib/perl5 ]]; then
     eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
 fi
 
-path=(~/.local/bin ~/.composer/vendor/bin $NPM_CONFIG_PREFIX/bin $path)
+path=({~,~/.local,~/.composer/vendor,$NPM_CONFIG_PREFIX}/bin $path)
 
 cdpath=(.. ~)
 
