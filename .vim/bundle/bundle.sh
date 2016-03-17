@@ -13,6 +13,7 @@ git clone 'https://github.com/tpope/vim-pathogen.git' "$HOME"/.vim/bundle/'patho
 git clone 'https://github.com/tpope/vim-projectionist.git' "$HOME"/.vim/bundle/'projectionist'
 git clone 'https://github.com/tpope/vim-ragtag.git' "$HOME"/.vim/bundle/'ragtag'
 git clone 'https://github.com/tpope/vim-repeat.git' "$HOME"/.vim/bundle/'repeat'
+git clone 'https://github.com/dmitrivereshchagin/vim-scape.git' "$HOME"/.vim/bundle/'scape'
 git clone 'https://github.com/justinmk/vim-sneak.git' "$HOME"/.vim/bundle/'sneak'
 git clone 'https://github.com/tpope/vim-surround.git' "$HOME"/.vim/bundle/'surround'
 git clone 'https://github.com/scrooloose/syntastic.git' "$HOME"/.vim/bundle/'syntastic'

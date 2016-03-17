@@ -142,18 +142,17 @@ inoremap <C-U> <C-G>u<C-U>
 nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
 
 nnoremap gj j
-nnoremap gk k
 nnoremap j gj
-nnoremap k gk
 
-map  <F1> <Esc>
-map! <F1> <Esc>
+nnoremap gk k
+nnoremap k gk
 
 map! <F3> <C-^>
 
-nmap <Leader>e :Errors<CR>
 nmap <Leader>s :mksession! <C-R>=fnameescape(v:this_session)<CR><CR>
 nmap <Leader>y :syntax <C-R>=exists('g:syntax_on') ? 'off' : 'enable'<CR><CR>
+
+nmap <Leader>e :Errors<CR>
 
 if exists('#fedora')
   autocmd! fedora BufReadPost *
