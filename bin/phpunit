@@ -1,0 +1,7 @@
+#!/bin/sh
+
+binary=vendor/bin/${0##*/}
+
+test -x "$binary" || binary=$HOME/.composer/$binary
+
+exec php-xdebug "$binary" "$@"
