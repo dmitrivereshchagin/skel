@@ -53,7 +53,7 @@ set backspace=indent,eol,start
 if has('patch-7.3.541')
   set formatoptions+=j
 endif
-set complete-=i
+set complete-=i complete-=t
 set completeopt=menuone
 set infercase
 set showmatch
