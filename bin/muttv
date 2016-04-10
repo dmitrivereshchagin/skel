@@ -6,16 +6,16 @@ esac
 
 file=$1; shift
 
-trap 'rm -Rf "$tmpdir"' 0
-trap 'rm -Rf "$tmpdir"; exit 1' 1 2 15
+trap 'rm -Rf "$tmpdir"' EXIT
+trap 'rm -Rf "$tmpdir"; exit 1' INT QUIT TERM
 tmpdir=$(mktemp -d /tmp/muttv.XXXXXXXX) || exit 1
 
 cp "$file" "$tmpdir" || exit 1
 
 (
-    trap 'rm -Rf "$tmpdir"; exit 1' 1 2 15
+    trap 'rm -Rf "$tmpdir"; exit 1' INT QUIT TERM
     printf '%s' "$tmpdir/${file##*/}" | xargs -I {} "$@"
     rm -Rf "$tmpdir"
 ) &
 
-trap 0 1 2 15
+trap - INT QUIT TERM EXIT
