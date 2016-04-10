@@ -7,6 +7,7 @@ color  index       cyan         default  ~T
 color  index       green        default  ~F
 color  index       red          default  ~D
 color  indicator   black        yellow
+color  status      black        white
 color  tree        red          default
 
 color  attachment  red          default
@@ -23,3 +24,4 @@ color  header      brightblue   default  "^Subject:"
 color  header      brightred    default  "^From:"
 color  quoted      green        default
 color  quoted1     cyan         default
+color  signature   magenta      default
