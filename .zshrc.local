@@ -14,6 +14,8 @@ fi
 
 export BLOCK_SIZE=human-readable
 
+export COMPOSER_HOME=~/.composer
+
 export GPG_TTY=$(tty)
 
 export LESS=-iMQR
@@ -33,7 +35,7 @@ if [[ -d ~/perl5/lib/perl5 ]]; then
     eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
 fi
 
-path=({~,~/.local,~/.composer/vendor,$NPM_CONFIG_PREFIX}/bin $path)
+path=({~,~/.local,$COMPOSER_HOME/vendor,$NPM_CONFIG_PREFIX}/bin $path)
 
 cdpath=(.. ~)
 
