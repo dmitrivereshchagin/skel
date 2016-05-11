@@ -16,6 +16,8 @@ export BLOCK_SIZE=human-readable
 
 export COMPOSER_HOME=$HOME/.composer
 
+export GOPATH=$HOME/go
+
 export GPG_TTY=$(tty)
 
 export LESS=-iMQR
@@ -36,6 +38,7 @@ path=(
     $HOME/bin
     $HOME/.local/bin
     $COMPOSER_HOME/vendor/bin
+    $GOPATH/bin
     $NPM_CONFIG_PREFIX/bin
     $path
 )

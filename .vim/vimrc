@@ -123,6 +123,11 @@ let g:c_no_curly_error = 1
 let g:c_syntax_for_h = 1
 let g:c_no_comment_fold = 1
 
+let g:go_highlight_trailing_whitespace_error = 0
+if executable('goimports')
+  let g:gofmt_command = 'goimports'
+endif
+
 let g:html_exclude_tags = ['html', 'script', 'style']
 let g:html_no_rendering = 1
 
