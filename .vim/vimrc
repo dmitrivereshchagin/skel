@@ -115,7 +115,7 @@ let g:vdebug_options = {
       \ 'marker_default': '*',
       \ 'marker_closed_tree': '+',
       \ 'marker_open_tree': '-',
-      \ 'continuous_mode': 1
+      \ 'continuous_mode': 1,
       \ }
 
 let g:c_gnu = 1

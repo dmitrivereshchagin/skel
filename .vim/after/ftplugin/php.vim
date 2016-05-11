@@ -14,5 +14,5 @@ nmap <buffer> <LocalLeader>= :!php-cs-fixer fix <C-R>=shellescape(expand('%:p'))
 call undo#ftplugin(
       \ 'setlocal define< matchpairs< keywordprg<',
       \ 'unlet! b:commentary_format b:syntastic_php_php_exec',
-      \ 'silent! nunmap <buffer> <LocalLeader>='
+      \ 'silent! nunmap <buffer> <LocalLeader>=',
       \ )

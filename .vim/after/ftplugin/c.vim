@@ -16,5 +16,5 @@ call undo#ftplugin(
       \ 'silent! iunabbrev <buffer> #d',
       \ 'silent! iunabbrev <buffer> #i',
       \ 'silent! iunabbrev <buffer> #p',
-      \ 'silent! iunabbrev <buffer> #u'
+      \ 'silent! iunabbrev <buffer> #u',
       \ )

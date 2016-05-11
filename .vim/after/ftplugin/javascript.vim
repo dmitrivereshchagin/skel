@@ -10,5 +10,5 @@ call undo#ftplugin(
       \ 'setlocal iskeyword<',
       \ 'silent! nunmap <buffer> <LocalLeader>d',
       \ 'silent! nunmap <buffer> <LocalLeader>r',
-      \ 'silent! nunmap <buffer> <LocalLeader>t'
+      \ 'silent! nunmap <buffer> <LocalLeader>t',
       \ )
