@@ -2,15 +2,6 @@
 
 *customization: -color
 
-XScreenSaver.lock: true
-XScreenSaver.dpmsEnabled: true
-XScreenSaver.dpmsQuickOff: true
-XScreenSaver.splash: false
-XScreenSaver.newLoginCommand:
-XScreenSaver.fade: false
-XScreenSaver.captureStderr: false
-XScreenSaver.mode: blank
-
 XTerm.termName: xterm-256color
 XTerm*vt100.background: black
 XTerm*vt100.color4: DodgerBlue1
@@ -25,6 +16,3 @@ XTerm*vt100.saveLines: 2048
 XTerm*vt100.scrollBar: false
 XTerm*vt100.trimSelection: true
 XTerm*vt100.visualBell: true
-
-Xft.hintstyle: hintfull
-Xft.rgba: rgb

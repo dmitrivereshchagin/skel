@@ -24,9 +24,6 @@ export LESSHISTFILE=/dev/null
 export MANOPT='--no-hyphenation --no-justification'
 export MANWIDTH=80
 
-export GLHACKOPTIONS=mode:1024x768,depth:32,windowed
-export NETHACKOPTIONS=!autopickup,autoquiver,fruit:plum,color,!splash_screen
-
 export NPM_CONFIG_PREFIX=~/.npm-packages
 
 export PERLDOC=-oman
@@ -40,17 +37,13 @@ path=({~,~/.local,$COMPOSER_HOME/vendor,$NPM_CONFIG_PREFIX}/bin $path)
 cdpath=(.. ~)
 
 alias -g C='| wc -l'
-alias -g F='| fold -s'
 alias -g G='| grep -Ei'
 alias -g GE='|& grep -Ei'
-alias -g H='| head'
-alias -g K='| keep'
 alias -g L='| less'
 alias -g LE='|& less'
 alias -g N='>&/dev/null'
 alias -g R='| tr A-Za-z N-ZA-Mn-za-m'
 alias -g S='| sort'
-alias -g T='| tail'
 alias -g V='| vim -'
 alias -g X='| xargs'
 
@@ -69,9 +62,7 @@ alias info='info --vi-keys'
 alias mkdir='mkdir -p'
 alias p='phpunit --colors'
 alias psu='ps -U $UID'
-alias startx='ssh-agent startx -- -keeptty >&/dev/null'
 alias topu='top -U $UID'
-alias txr=transmission-remote
 alias unnethack='telnet eu.un.nethack.nu'
 alias vi=vim
 alias view='vim -R'
