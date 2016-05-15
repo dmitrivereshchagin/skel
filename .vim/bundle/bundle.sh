@@ -12,7 +12,6 @@ git clone 'https://github.com/vim-jp/vim-go-extra.git' "$HOME"/.vim/bundle/'go-e
 git clone 'https://github.com/othree/html5.vim.git' "$HOME"/.vim/bundle/'html5'
 git clone 'https://github.com/mitsuhiko/vim-jinja.git' "$HOME"/.vim/bundle/'jinja'
 git clone 'https://github.com/tpope/vim-pathogen.git' "$HOME"/.vim/bundle/'pathogen'
-git clone 'https://github.com/tpope/vim-projectionist.git' "$HOME"/.vim/bundle/'projectionist'
 git clone 'https://github.com/tpope/vim-ragtag.git' "$HOME"/.vim/bundle/'ragtag'
 git clone 'https://github.com/tpope/vim-repeat.git' "$HOME"/.vim/bundle/'repeat'
 git clone 'https://github.com/dmitrivereshchagin/vim-scape.git' "$HOME"/.vim/bundle/'scape'
