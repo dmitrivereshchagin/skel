@@ -76,7 +76,7 @@ set autowrite
 set autoread
 
 set history=200
-set wildmode=longest,full
+set wildmode=longest:full,full
 set wildmenu
 
 set keymap=russian-jcukenwin
