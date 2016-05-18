@@ -139,7 +139,7 @@ let g:is_posix = 1
 let g:sh_fold_enabled = 3
 
 if has('digraphs')
-  digraphs -. 8230  " HORIZONTAL ELLIPSIS
+  digraphs ./ 8230  " HORIZONTAL ELLIPSIS U+2026
 endif
 
 inoremap <C-U> <C-G>u<C-U>
