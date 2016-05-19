@@ -1,10 +1,10 @@
 #!/bin/sh
 
-export XDEBUG_CONFIG=${XDEBUG_CONFIG-remote_enable=1}
+php=${PHP_BINARY:-php}
 
-case $# in
-0) set -- -S localhost:8000
-esac
+if ! "$php" -m | grep -Fxq xdebug
+then
+    set -- -d "zend_extension=${XDEBUG_EXTENSION:-xdebug.so}" "$@"
+fi
 
-exec "${PHP_BINARY:-php}" \
-    -d "zend_extension=${XDEBUG_EXTENSION:-xdebug.so}" "$@"
+XDEBUG_CONFIG=${XDEBUG_CONFIG-remote_enable=1} exec "$php" "$@"
