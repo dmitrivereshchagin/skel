@@ -104,6 +104,7 @@ let g:netrw_timefmt = '%a %d %b %Y %H:%M:%S'
 let g:sneak#s_next = 1
 let g:sneak#map_netrw = 0
 
+let g:syntastic_check_on_wq = 0
 let g:syntastic_stl_format = ',SYN(%t)'
 
 let g:tern#command = ['tern', '--no-port-file']
