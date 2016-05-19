@@ -56,7 +56,7 @@ endif
 set complete-=i complete-=t
 set completeopt=menuone
 set infercase
-set showmatch
+set noshowmatch
 set nrformats-=octal
 
 set shiftwidth=4
