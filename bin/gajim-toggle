@@ -5,16 +5,16 @@ object_path=/org/gajim/dbus/RemoteObject
 interface=org.gajim.dbus.RemoteInterface
 
 check_gajim_running() {
-    dbus-send --dest=org.freedesktop.DBus --print-reply \
+    dbus-send --dest=org.freedesktop.DBus --print-reply=literal \
         /org/freedesktop/DBus org.freedesktop.DBus.NameHasOwner \
         string:"$name" |
-    grep -Fq 'boolean true'
+    grep -Fq true
 }
 
 get_unread_msgs_number() {
-    dbus-send --dest="$name" --print-reply \
+    dbus-send --dest="$name" --print-reply=literal \
         "$object_path" "$interface".get_unread_msgs_number |
-    sed -n '2s/.*"\([^"]*\)"/\1/p'
+    sed 's/ *//'
 }
 
 show_next_pending_event() {
