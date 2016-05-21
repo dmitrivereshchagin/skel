@@ -5,15 +5,22 @@ test -t 1 || exec /usr/bin/svn "$@"
 case "$1" in
 di|diff|log)
     e=$(printf '\33')
-    /usr/bin/svn "$@" | sed "
-    /^-\\{72\\}$/,/^=\\{67\\}$/ !{
-        s/^-.*/$e[31m&$e[m/
-        t
-        s/^+.*/$e[32m&$e[m/
-        t
-        s/^@.*/$e[36m&$e[m/
+    /usr/bin/svn "$@" |
+    sed "
+        /^-\{72\}$/,/^=\{67\}$/ !{
+            s/^-.*/$e[31m&$e[m/
+            t
+            s/^+.*/$e[32m&$e[m/
+            t
+            s/^@.*/$e[36m&$e[m/
         }
-    " | less -eFRSX ;;
-ann|h|st) /usr/bin/svn "$@" | less -eFSX ;;
-*) exec /usr/bin/svn "$@"
+        " |
+    less -eFRSX
+    ;;
+ann|blame|h|st)
+    /usr/bin/svn "$@" | less -eFSX
+    ;;
+*)
+    exec /usr/bin/svn "$@"
+    ;;
 esac
