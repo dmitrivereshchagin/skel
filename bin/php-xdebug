@@ -1,10 +1,13 @@
 #!/bin/sh
 
-php=${PHP_BINARY:-php}
+: "${PHP_BINARY:=php}"
 
-if ! "$php" -m | grep -Fxq xdebug
+if ! "$PHP_BINARY" -m | grep -Fxq xdebug
 then
-    set -- -d "zend_extension=${XDEBUG_EXTENSION:-xdebug.so}" "$@"
+    set -- -d zend_extension="${PHP_ZEND_EXTENSION_XDEBUG:-xdebug.so}" "$@"
 fi
 
-XDEBUG_CONFIG=${XDEBUG_CONFIG-remote_enable=1} exec "$php" "$@"
+: "${XDEBUG_CONFIG:=remote_enable=1}"
+export XDEBUG_CONFIG
+
+exec "$PHP_BINARY" "$@"
