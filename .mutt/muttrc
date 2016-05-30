@@ -51,7 +51,7 @@ set attribution="* %f [%(%F %R)]:"
 set edit_headers
 set signature="~/.mutt/signature"
 
-set mailcap_path="~/.mutt/mailcap"
+set mailcap_path="~/.mutt/mailcap:/etc/mailcap"
 
 set alias_file="~/.mutt/muttrc.aliases"
 set header_cache="~/.mutt/cache/headers"
