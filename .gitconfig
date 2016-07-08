@@ -12,15 +12,10 @@
 	ci = commit
 	co = checkout
 	di = diff
-	ls = ls-files
 	st = status --short --branch
 
-[color]
-	ui = true
-
 [grep]
-	extendedRegexp = true
-	lineNumber = true
+	patterntype = perl
 
 [merge]
 	tool = vimdiff
