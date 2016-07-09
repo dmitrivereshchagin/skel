@@ -79,6 +79,11 @@ set history=200
 set wildmode=longest:full,full
 set wildmenu
 
+if executable('ack')
+  set grepprg=ack\ --column\ --with-filename
+  set grepformat=%f:%l:%c:%m,%f:%l:%m
+endif
+
 set keymap=russian-jcukenwin
 set iminsert=0
 set imsearch=-1
@@ -89,8 +94,6 @@ set viminfo=!,'20,<50,s10,h
 
 syntax on
 filetype plugin indent on
-
-let g:ack_default_options = ' -H --column --smart-case --sort-files'
 
 let g:user_emmet_leader_key = '<C-\>'
 

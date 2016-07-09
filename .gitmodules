@@ -1,9 +1,6 @@
 [submodule "vim-abolish"]
 	path = .vim/bundle/abolish
 	url = https://github.com/tpope/vim-abolish.git
-[submodule "vim-ack"]
-	path = .vim/bundle/ack
-	url = https://github.com/mileszs/ack.vim.git
 [submodule "vim-commentary"]
 	path = .vim/bundle/commentary
 	url = https://github.com/tpope/vim-commentary.git
