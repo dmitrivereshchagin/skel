@@ -92,9 +92,6 @@ filetype plugin indent on
 
 let g:ack_default_options = ' -H --column --smart-case --sort-files'
 
-let g:ctrlp_map = '<Leader>p'
-let g:ctrlp_lazy_update = 1
-
 let g:user_emmet_leader_key = '<C-\>'
 
 let g:netrw_bufsettings = 'noma nomod nonu nobl nowrap ro rnu'
