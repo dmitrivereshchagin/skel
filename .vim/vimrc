@@ -98,6 +98,7 @@ filetype plugin indent on
 let g:user_emmet_leader_key = '<C-\>'
 
 let g:netrw_bufsettings = 'noma nomod nonu nobl nowrap ro rnu'
+let g:netrw_banner = 0
 let g:netrw_liststyle = 1
 let g:netrw_timefmt = '%a %d %b %Y %H:%M:%S'
 
@@ -157,6 +158,7 @@ map! <F3> <C-^>
 nmap <Leader>s :mksession! <C-R>=fnameescape(v:this_session)<CR><CR>
 nmap <Leader>y :syntax <C-R>=exists('g:syntax_on') ? 'off' : 'enable'<CR><CR>
 
+nmap - :Explore<CR>
 nmap <Leader>e :Errors<CR>
 
 if exists('#fedora')

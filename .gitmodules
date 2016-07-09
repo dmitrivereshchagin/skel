@@ -64,6 +64,3 @@
 [submodule "vim-vdebug"]
 	path = .vim/bundle/vdebug
 	url = https://github.com/joonty/vdebug.git
-[submodule "vim-vinegar"]
-	path = .vim/bundle/vinegar
-	url = https://github.com/tpope/vim-vinegar.git
