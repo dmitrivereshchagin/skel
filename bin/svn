@@ -1,11 +1,13 @@
 #!/bin/sh
 
-test -t 1 || exec /usr/bin/svn "$@"
+svn=$(= svn) || exit
+
+test -t 1 || exec "$svn" "$@"
 
 case "$1" in
 di|diff|log)
     e=$(printf '\33')
-    /usr/bin/svn "$@" |
+    "$svn" "$@" |
     sed "
         /^-\{72\}$/,/^=\{67\}$/ !{
             s/^-.*/$e[31m&$e[m/
@@ -18,9 +20,9 @@ di|diff|log)
     less -eFRSX
     ;;
 ann|blame|h|st)
-    /usr/bin/svn "$@" | less -eFSX
+    "$svn" "$@" | less -eFSX
     ;;
 *)
-    exec /usr/bin/svn "$@"
+    exec "$svn" "$@"
     ;;
 esac
