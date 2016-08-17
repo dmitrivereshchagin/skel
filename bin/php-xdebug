@@ -7,7 +7,7 @@ then
     set -- -d zend_extension="${PHP_ZEND_EXTENSION_XDEBUG:-xdebug.so}" "$@"
 fi
 
-: "${XDEBUG_CONFIG:=remote_enable=1}"
+: "${XDEBUG_CONFIG=remote_enable=1}"
 export XDEBUG_CONFIG
 
 exec "$PHP_BINARY" "$@"
