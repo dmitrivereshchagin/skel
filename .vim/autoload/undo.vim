@@ -1,17 +1,17 @@
 " ~/.vim/autoload/undo.vim
 
-function! s:undo(plugin, commands)
-  let commands = copy(a:commands)
-  if exists('b:undo_' . a:plugin)
-    call insert(commands, b:undo_{a:plugin})
+function! undo#ftplugin(...) abort
+  call s:append('b:undo_ftplugin', a:000)
+endfunction
+
+function! undo#indent(...) abort
+  call s:append('b:undo_indent', a:000)
+endfunction
+
+function! s:append(varname, commands) abort
+  let l:commands = copy(a:commands)
+  if exists(a:varname)
+    call insert(l:commands, {a:varname})
   endif
-  let b:undo_{a:plugin} = join(commands, '|')
-endfunction
-
-function! undo#ftplugin(...)
-  call s:undo('ftplugin', a:000)
-endfunction
-
-function! undo#indent(...)
-  call s:undo('indent', a:000)
+  let {a:varname} = join(l:commands, ' | ')
 endfunction

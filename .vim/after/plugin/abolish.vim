@@ -5,3 +5,4 @@ if !exists(':Abolish')
 endif
 
 Abolish func{ito,to,toi}n function
+Abolish reutrn return

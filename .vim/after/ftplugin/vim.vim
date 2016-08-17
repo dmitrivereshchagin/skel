@@ -1,6 +1,5 @@
 " ~/.vim/after/ftplugin/vim.vim
 
-setlocal shiftwidth=2 softtabstop=2
-setlocal keywordprg=:help
+setlocal shiftwidth=2 softtabstop=2 keywordprg=:help
 
 call undo#ftplugin('setlocal shiftwidth< softtabstop< keywordprg<')

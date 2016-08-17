@@ -1,18 +1,20 @@
 " ~/.vim/after/ftplugin/php.vim
 
-setlocal define=^\\s*const
-setlocal matchpairs-=<:>
-setlocal keywordprg=pman
+setlocal define=^\\s*const matchpairs-=<:> keywordprg=pman
 
 let b:commentary_format = '// %s'
+
 if exists('$PHP_BINARY')
   let b:syntastic_php_exec = $PHP_BINARY
 endif
 
-nmap <buffer> <LocalLeader>= :!php-cs-fixer fix <C-R>=shellescape(expand('%:p'))<CR><CR>
+" It's assumed that 'autowrite' and 'autoread' are set.
+command! -buffer FixCS execute '!php-cs-fixer fix' shellescape(expand('%:p'))
+nnoremap <buffer> <LocalLeader>= :FixCS<CR>
 
 call undo#ftplugin(
       \ 'setlocal define< matchpairs< keywordprg<',
       \ 'unlet! b:commentary_format b:syntastic_php_exec',
+      \ 'silent! delcommand FixCS',
       \ 'silent! nunmap <buffer> <LocalLeader>=',
       \ )

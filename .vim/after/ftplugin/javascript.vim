@@ -2,9 +2,9 @@
 
 setlocal iskeyword+=$
 
-nmap <silent> <buffer> <LocalLeader>d :TernDef<CR>
-nmap <silent> <buffer> <LocalLeader>r :TernRefs<CR>
-nmap <silent> <buffer> <LocalLeader>t :TernType<CR>
+nnoremap <buffer> <LocalLeader>d :TernDef<CR>
+nnoremap <buffer> <LocalLeader>r :TernRefs<CR>
+nnoremap <buffer> <LocalLeader>t :TernType<CR>
 
 call undo#ftplugin(
       \ 'setlocal iskeyword<',

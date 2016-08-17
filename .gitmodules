@@ -1,6 +1,9 @@
 [submodule "vim-abolish"]
 	path = .vim/bundle/abolish
 	url = https://github.com/tpope/vim-abolish.git
+[submodule "vim-colors-off"]
+	path = .vim/bundle/colors-off
+	url = https://github.com/pbrisbin/vim-colors-off.git
 [submodule "vim-commentary"]
 	path = .vim/bundle/commentary
 	url = https://github.com/tpope/vim-commentary.git
@@ -19,18 +22,9 @@
 [submodule "vim-fugitive"]
 	path = .vim/bundle/fugitive
 	url = https://github.com/tpope/vim-fugitive.git
-[submodule "vim-go"]
-	path = .vim/bundle/go
-	url = https://github.com/google/vim-ft-go.git
 [submodule "vim-go-extra"]
 	path = .vim/bundle/go-extra
 	url = https://github.com/vim-jp/vim-go-extra.git
-[submodule "vim-html5"]
-	path = .vim/bundle/html5
-	url = https://github.com/othree/html5.vim.git
-[submodule "vim-jinja"]
-	path = .vim/bundle/jinja
-	url = https://github.com/mitsuhiko/vim-jinja.git
 [submodule "vim-lion"]
 	path = .vim/bundle/lion
 	url = https://github.com/tommcdo/vim-lion.git
@@ -43,9 +37,6 @@
 [submodule "vim-repeat"]
 	path = .vim/bundle/repeat
 	url = https://github.com/tpope/vim-repeat.git
-[submodule "vim-scape"]
-	path = .vim/bundle/scape
-	url = https://github.com/dmitrivereshchagin/vim-scape.git
 [submodule "vim-sneak"]
 	path = .vim/bundle/sneak
 	url = https://github.com/justinmk/vim-sneak.git

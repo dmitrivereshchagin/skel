@@ -1,9 +1,6 @@
 " ~/.vim/gvimrc
 
-set columns=80
-set lines=35
-
-set cursorline
+set columns=100 lines=35
 
 set guicursor=i-ci:hor15,r-cr:hor30,a:blinkon0
 set title
@@ -19,7 +16,5 @@ set t_vb=
 
 behave xterm
 
-colorscheme desert
-
-map  <S-Insert> <MiddleMouse>
-map! <S-Insert> <MiddleMouse>
+noremap  <S-Insert> <MiddleMouse>
+noremap! <S-Insert> <MiddleMouse>

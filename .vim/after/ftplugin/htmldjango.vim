@@ -1,4 +1,4 @@
-" ~/.vim/after/ftplugin/htmljinja.vim
+" ~/.vim/after/ftplugin/htmldjango.vim
 
 let b:commentary_format = '{# %s #}'
 

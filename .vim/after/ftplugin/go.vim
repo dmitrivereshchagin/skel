@@ -1,12 +1,11 @@
 " ~/.vim/after/ftplugin/go.vim
 
-setlocal shiftwidth=8 softtabstop=0 noexpandtab
-setlocal foldmethod=syntax
+setlocal shiftwidth=8 softtabstop=0 noexpandtab foldmethod=syntax
 
 let b:syntastic_checkers = ['go']
 
-nmap <buffer> <LocalLeader>= :Fmt<CR>
-nmap <buffer> <LocalLeader>i :Import <C-R><C-W><CR>
+nnoremap <buffer> <LocalLeader>= :Fmt<CR>
+nnoremap <buffer> <LocalLeader>i :Import <C-R><C-W><CR>
 
 call undo#ftplugin(
       \ 'setlocal shiftwidth< softtabstop< expandtab< foldmethod<',

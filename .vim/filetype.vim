@@ -6,5 +6,5 @@ endif
 
 augroup filetypedetect
   autocmd BufNewFile,BufRead *.md   setfiletype markdown
-  autocmd BufNewFile,BufRead *.twig setfiletype htmljinja
+  autocmd BufNewFile,BufRead *.twig setfiletype htmldjango
 augroup END

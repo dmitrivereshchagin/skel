@@ -1,9 +1,9 @@
 " ~/.vim/vimrc
 
+language messages C
+
 runtime bundle/pathogen/autoload/pathogen.vim
 silent! execute pathogen#infect()
-
-language messages C
 
 if empty(&termencoding)
   let &termencoding = exists('$MSYSTEM') ? 'cp1251' : &encoding
@@ -14,16 +14,13 @@ set fileencodings=ucs-bom,utf-8,cp1251
 set pastetoggle=<F2>
 
 set incsearch
-set ignorecase
-set smartcase
+set ignorecase smartcase
 
 set tags=./tags;,tags
-set showfulltag
 
 set scrolloff=1
 if has('patch-7.4.338')
-  set breakindent
-  set breakindentopt=sbr
+  set breakindent breakindentopt=sbr
 endif
 set showbreak=+
 set sidescrolloff=5
@@ -34,10 +31,11 @@ set listchars=eol:$,tab:>-,trail:-,extends:>,precedes:<,nbsp:%
 set background=dark
 set hlsearch
 set spelllang=en_us,ru_yo
-set spellsuggest=fast,10
 
 set laststatus=2
-set statusline=%<%.20f\ (%n)%(\ [%H%M%R%W%{S('fugitive#statusline')}%{S('SyntasticStatuslineFlag')}]%)%=%-14.(%l,%c%V%)\ %P
+set statusline=%n\ %<%.20f\ %h%m%r%{line#flags()}%=%-14.(%l,%c%V%)\ %P
+
+set tabline=%!line#tabline()
 
 set notitle
 
@@ -45,18 +43,17 @@ if has('mouse')
   set mouse=a
 endif
 
-set shortmess+=I
 set showcmd
 set visualbell t_vb=
 
+set undofile
 set backspace=indent,eol,start
 if has('patch-7.3.541')
   set formatoptions+=j
 endif
 set complete-=i complete-=t
-set completeopt=menuone
+set completeopt-=preview
 set infercase
-set noshowmatch
 set nrformats-=octal
 
 set shiftwidth=4
@@ -72,6 +69,7 @@ set timeoutlen=3000
 set ttimeoutlen=100
 
 set modeline
+set backup
 set autowrite
 set autoread
 
@@ -80,22 +78,24 @@ set wildmode=longest:full,full
 set wildmenu
 
 if executable('ack')
-  set grepprg=ack\ --column\ --with-filename
-  set grepformat=%f:%l:%c:%m,%f:%l:%m
+  set grepprg=ack\ -H\ --column grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
 
-set keymap=russian-jcukenwin
-set iminsert=0
-set imsearch=-1
+set keymap=russian-hash
+set iminsert=0 imsearch=-1
 
 set virtualedit=block
-set sessionoptions-=blank sessionoptions-=options sessionoptions+=slash,unix
+set sessionoptions-=blank sessionoptions-=options
 set viminfo=!,'20,<50,s10,h
 
 syntax on
 filetype plugin indent on
 
+silent! colorscheme off
+
 let g:user_emmet_leader_key = '<C-\>'
+
+let g:line_flags = ['fugitive#statusline', 'SyntasticStatuslineFlag']
 
 let g:netrw_bufsettings = 'noma nomod nonu nobl nowrap ro rnu'
 let g:netrw_banner = 0
@@ -105,8 +105,10 @@ let g:netrw_timefmt = '%a %d %b %Y %H:%M:%S'
 let g:sneak#s_next = 1
 let g:sneak#map_netrw = 0
 
+let g:surround_56 = "/* \r */"
+
 let g:syntastic_check_on_wq = 0
-let g:syntastic_stl_format = ',SYN(%t)'
+let g:syntastic_stl_format = '[Syn(%t)]'
 
 let g:tern#command = ['tern', '--no-port-file']
 let g:tern_show_signature_in_pum = 1
@@ -119,7 +121,6 @@ let g:vdebug_options = {
       \ 'continuous_mode': 1,
       \ }
 
-let g:c_gnu = 1
 let g:c_no_curly_error = 1
 let g:c_syntax_for_h = 1
 let g:c_no_comment_fold = 1
@@ -129,13 +130,17 @@ if executable('goimports')
   let g:gofmt_command = 'goimports'
 endif
 
-let g:html_exclude_tags = ['html', 'script', 'style']
 let g:html_no_rendering = 1
+let g:html_indent_autotags = 'html'
+let g:html_indent_script1 = 'auto'
+let g:html_indent_style1 = 'auto'
 
-let g:perl_string_as_statement = 1
 let g:perl_fold = 1
 
 let g:php_folding = 1
+
+let g:ruby_fold = 1
+let g:ruby_no_comment_fold = 1
 
 let g:is_posix = 1
 let g:sh_fold_enabled = 3
@@ -145,28 +150,26 @@ if has('digraphs')
 endif
 
 inoremap <C-U> <C-G>u<C-U>
-nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
+
+nnoremap - :Explore<CR>
+
+nnoremap <BS> :nohlsearch<CR>
+
+nnoremap <Leader>s :mksession! <C-R>=fnameescape(v:this_session)<CR><CR>
+
+nnoremap <Tab>  <C-W>w
+nnoremap g<Tab> <C-W>W
 
 nnoremap gj j
-nnoremap j gj
+nnoremap j  gj
 
 nnoremap gk k
-nnoremap k gk
+nnoremap k  gk
 
-map! <F3> <C-^>
-
-nmap <Leader>s :mksession! <C-R>=fnameescape(v:this_session)<CR><CR>
-nmap <Leader>y :syntax <C-R>=exists('g:syntax_on') ? 'off' : 'enable'<CR><CR>
-
-nmap - :Explore<CR>
-nmap <Leader>e :Errors<CR>
+noremap! <F3> <C-^>
 
 if exists('#fedora')
   autocmd! fedora BufReadPost *
 endif
-
-function! S(funcname)
-  return exists('*' . a:funcname) ? call(a:funcname, []) : ''
-endfunction
 
 runtime macros/matchit.vim
