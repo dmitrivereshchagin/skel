@@ -168,6 +168,12 @@ nnoremap k  gk
 
 noremap! <F3> <C-^>
 
+augroup cursor
+  autocmd!
+  autocmd WinEnter * call cursor#restore()
+  autocmd WinLeave * call cursor#hide()
+augroup END
+
 if exists('#fedora')
   autocmd! fedora BufReadPost *
 endif
