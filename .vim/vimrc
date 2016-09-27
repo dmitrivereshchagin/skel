@@ -146,19 +146,26 @@ let g:is_posix = 1
 let g:sh_fold_enabled = 3
 
 if has('digraphs')
-  digraphs ./ 8230  " HORIZONTAL ELLIPSIS U+2026
+  " Horizontal ellipsis
+  digraphs ./ 8230
 endif
+
+cnoremap <C-X>n <Down>
+cnoremap <C-X>p <Up>
 
 inoremap <C-U> <C-G>u<C-U>
 
+nnoremap + <C-W>+
+nnoremap _ <C-W>-
+
 nnoremap - :Explore<CR>
 
-nnoremap <BS> :nohlsearch<CR>
-
-nnoremap <Leader>s :mksession! <C-R>=fnameescape(v:this_session)<CR><CR>
+nnoremap <F3> :mksession! <C-R>=fnameescape(v:this_session)<CR><CR>
 
 nnoremap <Tab>  <C-W>w
 nnoremap g<Tab> <C-W>W
+
+nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
 
 nnoremap gj j
 nnoremap j  gj
@@ -166,7 +173,7 @@ nnoremap j  gj
 nnoremap gk k
 nnoremap k  gk
 
-noremap! <F3> <C-^>
+noremap! <F4> <C-^>
 
 augroup cursor
   autocmd!
