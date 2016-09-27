@@ -7,12 +7,17 @@
 	pager = less -eFRSX
 
 [alias]
+	ap = add --patch
 	br = branch
-	ca = commit --all
+	ca = commit --amend
 	ci = commit
 	co = checkout
+	dc = diff --cached
 	di = diff
 	st = status --short --branch
+
+[diff]
+	mnemonicprefix = true
 
 [grep]
 	patterntype = perl
