@@ -16,6 +16,8 @@ export BLOCK_SIZE=human-readable
 
 export COMPOSER_HOME=$HOME/.composer
 
+export GEM_HOME=$HOME/.gem
+
 export GOPATH=$HOME/go
 
 export GPG_TTY=$(tty)
@@ -38,6 +40,7 @@ path=(
     $HOME/bin
     $HOME/.local/bin
     $COMPOSER_HOME/vendor/bin
+    $GEM_HOME/bin
     $GOPATH/bin
     $NPM_CONFIG_PREFIX/bin
     $path
@@ -48,6 +51,7 @@ cdpath=(.. $HOME)
 alias -g C='| wc -l'
 alias -g G='| grep -Ei'
 alias -g GE='|& grep -Ei'
+alias -g J='| python -m json.tool'
 alias -g L='| less'
 alias -g LE='|& less'
 alias -g N='>&/dev/null'
@@ -68,8 +72,10 @@ alias free='free -hl'
 alias g='grep -Ei'
 alias gdb='gdb -q'
 alias info='info --vi-keys'
+alias json='python -m json.tool'
 alias mkdir='mkdir -p'
 alias p='phpunit --colors'
+alias psh=psysh
 alias psu='ps -U $UID'
 alias topu='top -U $UID'
 alias unnethack='telnet eu.un.nethack.nu'
@@ -77,15 +83,17 @@ alias vi=vim
 alias view='vim -R'
 
 bindkey '\eq' push-line-or-edit
+
 bindkey '^XN' history-beginning-search-forward-end
 bindkey '^XP' history-beginning-search-backward-end
+
 bindkey '^Xn' history-beginning-search-forward
 bindkey '^Xp' history-beginning-search-backward
 
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
-bindkey -M menuselect 'k' vi-up-line-or-history
-bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect h vi-backward-char
+bindkey -M menuselect j vi-down-line-or-history
+bindkey -M menuselect k vi-up-line-or-history
+bindkey -M menuselect l vi-forward-char
 
 compdef php-xdebug=php
 
@@ -97,9 +105,9 @@ virtual_env_prompt() {
     REPLY=${VIRTUAL_ENV+(${VIRTUAL_ENV:t}) }
 }
 
-grml_theme_add_token cwd '%1~ ' '%B%F{blue}' '%f%b'
+grml_theme_add_token cwd '%1~ ' '%B%F{blue}' %f%b
 grml_theme_add_token hostname -i hostname_prompt
-grml_theme_add_token virtual-env -f virtual_env_prompt '%B' '%b'
+grml_theme_add_token virtual-env -f virtual_env_prompt %B %b
 
-zstyle ':prompt:grml:left:setup' items rc virtual-env hostname cwd vcs percent
-zstyle ':prompt:grml:right:setup' use-rprompt false
+zstyle :prompt:grml:left:setup items rc virtual-env hostname cwd vcs percent
+zstyle :prompt:grml:right:setup use-rprompt false
