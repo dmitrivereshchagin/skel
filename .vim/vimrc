@@ -69,6 +69,9 @@ set timeoutlen=3000
 set ttimeoutlen=100
 
 set modeline
+if has('patch-7.4.785')
+  set nofixendofline
+endif
 set backup
 set autowrite
 set autoread
@@ -91,6 +94,12 @@ set viminfo=!,'20,<50,s10,h
 syntax on
 filetype plugin indent on
 
+augroup colorscheme
+  autocmd!
+  autocmd ColorScheme off highlight link diffRemoved DiffDelete
+  autocmd ColorScheme off highlight link diffAdded   DiffAdd
+augroup END
+
 silent! colorscheme off
 
 let g:user_emmet_leader_key = '<C-\>'
@@ -99,7 +108,7 @@ let g:line_flags = ['fugitive#statusline', 'SyntasticStatuslineFlag']
 
 let g:netrw_bufsettings = 'noma nomod nonu nobl nowrap ro rnu'
 let g:netrw_banner = 0
-let g:netrw_liststyle = 1
+let g:netrw_list_hide = '\v\C%(\~|\.swp)\*?$'
 let g:netrw_timefmt = '%a %d %b %Y %H:%M:%S'
 
 let g:sneak#s_next = 1
@@ -147,7 +156,7 @@ let g:sh_fold_enabled = 3
 
 if has('digraphs')
   " Horizontal ellipsis
-  digraphs ./ 8230
+  digraphs ,. 8230
 endif
 
 cnoremap <C-X>n <Down>
@@ -167,6 +176,8 @@ nnoremap g<Tab> <C-W>W
 
 nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
 
+nnoremap Q @@
+
 nnoremap gj j
 nnoremap j  gj
 
@@ -174,12 +185,6 @@ nnoremap gk k
 nnoremap k  gk
 
 noremap! <F4> <C-^>
-
-augroup cursor
-  autocmd!
-  autocmd WinEnter * call cursor#restore()
-  autocmd WinLeave * call cursor#hide()
-augroup END
 
 if exists('#fedora')
   autocmd! fedora BufReadPost *
