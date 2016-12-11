@@ -81,7 +81,7 @@ set wildmode=longest:full,full
 set wildmenu
 
 if executable('ack')
-  set grepprg=ack\ -H\ --column grepformat=%f:%l:%c:%m,%f:%l:%m
+  set grepprg=ack\ -Hk\ --column grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
 
 set keymap=russian-hash
@@ -179,10 +179,10 @@ nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
 nnoremap Q @@
 
 nnoremap gj j
-nnoremap j  gj
-
 nnoremap gk k
-nnoremap k  gk
+
+nnoremap j gj
+nnoremap k gk
 
 noremap! <F4> <C-^>
 
