@@ -2,7 +2,8 @@
 # ~/.ackrc
 #
 
+--ignore-file=is:tags
 --pager=less -R
 --smart-case
 --sort-files
---type-set=twig=.twig
+--type-set=twig:ext:twig
