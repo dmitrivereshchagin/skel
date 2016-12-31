@@ -1,18 +1,20 @@
 ! ~/.Xresources
 
-*customization: -color
+*customization:	-color
 
-XTerm.termName: xterm-256color
-XTerm*vt100.background: black
-XTerm*vt100.color4: DodgerBlue1
-XTerm*vt100.color12: SteelBlue1
-XTerm*vt100.faceName: DejaVu Sans Mono
-XTerm*vt100.faceSize: 16
-XTerm*vt100.foreground: gray90
-XTerm*vt100.highlightSelection: true
-XTerm*vt100.metaSendsEscape: true
-XTerm*vt100.pointerMode: 2
-XTerm*vt100.saveLines: 2048
-XTerm*vt100.scrollBar: false
-XTerm*vt100.trimSelection: true
-XTerm*vt100.visualBell: true
+XTerm.termName:	xterm-256color
+
+XTerm*vt100.background:	black
+XTerm*vt100.charClass:	45-47:48,64:48,126:48
+XTerm*vt100.color4:	DodgerBlue1
+XTerm*vt100.color12:	SteelBlue1
+XTerm*vt100.faceName:	DejaVu Sans Mono
+XTerm*vt100.faceSize:	16
+XTerm*vt100.foreground:	gray90
+XTerm*vt100.highlightSelection:	true
+XTerm*vt100.metaSendsEscape:	true
+XTerm*vt100.pointerMode:	2
+XTerm*vt100.saveLines:	2048
+XTerm*vt100.scrollBar:	false
+XTerm*vt100.trimSelection:	true
+XTerm*vt100.visualBell:	true
