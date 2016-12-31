@@ -1,8 +1,8 @@
 #!/bin/sh
 
-PATH=${EQUALS_PATH-/bin:/usr/bin:/usr/local/bin}
+: "${EQUALS_PATH=/usr/local/bin:/usr/bin:/bin}"
 
-if ! command -v "$1"
+if ! PATH=$EQUALS_PATH command -v "$1"
 then
     printf '%s: %s: command not found...\n' "${0##*/}" "$1" >&2
     exit 1
