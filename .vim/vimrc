@@ -39,10 +39,6 @@ set tabline=%!line#tabline()
 
 set notitle
 
-if has('mouse')
-  set mouse=a
-endif
-
 set showcmd
 set visualbell t_vb=
 
