@@ -10,11 +10,14 @@ endif
 
 " It's assumed that 'autowrite' and 'autoread' are set.
 command! -buffer FixCS execute '!php-cs-fixer fix' shellescape(expand('%:p'))
+
 nnoremap <buffer> <LocalLeader>= :FixCS<CR>
+nnoremap <buffer> <LocalLeader>i :call PhpInsertUse()<CR>
 
 call undo#ftplugin(
       \ 'setlocal define< matchpairs< keywordprg<',
       \ 'unlet! b:commentary_format b:syntastic_php_exec',
       \ 'silent! delcommand FixCS',
       \ 'silent! nunmap <buffer> <LocalLeader>=',
+      \ 'silent! nunmap <buffer> <LocalLeader>i',
       \ )

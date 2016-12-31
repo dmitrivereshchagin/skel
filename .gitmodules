@@ -42,6 +42,10 @@
 	path = .vim/bundle/pathogen
 	url = https://github.com/tpope/vim-pathogen.git
 
+[submodule "vim-phpns"]
+	path = .vim/bundle/phpns
+	url = https://github.com/arnaud-lb/vim-php-namespace.git
+
 [submodule "vim-ragtag"]
 	path = .vim/bundle/ragtag
 	url = https://github.com/tpope/vim-ragtag.git
