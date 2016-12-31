@@ -2,7 +2,7 @@
 # ~/.zshrc.local
 #
 
-setopt NO_AUTO_PUSHD CSH_NULL_GLOB
+setopt cshnullglob
 
 READNULLCMD=less
 
@@ -20,7 +20,7 @@ export GEM_HOME=$HOME/.gem
 
 export GOPATH=$HOME/go
 
-export GPG_TTY=$(tty)
+export GPG_TTY=$TTY
 
 export LESS=-iMQR
 export LESSHISTFILE=/dev/null
@@ -33,7 +33,7 @@ export NPM_CONFIG_PREFIX=$HOME/.npm-packages
 export PERLDOC=-oman
 
 if [[ -d $HOME/perl5/lib/perl5 ]]; then
-    eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
+    eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"
 fi
 
 path=(
@@ -56,11 +56,10 @@ alias -g L='| less'
 alias -g LE='|& less'
 alias -g N='>&/dev/null'
 alias -g NE='2>/dev/null'
-alias -g R='| tr A-Za-z N-ZA-Mn-za-m'
-alias -g S='| sort'
 alias -g V='| vim -'
 alias -g X='| xargs'
 
+alias ,='cd ..'
 alias d='dirs -v'
 alias h='history -d'
 alias j=jobs
@@ -71,13 +70,12 @@ alias bc='bc -lq'
 alias crawl='telnet crawl.develz.org 345'
 alias free='free -hl'
 alias g='grep -Ei'
-alias gdb='gdb -q'
+alias git='noglob git'
 alias info='info --vi-keys'
 alias json='python -m json.tool'
 alias mkdir='mkdir -p'
-alias p='phpunit --colors'
-alias psu='ps -U $UID'
-alias topu='top -U $UID'
+alias psu='ps -o pid,user,tty,etime,args -U $USERNAME'
+alias topu='top -U $USERNAME'
 alias unnethack='telnet eu.un.nethack.nu'
 alias vi=vim
 alias view='vim -R'
@@ -97,17 +95,21 @@ bindkey -M menuselect l vi-forward-char
 
 compdef php-xdebug=php
 
-hostname_prompt() {
+if (( $+commands[symfony-autocomplete] )); then
+    eval "$(symfony-autocomplete)"
+fi
+
+prompt_hostname() {
     REPLY=${${${+STY}#1}/0/${SSH_CONNECTION+%m }}
 }
 
-virtual_env_prompt() {
+prompt_virtual_env() {
     REPLY=${VIRTUAL_ENV+(${VIRTUAL_ENV:t}) }
 }
 
 grml_theme_add_token cwd '%1~ ' '%B%F{blue}' %f%b
-grml_theme_add_token hostname -i hostname_prompt
-grml_theme_add_token virtual-env -f virtual_env_prompt %B %b
+grml_theme_add_token hostname -i prompt_hostname
+grml_theme_add_token virtual-env -f prompt_virtual_env %B %b
 
 zstyle :prompt:grml:left:setup items rc virtual-env hostname cwd vcs percent
 zstyle :prompt:grml:right:setup use-rprompt false
