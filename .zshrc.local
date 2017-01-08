@@ -46,7 +46,7 @@ path=(
     $path
 )
 
-cdpath=(.. $HOME)
+cdpath=(.. $HOME $HOME/src)
 
 alias -g C='| wc -l'
 alias -g G='| grep -Ei'
@@ -80,6 +80,11 @@ alias unnethack='telnet eu.un.nethack.nu'
 alias vi=vim
 alias view='vim -R'
 
+function vim {
+    if (( ! $# )) set .
+    command vim $@
+}
+
 bindkey '\eq' push-line-or-edit
 
 bindkey '^XN' history-beginning-search-forward-end
@@ -95,15 +100,15 @@ bindkey -M menuselect l vi-forward-char
 
 compdef php-xdebug=php
 
-if (( $+commands[symfony-autocomplete] )); then
+if (( ${+commands[symfony-autocomplete]} )); then
     eval "$(symfony-autocomplete)"
 fi
 
-prompt_hostname() {
+function prompt_hostname {
     REPLY=${${${+STY}#1}/0/${SSH_CONNECTION+%m }}
 }
 
-prompt_virtual_env() {
+function prompt_virtual_env {
     REPLY=${VIRTUAL_ENV+(${VIRTUAL_ENV:t}) }
 }
 
