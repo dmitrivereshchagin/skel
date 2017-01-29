@@ -175,6 +175,11 @@ nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
 
 nnoremap Q @@
 
+nnoremap gK :execute 'grep -w' shellescape(expand('<cword>'))<CR>:redraw!<CR>
+
+nnoremap gY :tselect<Space>
+nnoremap gy :tag<Space>
+
 nnoremap gj j
 nnoremap gk k
 
