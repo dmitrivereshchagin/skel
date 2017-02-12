@@ -1,27 +1,23 @@
-" ~/.vim/autoload/line.vim
+" ~/.vim/autoload/lines.vim
 
-function! line#flags() abort
+function! lines#GetStatusFlags() abort
   let l:flags = ''
-  for l:flag in get(g:, 'line_flags', [])
-    let l:flags .= s:display(l:flag)
+  for l:flag in get(g:, 'lines_status_flags', [])
+    let l:flags .= exists('*' . l:flag) ? call(l:flag, []) : ''
   endfor
   return l:flags
 endfunction
 
-function! line#tabline() abort
+function! lines#GetTabLine() abort
   let l:labels = ''
   for l:tab in range(1, tabpagenr('$'))
     let l:hl = l:tab == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#'
-    let l:labels .= l:hl . '%' . l:tab . 'T ' . s:label(l:tab) . ' '
+    let l:labels .= l:hl . '%' . l:tab . 'T ' . s:GetTabLabel(l:tab) . ' '
   endfor
   return l:labels . '%#TabLineFill#%T'
 endfunction
 
-function! s:display(flag) abort
-  return exists('*' . a:flag) ? call(a:flag, []) : ''
-endfunction
-
-function! s:label(tab) abort
+function! s:GetTabLabel(tab) abort
   let l:count = 0
   for l:buf in tabpagebuflist(a:tab)
     let l:count += getbufvar(l:buf, '&modified')

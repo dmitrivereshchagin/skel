@@ -6,4 +6,4 @@ endif
 let g:loaded_cabbrev = 1
 
 command -nargs=+ -bang Cabbrev
-      \ execute cabbrev#command('<bang>' == '!', <f-args>)
+      \ execute cabbrev#Cabbrev('<bang>' == '!', <f-args>)

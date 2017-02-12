@@ -33,9 +33,9 @@ set hlsearch
 set spelllang=en_us,ru_yo
 
 set laststatus=2
-set statusline=%n\ %<%.20f\ %h%m%r%{line#flags()}%=%-14.(%l,%c%V%)\ %P
+set statusline=%n\ %<%.20f\ %h%m%r%{lines#GetStatusFlags()}%=%-14.(%l,%c%V%)\ %P
 
-set tabline=%!line#tabline()
+set tabline=%!lines#GetTabLine()
 
 set notitle
 
@@ -90,17 +90,11 @@ set viminfo=!,'20,<50,s10,h
 syntax on
 filetype plugin indent on
 
-augroup colorscheme
-  autocmd!
-  autocmd ColorScheme off highlight link diffRemoved DiffDelete
-  autocmd ColorScheme off highlight link diffAdded   DiffAdd
-augroup END
-
-silent! colorscheme off
+colorscheme mine
 
 let g:user_emmet_leader_key = '<C-\>'
 
-let g:line_flags = ['fugitive#statusline', 'SyntasticStatuslineFlag']
+let g:lines_status_flags = ['fugitive#statusline', 'SyntasticStatuslineFlag']
 
 let g:netrw_bufsettings = 'noma nomod nonu nobl nowrap ro rnu'
 let g:netrw_banner = 0
@@ -128,8 +122,9 @@ let g:vdebug_options = {
       \ }
 
 let g:c_no_curly_error = 1
-let g:c_syntax_for_h = 1
 let g:c_no_comment_fold = 1
+
+let g:erlang_folding = 1
 
 let g:go_highlight_trailing_whitespace_error = 0
 if executable('goimports')
@@ -181,9 +176,9 @@ nnoremap gY :tselect<Space>
 nnoremap gy :tag<Space>
 
 nnoremap gj j
-nnoremap gk k
-
 nnoremap j gj
+
+nnoremap gk k
 nnoremap k gk
 
 noremap! <F4> <C-^>

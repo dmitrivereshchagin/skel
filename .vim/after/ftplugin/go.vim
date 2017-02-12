@@ -7,7 +7,7 @@ let b:syntastic_checkers = ['go']
 nnoremap <buffer> <LocalLeader>= :Fmt<CR>
 nnoremap <buffer> <LocalLeader>i :Import <C-R><C-W><CR>
 
-call undo#ftplugin(
+call filetype#UndoFtplugin(
       \ 'setlocal shiftwidth< softtabstop< expandtab< foldmethod<',
       \ 'unlet! b:syntastic_checkers',
       \ 'silent! nunmap <buffer> <LocalLeader>=',

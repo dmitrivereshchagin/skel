@@ -16,7 +16,7 @@ nnoremap <buffer> <LocalLeader>= :FixCS<CR>
 nnoremap <buffer> <LocalLeader>e :call PhpExpandClass()<CR>
 nnoremap <buffer> <LocalLeader>i :call PhpInsertUse()<CR>
 
-call undo#ftplugin(
+call filetype#UndoFtplugin(
       \ 'setlocal define< matchpairs< keywordprg<',
       \ 'unlet! b:commentary_format b:syntastic_php_exec',
       \ 'silent! delcommand FixCS',

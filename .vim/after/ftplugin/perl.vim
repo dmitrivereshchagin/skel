@@ -6,4 +6,4 @@ if executable('perltidy')
   setlocal equalprg=perltidy\ -q
 endif
 
-call undo#ftplugin('setlocal matchpairs< equalprg<')
+call filetype#UndoFtplugin('setlocal matchpairs< equalprg<')

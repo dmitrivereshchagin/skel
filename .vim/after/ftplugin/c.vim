@@ -7,7 +7,7 @@ iabbrev <buffer> #i #include
 iabbrev <buffer> #p #pragma
 iabbrev <buffer> #u #undef
 
-call undo#ftplugin(
+call filetype#UndoFtplugin(
       \ 'setlocal shiftwidth< softtabstop< expandtab< foldmethod<',
       \ 'silent! iunabbrev <buffer> #d',
       \ 'silent! iunabbrev <buffer> #i',

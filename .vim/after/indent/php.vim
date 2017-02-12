@@ -2,4 +2,4 @@
 
 setlocal formatoptions-=w
 
-call undo#indent('setlocal formatoptions<')
+call filetype#UndoIndent('setlocal formatoptions<')

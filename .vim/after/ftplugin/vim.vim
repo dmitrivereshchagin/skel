@@ -2,4 +2,4 @@
 
 setlocal shiftwidth=2 softtabstop=2 keywordprg=:help
 
-call undo#ftplugin('setlocal shiftwidth< softtabstop< keywordprg<')
+call filetype#UndoFtplugin('setlocal shiftwidth< softtabstop< keywordprg<')

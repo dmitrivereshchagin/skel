@@ -2,4 +2,4 @@
 
 setlocal shiftwidth=2 softtabstop=2
 
-call undo#ftplugin('setlocal shiftwidth< softtabstop<')
+call filetype#UndoFtplugin('setlocal shiftwidth< softtabstop<')

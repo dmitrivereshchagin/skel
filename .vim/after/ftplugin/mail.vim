@@ -2,4 +2,4 @@
 
 setlocal spell formatoptions+=n1
 
-call undo#ftplugin('setlocal spell< formatoptions<')
+call filetype#UndoFtplugin('setlocal spell< formatoptions<')

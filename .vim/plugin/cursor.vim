@@ -7,20 +7,18 @@ let g:loaded_cursor = 1
 
 augroup cursor
   autocmd!
-  autocmd WinEnter * call s:restore()
-  autocmd WinLeave * call s:hide()
+
+  autocmd WinLeave *  let w:cursor_options = {}
+  autocmd WinLeave *  let w:cursor_options.c = &l:cursorcolumn
+  autocmd WinLeave *  let w:cursor_options.l = &l:cursorline
+
+  autocmd WinLeave *  setlocal nocursorcolumn nocursorline
+
+  autocmd WinEnter *  if exists('w:cursor_options.c')
+  autocmd WinEnter *    let &l:cursorcolumn = w:cursor_options.c
+  autocmd WinEnter *  endif
+
+  autocmd WinEnter *  if exists('w:cursor_options.l')
+  autocmd WinEnter *    let &l:cursorline = w:cursor_options.l
+  autocmd WinEnter *  endif
 augroup END
-
-function! s:hide() abort
-  let w:cursor = {'column': &l:cursorcolumn, 'line': &l:cursorline}
-  setlocal nocursorcolumn nocursorline
-endfunction
-
-function! s:restore() abort
-  if exists('w:cursor.column')
-    let &l:cursorcolumn = w:cursor.column
-  endif
-  if exists('w:cursor.line')
-    let &l:cursorline = w:cursor.line
-  endif
-endfunction

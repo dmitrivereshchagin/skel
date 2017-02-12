@@ -2,4 +2,4 @@
 
 setlocal cinoptions=(0,j1,J1
 
-call undo#indent('setlocal cinoptions<')
+call filetype#UndoIndent('setlocal cinoptions<')

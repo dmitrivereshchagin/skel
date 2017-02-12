@@ -6,6 +6,7 @@ endif
 
 Cabbrev gw grep\ -w
 Cabbrev hh helpgrep
+Cabbrev ww write!
 
 Cabbrev bt Breakpoint
 Cabbrev vt VdebugTrace

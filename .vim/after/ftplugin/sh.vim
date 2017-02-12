@@ -2,4 +2,4 @@
 
 setlocal formatoptions-=t formatoptions+=ro
 
-call undo#ftplugin('setlocal formatoptions<')
+call filetype#UndoFtplugin('setlocal formatoptions<')
