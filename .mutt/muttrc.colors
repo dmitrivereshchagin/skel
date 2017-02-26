@@ -17,11 +17,9 @@ color  message     red          default
 color  search      black        yellow
 color  tilde       brightblue   default
 
-color  body        magenta      default  "(ftp|https?)://[-#%&,./0-9:=?_a-z~]+"
-color  body        magenta      default  "[-+.0-9_a-z]+@[-.0-9_a-z]+"
+color  body        cyan         default  "(ftp|https?)://[-#%&,./0-9:=?_a-z~]+"
+color  body        cyan         default  "[-+.0-9_a-z]+@[-.0-9_a-z]+"
 color  hdrdefault  red          default
-color  header      brightblue   default  "^Subject:"
-color  header      brightred    default  "^From:"
+color  header      brightred    default  "^(From|Subject):"
 color  quoted      green        default
-color  quoted1     cyan         default
-color  signature   magenta      default
+color  signature   red          default
