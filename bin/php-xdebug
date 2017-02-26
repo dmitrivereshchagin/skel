@@ -1,6 +1,6 @@
 #!/bin/sh
 
-php=${PHP_BINARY:-php}
+php=${PHP_EXECUTABLE:-php}
 
 if ! "$php" -m | grep -Fxq xdebug
 then

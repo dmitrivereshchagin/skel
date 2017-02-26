@@ -5,8 +5,8 @@ setlocal matchpairs-=<:> keywordprg=pman
 
 let b:commentary_format = '// %s'
 
-if exists('$PHP_BINARY')
-  let b:syntastic_php_exec = $PHP_BINARY
+if exists('$PHP_EXECUTABLE')
+  let b:syntastic_php_exec = $PHP_EXECUTABLE
 endif
 
 " It's assumed that 'autowrite' and 'autoread' are set.
