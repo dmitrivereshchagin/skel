@@ -81,7 +81,7 @@ alias vi=vim
 alias view='vim -R'
 
 function vim {
-    if (( ! $# )) set .
+    if (( ! ARGC )) set .
     command vim $@
 }
 
