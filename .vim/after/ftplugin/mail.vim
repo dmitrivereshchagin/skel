@@ -1,5 +1,5 @@
 " ~/.vim/after/ftplugin/mail.vim
 
-setlocal spell formatoptions+=n1
+setlocal spell formatoptions+=w
 
 call filetype#UndoFtplugin('setlocal spell< formatoptions<')

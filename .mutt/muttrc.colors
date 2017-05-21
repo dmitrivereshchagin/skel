@@ -7,19 +7,14 @@ color  index       cyan         default  ~T
 color  index       green        default  ~F
 color  index       red          default  ~D
 color  indicator   black        yellow
-color  status      black        white
 color  tree        red          default
 
 color  attachment  red          default
 color  error       brightwhite  red
 color  markers     brightblue   default
-color  message     red          default
 color  search      black        yellow
 color  tilde       brightblue   default
 
-color  body        cyan         default  "(ftp|https?)://[-#%&,./0-9:=?_a-z~]+"
-color  body        cyan         default  "[-+.0-9_a-z]+@[-.0-9_a-z]+"
 color  hdrdefault  red          default
-color  header      brightred    default  "^(From|Subject):"
-color  quoted      green        default
-color  signature   red          default
+color  header      brightred    default  ^(From|Subject):
+color  quoted      cyan         default

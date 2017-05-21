@@ -2,84 +2,89 @@
 # ~/.mutt/muttrc
 #
 
-source ~/.mutt/muttrc.account
-source "gpg2 --quiet --decrypt ~/.mutt/muttrc.pass.gpg |"
+source ~/.mutt/muttrc.personal
 
-set imap_authenticators="login"
-set imap_user="$my_user"
-set imap_pass="$my_pass"
+set smtp_url=smtps://$my_user@smtp.gmail.com
 
-set smtp_authenticators="login"
-set smtp_url="smtps://$my_user@smtp.gmail.com"
-set smtp_pass="$my_pass"
+set from=$my_from
+set realname=$my_realname
 
-set from="$my_from"
-set realname="$my_realname"
-set hostname="$my_hostname"
-set nouse_domain
+set folder=imaps://$my_user@imap.gmail.com
+set spoolfile=+INBOX
 
-set folder="imaps://imap.gmail.com"
-set spoolfile="=INBOX"
-set mbox="=[Gmail]/All Mail" move=ask-yes
-set postponed="=[Gmail]/Drafts" postpone=ask-no
-set record="" copy=no
+set mbox='+[Gmail]/All Mail'
+set move=ask-yes
+
+set postponed=+[Gmail]/Drafts
+set postpone=ask-no
+
+set record=
+
+set trash=+[Gmail]/Trash
 
 set imap_check_subscribed
-set noimap_passive
-set mail_check=120
+set imap_idle
+set mail_check=90
 set read_inc=100
-
-set send_charset="us-ascii:utf-8"
+set timeout=10
 
 set ascii_chars
 set nobeep
 set nohelp
-set index_format="%4C %Z %2M %[%m%d] %-15.15F (%4c) %s"
+set index_format='%4C %Z %[%m%d] %-15.15L %?M?(#%03M)&(%4c)? %s'
 set menu_scroll
-set narrow_tree
-set pager_context=1
-set pager_index_lines=4
-set pager_stop
 set reverse_alias
+
+set nocollapse_unread
+set nomail_check_recent
+set nomark_old
+
+set pager_context=1
+set pager_index_lines=5
+set pager_stop
 set tilde
 
+set narrow_tree
 set sort=threads
 set sort_aux=reverse-last-date-received
 set strict_threads
 
-set attribution="* %f [%(%F %R)]:"
+set abort_unmodified=ask-yes
+set attribution='On %{!%a, %b %d}, %n wrote:'
 set edit_headers
-set signature="~/.mutt/signature"
+set text_flowed
 
-set mailcap_path="~/.mutt/mailcap:/etc/mailcap"
+set alias_file=~/.mutt/muttrc.personal
 
-set alias_file="~/.mutt/muttrc.aliases"
-set header_cache="~/.mutt/cache/headers"
-set message_cachedir="~/.mutt/cache/messages"
+set header_cache=~/.mutt/cache
+set message_cachedir=~/.mutt/cache
 
-set crypt_replysign
-set crypt_replysignencrypted
 set crypt_use_gpgme
 
-unalternative_order *
-alternative_order text/plain text/html
+set mailcap_path=~/.mutt/mailcap:$mailcap_path
 
+alternative_order text/plain text
 auto_view application/zip application/x-gtar text/html
 
 ignore *
-unignore date from: reply-to to cc subject
+unignore Cc: Date: From: Reply-To: Subject: To:
 
-unhdr_order *
-hdr_order date from reply-to to cc subject
+hdr_order Date: From: To: Subject:
+
+source ~/.mutt/muttrc.colors
 
 bind index G imap-fetch-mail
 
-macro attach,compose,index,pager \cB "\
-<enter-command>set my_pipe_decode=\$pipe_decode pipe_decode<Enter>\
-<pipe-message>w3m<Enter>\
-<enter-command>set pipe_decode=\$my_pipe_decode; unset my_pipe_decode<Enter>\
-" "call w3m to browse URLs"
+bind pager Z previous-page
+bind pager z next-page
 
-source ~/.mutt/muttrc.aliases
-source ~/.mutt/muttrc.colors
-source ~/.mutt/muttrc.mlists
+macro attach,compose,index,pager \cb '\
+<enter-command> set my_pipe_decode=$pipe_decode pipe_decode<Return>\
+<pipe-message> w3m<Return>\
+<enter-command> set pipe_decode=$my_pipe_decode; unset my_pipe_decode<Return>\
+' 'call w3m to browse URLs'
+
+macro index \eb '<search>=b ' 'search in message bodies'
+
+macro index,pager y '<change-folder>?<toggle-mailboxes>' 'list mailboxes'
+bind browser y exit

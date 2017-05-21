@@ -1,0 +1,5 @@
+#!/bin/sh
+
+mutt=$(= mutt) || exit
+
+exec "$mutt" -n "$@"
