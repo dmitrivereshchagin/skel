@@ -2,8 +2,13 @@
 
 : "${EQUALS_PATH=/usr/local/bin:/usr/bin:/bin}"
 
-if ! PATH=$EQUALS_PATH command -v "$1"
-then
-    printf '%s: %s: command not found...\n' "${0##*/}" "$1" >&2
-    exit 1
-fi
+for command_name
+do
+    if ! PATH=$EQUALS_PATH command -v "$command_name"
+    then
+        printf '%s: %s: command not found...\n' "${0##*/}" "$command_name" >&2
+        exit_status=1
+    fi
+done
+
+exit "${exit_status-0}"
