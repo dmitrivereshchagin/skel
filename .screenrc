@@ -2,8 +2,6 @@
 # ~/.screenrc
 #
 
-unsetenv DISPLAY
-
 altscreen on
 defscrollback 2000
 ignorecase on
@@ -15,6 +13,8 @@ caption splitonly '%?%F%{=b bw}%?%3n %t'
 hardstatus alwayslastline '%-Lw%{=b bw}%50>%n*%f %t%{-}%+Lw%<'
 time '%D %d %M %Y %0c:%s %H%? %l%?'
 
-bind % collapse
-bind ( bumpleft
-bind ) bumpright
+bind \" windowlist -b -g
+bind %  collapse
+bind (  bumpleft
+bind )  bumpright
+bind x
