@@ -9,7 +9,7 @@ XTerm*vt100.charClass:	45-47:48,64:48,126:48
 XTerm*vt100.color4:	DodgerBlue1
 XTerm*vt100.color12:	SteelBlue1
 XTerm*vt100.faceName:	DejaVu Sans Mono
-XTerm*vt100.faceSize:	16
+XTerm*vt100.faceSize:	18
 XTerm*vt100.foreground:	gray90
 XTerm*vt100.highlightSelection:	true
 XTerm*vt100.metaSendsEscape:	true
