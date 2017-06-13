@@ -1,5 +1,5 @@
 " ~/.vim/after/ftplugin/qf.vim
 
-setlocal nowrap
+setlocal nobuflisted nowrap
 
-call filetype#UndoFtplugin('setlocal wrap<')
+call filetype#UndoFtplugin('setlocal buflisted< wrap<')

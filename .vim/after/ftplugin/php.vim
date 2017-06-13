@@ -5,6 +5,9 @@ setlocal matchpairs-=<:> keywordprg=pman
 
 let b:commentary_format = '// %s'
 
+let b:surround_45 = "<?php \r ?>"
+let b:surround_61 = "<?= \r ?>"
+
 if exists('$PHP_EXECUTABLE')
   let b:syntastic_php_exec = $PHP_EXECUTABLE
 endif
@@ -16,11 +19,15 @@ nnoremap <buffer> <LocalLeader>= :FixCS<CR>
 nnoremap <buffer> <LocalLeader>e :call PhpExpandClass()<CR>
 nnoremap <buffer> <LocalLeader>i :call PhpInsertUse()<CR>
 
+iabbrev <buffer> dst declare(strict_types=1);
+
 call filetype#UndoFtplugin(
       \ 'setlocal define< matchpairs< keywordprg<',
-      \ 'unlet! b:commentary_format b:syntastic_php_exec',
+      \ 'unlet! b:commentary_format b:surround_45 b:surround_61',
+      \ 'unlet! b:syntastic_php_exec',
       \ 'silent! delcommand FixCS',
       \ 'silent! nunmap <buffer> <LocalLeader>=',
       \ 'silent! nunmap <buffer> <LocalLeader>e',
       \ 'silent! nunmap <buffer> <LocalLeader>i',
+      \ 'silent! iunabbrev <buffer> dst',
       \ )

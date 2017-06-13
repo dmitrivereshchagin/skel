@@ -1,3 +1,11 @@
 " ~/.vim/after/syntax/erlang.vim
 
-highlight link erlangCommentAnnotation Comment
+syntax clear erlangCommentAnnotation
+
+syntax region erlangTypeSpec
+      \ start='^\s*-\%(callback\|opaque\|spec\|type\)\s\+'
+      \ end='\%(%.*\)\@<!\.\s*\%(%.*\)\?$'
+      \ contains=erlangComment
+      \ keepend
+
+highlight link erlangTypeSpec Comment

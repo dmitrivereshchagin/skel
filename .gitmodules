@@ -14,6 +14,18 @@
 	path = .vim/bundle/emmet
 	url = https://github.com/mattn/emmet-vim.git
 
+[submodule "vim-erlang-motions"]
+	path = .vim/bundle/erlang-motions
+	url = https://github.com/edkolev/erlang-motions.vim.git
+
+[submodule "vim-erlang-omnicomplete"]
+	path = .vim/bundle/erlang-omnicomplete
+	url = https://github.com/vim-erlang/vim-erlang-omnicomplete.git
+
+[submodule "vim-erlang-tags"]
+	path = .vim/bundle/erlang-tags
+	url = https://github.com/vim-erlang/vim-erlang-tags.git
+
 [submodule "vim-eunuch"]
 	path = .vim/bundle/eunuch
 	url = https://github.com/tpope/vim-eunuch.git
@@ -41,10 +53,6 @@
 [submodule "vim-php-namespace"]
 	path = .vim/bundle/php-namespace
 	url = https://github.com/arnaud-lb/vim-php-namespace.git
-
-[submodule "vim-ragtag"]
-	path = .vim/bundle/ragtag
-	url = https://github.com/tpope/vim-ragtag.git
 
 [submodule "vim-repeat"]
 	path = .vim/bundle/repeat

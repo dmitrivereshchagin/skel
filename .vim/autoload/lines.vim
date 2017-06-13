@@ -1,9 +1,15 @@
 " ~/.vim/autoload/lines.vim
 
+let s:status_flags = []
+
+function! lines#AddStatusFlags(...) abort
+  call extend(s:status_flags, a:000)
+endfunction
+
 function! lines#GetStatusFlags() abort
   let l:flags = ''
-  for l:flag in get(g:, 'lines_status_flags', [])
-    let l:flags .= exists('*' . l:flag) ? call(l:flag, []) : ''
+  for l:Func in s:status_flags
+    let l:flags .= s:IsCallable(l:Func) ? call(l:Func, []) : ''
   endfor
   return l:flags
 endfunction
@@ -23,4 +29,8 @@ function! s:GetTabLabel(tab) abort
     let l:count += getbufvar(l:buf, '&modified')
   endfor
   return a:tab . repeat('+', l:count)
+endfunction
+
+function! s:IsCallable(func) abort
+  return type(a:func) == type(function('tr')) || exists('*' . a:func)
 endfunction

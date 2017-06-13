@@ -39,10 +39,10 @@ set tabline=%!lines#GetTabLine()
 
 set notitle
 
-set showcmd
 set visualbell t_vb=
 
 set undofile
+let &undodir = expand('<sfile>:h') . '/undo'
 set backspace=indent,eol,start
 if has('patch-7.3.541')
   set formatoptions+=j
@@ -57,10 +57,6 @@ set softtabstop=4
 set expandtab
 set autoindent
 
-if has('folding')
-  set foldopen+=jump
-endif
-
 set timeoutlen=3000
 set ttimeoutlen=100
 
@@ -68,7 +64,6 @@ set modeline
 if has('patch-7.4.785')
   set nofixendofline
 endif
-set backup
 set autowrite
 set autoread
 
@@ -77,7 +72,7 @@ set wildmode=longest:full,full
 set wildmenu
 
 if executable('ack')
-  set grepprg=ack\ -H\ --column grepformat=%f:%l:%c:%m,%f:%l:%m
+  set grepprg=ack\ -H\ --column grepformat=%f:%l:%c:%m
 endif
 
 set keymap=russian-hash
@@ -92,9 +87,9 @@ filetype plugin indent on
 
 colorscheme mine
 
-let g:user_emmet_leader_key = '<C-\>'
+call lines#AddStatusFlags('fugitive#statusline', 'SyntasticStatuslineFlag')
 
-let g:lines_status_flags = ['fugitive#statusline', 'SyntasticStatuslineFlag']
+let g:user_emmet_leader_key = '<C-\>'
 
 let g:netrw_bufsettings = 'noma nomod nonu nobl nowrap ro rnu'
 let g:netrw_banner = 0
@@ -115,16 +110,11 @@ let g:tern_show_signature_in_pum = 1
 
 let g:vdebug_options = {
       \ 'watch_window_style': 'compact',
-      \ 'marker_default': '*',
+      \ 'marker_default':     '*',
       \ 'marker_closed_tree': '+',
-      \ 'marker_open_tree': '-',
-      \ 'continuous_mode': 1,
+      \ 'marker_open_tree':   '-',
+      \ 'continuous_mode':    1,
       \ }
-
-let g:c_no_curly_error = 1
-let g:c_no_comment_fold = 1
-
-let g:erlang_folding = 1
 
 let g:go_highlight_trailing_whitespace_error = 0
 if executable('goimports')
@@ -136,15 +126,7 @@ let g:html_indent_autotags = 'html'
 let g:html_indent_script1 = 'auto'
 let g:html_indent_style1 = 'auto'
 
-let g:perl_fold = 1
-
-let g:php_folding = 1
-
-let g:ruby_fold = 1
-let g:ruby_no_comment_fold = 1
-
-let g:is_posix = 1
-let g:sh_fold_enabled = 3
+let g:perl_include_pod = 0
 
 if has('digraphs')
   " Horizontal ellipsis
@@ -159,7 +141,10 @@ inoremap <C-U> <C-G>u<C-U>
 nnoremap + <C-W>+
 nnoremap _ <C-W>-
 
-nnoremap - :Explore<CR>
+nnoremap <silent> - :Explore<CR>
+
+nnoremap <C-J> gT
+nnoremap <C-K> gt
 
 nnoremap <F3> :mksession! <C-R>=fnameescape(v:this_session)<CR><CR>
 

@@ -1,6 +1,6 @@
 " ~/.vim/after/plugin/abolish.vim
 
-if !exists(':Abolish')
+if !get(g:, 'loaded_abolish')
   finish
 endif
 
