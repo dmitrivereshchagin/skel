@@ -8,10 +8,6 @@ let b:commentary_format = '// %s'
 let b:surround_45 = "<?php \r ?>"
 let b:surround_61 = "<?= \r ?>"
 
-if exists('$PHP_EXECUTABLE')
-  let b:syntastic_php_exec = $PHP_EXECUTABLE
-endif
-
 " It's assumed that 'autowrite' and 'autoread' are set.
 command! -buffer FixCS execute '!php-cs-fixer fix' shellescape(expand('%:p'))
 
@@ -24,7 +20,6 @@ iabbrev <buffer> dst declare(strict_types=1);
 call filetype#UndoFtplugin(
       \ 'setlocal define< matchpairs< keywordprg<',
       \ 'unlet! b:commentary_format b:surround_45 b:surround_61',
-      \ 'unlet! b:syntastic_php_exec',
       \ 'silent! delcommand FixCS',
       \ 'silent! nunmap <buffer> <LocalLeader>=',
       \ 'silent! nunmap <buffer> <LocalLeader>e',

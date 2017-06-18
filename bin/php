@@ -1,0 +1,5 @@
+#!/bin/sh
+
+php=${PHP_EXECUTABLE:-$(= php)} || exit
+
+exec "$php" "$@"
