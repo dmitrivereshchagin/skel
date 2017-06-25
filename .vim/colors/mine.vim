@@ -28,6 +28,7 @@ highlight WarningMsg      ctermfg=Red
 if &background ==# 'dark'
   highlight LineNr        ctermfg=Blue
   highlight CursorLineNr  ctermfg=Blue
+  highlight QuickFixLine  ctermfg=White        ctermbg=Blue
   highlight Search        ctermfg=White        ctermbg=Blue
   highlight WildMenu      ctermfg=White        ctermbg=Blue
 endif
