@@ -10,6 +10,7 @@ function! lines#GetStatusFlags() abort
   let l:flags = ''
   for l:Func in s:status_flags
     let l:flags .= s:IsCallable(l:Func) ? call(l:Func, []) : ''
+    unlet l:Func
   endfor
   return l:flags
 endfunction

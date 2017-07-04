@@ -160,11 +160,8 @@ nnoremap gK :execute 'grep -w' shellescape(expand('<cword>'))<CR>:redraw!<CR>
 nnoremap gY :tselect<Space>
 nnoremap gy :tag<Space>
 
-nnoremap gj j
-nnoremap j gj
-
-nnoremap gk k
-nnoremap k gk
+nnoremap <expr> j v:count ? 'j' : 'gj'
+nnoremap <expr> k v:count ? 'k' : 'gk'
 
 noremap! <F4> <C-^>
 
