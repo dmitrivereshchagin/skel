@@ -12,3 +12,6 @@ Cabbrev bt  Breakpoint
 Cabbrev btr BreakpointRemove
 Cabbrev vt  VdebugTrace
 Cabbrev vv  VdebugEval
+
+Cabbrev ct  Ctags
+Cabbrev et  ErlangTags

@@ -11,6 +11,7 @@ endif
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp1251
 
+set cpoptions-=a cpoptions-=A
 set pastetoggle=<F2>
 
 set incsearch
@@ -89,7 +90,9 @@ colorscheme mine
 
 call lines#AddStatusFlags('fugitive#statusline', 'SyntasticStatuslineFlag')
 
-let g:user_emmet_leader_key = '<C-\>'
+let g:mapleader = "\<Space>"
+
+let g:user_emmet_leader_key = "\<C-\>"
 
 let g:netrw_bufsettings = 'noma nomod nonu nobl nowrap ro rnu'
 let g:netrw_banner = 0
@@ -103,7 +106,7 @@ let g:surround_56 = "/* \r */"
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_stl_format = '[Syn(%t)]'
+let g:syntastic_stl_format = '[E]'
 
 let g:tern#command = ['tern', '--no-port-file']
 let g:tern_show_signature_in_pum = 1
@@ -143,17 +146,17 @@ nnoremap _ <C-W>-
 
 nnoremap <silent> - :Explore<CR>
 
+nnoremap <Backspace>  <C-W>w
+nnoremap g<Backspace> <C-W>W
+
 nnoremap <C-J> gT
 nnoremap <C-K> gt
 
 nnoremap <F3> :mksession! <C-R>=fnameescape(v:this_session)<CR><CR>
 
-nnoremap <Tab>  <C-W>w
-nnoremap g<Tab> <C-W>W
-
 nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
 
-nnoremap Q @@
+nnoremap Q @q
 
 nnoremap gK :execute 'grep -w' shellescape(expand('<cword>'))<CR>:redraw!<CR>
 
@@ -165,8 +168,13 @@ nnoremap <expr> k v:count ? 'k' : 'gk'
 
 noremap! <F4> <C-^>
 
+runtime macros/matchit.vim
+
+for s:mode in ['n', 'o', 'x']
+  execute s:mode . 'map <Tab> %'
+endfor
+unlet s:mode
+
 if exists('#fedora')
   autocmd! fedora BufReadPost *
 endif
-
-runtime macros/matchit.vim
