@@ -5,6 +5,8 @@ language messages C
 runtime bundle/pathogen/autoload/pathogen.vim
 silent! execute pathogen#infect()
 
+let $VIMFILES = expand('<sfile>:h')
+
 if empty(&termencoding)
   let &termencoding = exists('$MSYSTEM') ? 'cp1251' : &encoding
 endif
@@ -34,16 +36,16 @@ set hlsearch
 set spelllang=en_us,ru_yo
 
 set laststatus=2
-set statusline=%n\ %<%.20f\ %h%m%r%{lines#GetStatusFlags()}%=%-14.(%l,%c%V%)\ %P
+set statusline=%n\ %<%.20f\ %h%m%r%{mine#lines#GetFlags()}%=%-14.(%l,%c%V%)\ %P
 
-set tabline=%!lines#GetTabLine()
+set tabline=%!mine#lines#GetTabLine()
 
 set notitle
 
 set visualbell t_vb=
 
 set undofile
-let &undodir = expand('<sfile>:h') . '/undo'
+let &undodir = $VIMFILES . '/undo'
 set backspace=indent,eol,start
 if has('patch-7.3.541')
   set formatoptions+=j
@@ -53,8 +55,7 @@ set completeopt-=preview
 set infercase
 set nrformats-=octal
 
-set shiftwidth=4
-set softtabstop=4
+set shiftwidth=4 softtabstop=4
 set expandtab
 set autoindent
 
@@ -76,23 +77,26 @@ if executable('ack')
   set grepprg=ack\ -H\ --column grepformat=%f:%l:%c:%m
 endif
 
-set keymap=russian-hash
+set keymap=russian
 set iminsert=0 imsearch=-1
 
 set virtualedit=block
 set sessionoptions-=blank sessionoptions-=options
 set viminfo=!,'20,<50,s10,h
 
-syntax on
 filetype plugin indent on
+syntax on
 
 colorscheme mine
 
-call lines#AddStatusFlags('fugitive#statusline', 'SyntasticStatuslineFlag')
+call mine#lines#ResetFlags()
+call mine#lines#AddFlags(['fugitive#statusline', 'SyntasticStatuslineFlag'])
 
-let g:mapleader = "\<Space>"
+let g:ale_lint_on_text_changed = 'normal'
+let g:ale_lint_on_insert_leave = 1
+let g:ale_linters = {'erlang': ['syntaxerl']}
 
-let g:user_emmet_leader_key = "\<C-\>"
+let g:user_emmet_leader_key = '<C-\>'
 
 let g:netrw_bufsettings = 'noma nomod nonu nobl nowrap ro rnu'
 let g:netrw_banner = 0
@@ -106,18 +110,17 @@ let g:surround_56 = "/* \r */"
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_stl_format = '[E]'
+let g:syntastic_stl_format = '[!]'
 
 let g:tern#command = ['tern', '--no-port-file']
 let g:tern_show_signature_in_pum = 1
 
-let g:vdebug_options = {
-      \ 'watch_window_style': 'compact',
-      \ 'marker_default':     '*',
-      \ 'marker_closed_tree': '+',
-      \ 'marker_open_tree':   '-',
-      \ 'continuous_mode':    1,
-      \ }
+let g:vdebug_options = {}
+let g:vdebug_options.watch_window_style = 'compact'
+let g:vdebug_options.marker_default = '*'
+let g:vdebug_options.marker_closed_tree = '+'
+let g:vdebug_options.marker_open_tree = '-'
+let g:vdebug_options.continuous_mode = 1
 
 let g:go_highlight_trailing_whitespace_error = 0
 if executable('goimports')
@@ -132,7 +135,7 @@ let g:html_indent_style1 = 'auto'
 let g:perl_include_pod = 0
 
 if has('digraphs')
-  " Horizontal ellipsis
+  " HORIZONTAL ELLIPSIS.
   digraphs ,. 8230
 endif
 
@@ -146,19 +149,19 @@ nnoremap _ <C-W>-
 
 nnoremap <silent> - :Explore<CR>
 
-nnoremap <Backspace>  <C-W>w
-nnoremap g<Backspace> <C-W>W
+nnoremap  <BS> <C-W>w
+nnoremap g<BS> <C-W>W
 
 nnoremap <C-J> gT
 nnoremap <C-K> gt
 
-nnoremap <F3> :mksession! <C-R>=fnameescape(v:this_session)<CR><CR>
+nnoremap ymm :mksession! <C-R>=fnameescape(v:this_session)<CR><CR>
 
 nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
 
 nnoremap Q @q
 
-nnoremap gK :execute 'grep -w' shellescape(expand('<cword>'))<CR>:redraw!<CR>
+nnoremap gK :grep -w <C-R>=shellescape(expand('<cword>'))<CR><CR>
 
 nnoremap gY :tselect<Space>
 nnoremap gy :tag<Space>
@@ -166,15 +169,17 @@ nnoremap gy :tag<Space>
 nnoremap <expr> j v:count ? 'j' : 'gj'
 nnoremap <expr> k v:count ? 'k' : 'gk'
 
-noremap! <F4> <C-^>
+noremap! <F3> <C-^>
 
 runtime macros/matchit.vim
-
-for s:mode in ['n', 'o', 'x']
-  execute s:mode . 'map <Tab> %'
-endfor
-unlet s:mode
 
 if exists('#fedora')
   autocmd! fedora BufReadPost *
 endif
+
+let s:localrc = $VIMFILES . '/vimrc.local'
+if filereadable(s:localrc)
+  let $MYLOCALVIMRC = s:localrc
+  execute 'source' fnameescape(s:localrc)
+endif
+unlet s:localrc

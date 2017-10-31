@@ -1,3 +1,4 @@
 " ~/.vim/after/syntax/php.vim
 
-syntax clear phpDocTags phpDocCustomTags
+silent! syntax clear phpDocTags
+silent! syntax clear phpDocCustomTags

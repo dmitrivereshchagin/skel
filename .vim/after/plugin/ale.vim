@@ -1,11 +1,11 @@
 " ~/.vim/after/plugin/ale.vim
 
-if !get(g:, 'loaded_ale')
+if !exists(':ALELint')
   finish
 endif
 
 function! s:StatusFlag() abort
-  return ale#statusline#Count(bufnr('%')).total > 0 ? '[E]' : ''
+  return ale#statusline#Count(bufnr('')).total > 0 ? '[!]' : ''
 endfunction
 
-call lines#AddStatusFlags(function('s:StatusFlag'))
+call mine#lines#AddFlags(function('s:StatusFlag'))

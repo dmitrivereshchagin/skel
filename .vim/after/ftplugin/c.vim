@@ -2,15 +2,17 @@
 
 setlocal shiftwidth=8 softtabstop=0 noexpandtab
 
-iabbrev <buffer> #d #define
-iabbrev <buffer> #i #include
-iabbrev <buffer> #p #pragma
-iabbrev <buffer> #u #undef
+call mine#filetype#UndoFtplugin('setlocal shiftwidth< softtabstop< expandtab<')
 
-call filetype#UndoFtplugin(
-      \ 'setlocal shiftwidth< softtabstop< expandtab<',
-      \ 'silent! iunabbrev <buffer> #d',
-      \ 'silent! iunabbrev <buffer> #i',
-      \ 'silent! iunabbrev <buffer> #p',
-      \ 'silent! iunabbrev <buffer> #u',
-      \ )
+
+inoreabbrev <buffer> #d #define
+inoreabbrev <buffer> #i #include
+inoreabbrev <buffer> #p #pragma
+inoreabbrev <buffer> #u #undef
+
+call mine#filetype#UndoFtplugin([
+    \ 'silent! iunabbrev <buffer> #d',
+    \ 'silent! iunabbrev <buffer> #i',
+    \ 'silent! iunabbrev <buffer> #p',
+    \ 'silent! iunabbrev <buffer> #u',
+    \ ])

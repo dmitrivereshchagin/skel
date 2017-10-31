@@ -2,4 +2,9 @@
 
 setlocal nobuflisted nowrap
 
-call filetype#UndoFtplugin('setlocal buflisted< wrap<')
+call mine#filetype#UndoFtplugin('setlocal buflisted< wrap<')
+
+
+noremap <buffer> <silent> q :<C-U>bdelete<CR>
+
+call mine#filetype#UndoFtplugin('silent! unmap <buffer> q')

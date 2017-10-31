@@ -1,9 +1,9 @@
-" ~/.vim/plugin/comma.vim
+" ~/.vim/plugin/smart_comma.vim
 
-if exists('g:loaded_comma') || &compatible
+if exists('g:loaded_smart_comma') || &compatible
   finish
 endif
-let g:loaded_comma = 1
+let g:loaded_smart_comma = 1
 
 function! s:ExpandComma() abort
   return getline('.') =~# '\v,@<!,%' . col('.') . 'c' ? "\<BS> => " : ','

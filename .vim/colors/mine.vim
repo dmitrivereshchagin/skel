@@ -16,7 +16,7 @@ highlight VertSplit                                               cterm=NONE
 highlight Folded          ctermfg=NONE         ctermbg=NONE       cterm=bold
 highlight FoldColumn                           ctermbg=NONE
 highlight SignColumn                           ctermbg=NONE
-highlight Pmenu                                ctermbg=LightGray
+highlight Pmenu           ctermfg=Black        ctermbg=LightGray
 highlight PmenuSel        ctermfg=LightGray    ctermbg=Black
 highlight SpellBad        ctermfg=White        ctermbg=DarkRed
 highlight SpellCap        ctermfg=White        ctermbg=DarkCyan
@@ -32,3 +32,8 @@ if &background ==# 'dark'
   highlight Search        ctermfg=White        ctermbg=Blue
   highlight WildMenu      ctermfg=White        ctermbg=Blue
 endif
+
+highlight! link StatusLineTerm    StatusLine
+highlight! link StatusLineTermNC  StatusLineNC
+
+highlight! link Sneak Normal

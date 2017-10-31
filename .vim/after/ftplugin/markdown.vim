@@ -2,4 +2,4 @@
 
 setlocal spell textwidth=72
 
-call filetype#UndoFtplugin('setlocal spell< textwidth<')
+call mine#filetype#UndoFtplugin('setlocal spell< textwidth<')

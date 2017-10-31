@@ -2,8 +2,11 @@
 
 setlocal matchpairs+=<:>
 
+call mine#filetype#UndoFtplugin('setlocal matchpairs<')
+
+
 if executable('perltidy')
   setlocal equalprg=perltidy\ -q
 endif
 
-call filetype#UndoFtplugin('setlocal matchpairs< equalprg<')
+call mine#filetype#UndoFtplugin('setlocal equalprg<')

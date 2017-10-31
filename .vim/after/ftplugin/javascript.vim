@@ -2,14 +2,16 @@
 
 setlocal iskeyword+=$
 
-if !empty(findfile('.eslintrc', expand('%:p:h') . ';'))
-  let b:syntastic_checkers = ['eslint']
+call mine#filetype#UndoFtplugin('setlocal iskeyword<')
+
+
+let b:syntastic_checkers = ['eslint']
+
+call mine#filetype#UndoFtplugin('unlet! b:syntastic_checkers')
+
+
+if exists(':TernDef')
+  nnoremap <silent> <buffer> gd :TernDef<CR>
 endif
 
-nnoremap <buffer> <LocalLeader>d :TernDef<CR>
-
-call filetype#UndoFtplugin(
-      \ 'setlocal iskeyword<',
-      \ 'unlet! b:syntastic_checkers',
-      \ 'silent! nunmap <buffer> <LocalLeader>d',
-      \ )
+call mine#filetype#UndoFtplugin('silent! nunmap <buffer> gd')

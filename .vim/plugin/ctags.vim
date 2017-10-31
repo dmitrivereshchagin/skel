@@ -5,4 +5,4 @@ if exists('g:loaded_ctags') || &compatible
 endif
 let g:loaded_ctags = 1
 
-command -nargs=* Ctags execute ctags#Ctags(<q-args>)
+command -nargs=* Ctags execute mine#ctags#Ctags(<q-args>)

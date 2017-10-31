@@ -1,11 +1,11 @@
-" ~/.vim/plugin/cursor.vim
+" ~/.vim/plugin/cursor_options.vim
 
-if exists('g:loaded_cursor') || &compatible
+if exists('g:loaded_cursor_options') || &compatible
   finish
 endif
-let g:loaded_cursor = 1
+let g:loaded_cursor_options = 1
 
-augroup cursor
+augroup cursor_options
   autocmd!
 
   autocmd WinLeave *  let w:cursor_options = {}

@@ -1,21 +1,28 @@
-" ~/.vim/autoload/lines.vim
+" ~/.vim/autoload/mine/lines.vim
 
-let s:status_flags = []
-
-function! lines#AddStatusFlags(...) abort
-  call extend(s:status_flags, a:000)
+function! mine#lines#ResetFlags() abort
+  let s:status_flags = []
 endfunction
 
-function! lines#GetStatusFlags() abort
+call mine#lines#ResetFlags()
+
+
+function! mine#lines#AddFlags(flags) abort
+  call extend(s:status_flags, mine#value#EnsureList(a:flags))
+endfunction
+
+
+function! mine#lines#GetFlags() abort
   let l:flags = ''
   for l:Func in s:status_flags
-    let l:flags .= s:IsCallable(l:Func) ? call(l:Func, []) : ''
+    let l:flags .= mine#value#IsCallable(l:Func) ? call(l:Func, []) : ''
     unlet l:Func
   endfor
   return l:flags
 endfunction
 
-function! lines#GetTabLine() abort
+
+function! mine#lines#GetTabLine() abort
   let l:labels = ''
   for l:tab in range(1, tabpagenr('$'))
     let l:hl = l:tab == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#'
@@ -24,14 +31,11 @@ function! lines#GetTabLine() abort
   return l:labels . '%#TabLineFill#%T'
 endfunction
 
+
 function! s:GetTabLabel(tab) abort
   let l:count = 0
   for l:buf in tabpagebuflist(a:tab)
     let l:count += getbufvar(l:buf, '&modified')
   endfor
   return a:tab . repeat('+', l:count)
-endfunction
-
-function! s:IsCallable(func) abort
-  return type(a:func) == type(function('tr')) || exists('*' . a:func)
 endfunction

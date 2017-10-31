@@ -2,4 +2,4 @@
 
 setlocal cinoptions=:0,p0,t0,+.5s,(0
 
-call filetype#UndoIndent('setlocal cinoptions<')
+call mine#filetype#UndoIndent('setlocal cinoptions<')

@@ -1,4 +1,4 @@
-" ~/.vim/keymap/russian-hash.vim
+" ~/.vim/keymap/russian.vim
 
 scriptencoding utf-8
 

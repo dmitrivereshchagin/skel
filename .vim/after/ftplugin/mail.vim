@@ -2,4 +2,4 @@
 
 setlocal spell formatoptions+=w
 
-call filetype#UndoFtplugin('setlocal spell< formatoptions<')
+call mine#filetype#UndoFtplugin('setlocal spell< formatoptions<')
