@@ -1,0 +1,7 @@
+#!/bin/sh
+
+branch=$(git symbolic-ref --short HEAD)
+
+printf %s "$branch" |
+xclip -selection primary -filter |
+xclip -selection clipboard

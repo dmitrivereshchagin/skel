@@ -3,7 +3,7 @@
 #
 
 [core]
-	excludesfile = ~/.cvsignore
+	excludesFile = ~/.cvsignore
 	pager = less -eFRSX
 
 [alias]
@@ -15,6 +15,7 @@
 	cp = cherry-pick
 	dc = diff --cached
 	di = diff
+	mt = mergetool
 	pf = push --force-with-lease
 	pu = push
 	ra = rebase --abort
@@ -23,23 +24,37 @@
 	ri = rebase --interactive
 	sp = stash pop
 	ss = stash save
-	st = status --short --branch
+	st = status
 	up = pull
 
 [diff]
-	mnemonicprefix = true
+	mnemonicPrefix = true
+
+[fetch]
+	prune = true
 
 [grep]
-	patterntype = perl
+	lineNumber = true
+	patternType = perl
 
 [merge]
 	tool = vimdiff
 
-[mergetool]
-	prompt = false
+[pull]
+	rebase = true
 
 [push]
 	default = current
+
+[rebase]
+	autoSquash = true
+
+[status]
+	short = true
+	branch = true
+
+[user]
+	useConfigOnly = true
 
 [include]
 	path = ~/.gitconfig.local
