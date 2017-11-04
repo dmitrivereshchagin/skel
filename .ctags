@@ -1,1 +1,2 @@
+--regex-php=/^[\t ]*((private|protected|public)[\t ]+)?const[\t ]+([a-z_][0-9a-z_]*)/\3/n,constants (const)/i
 --regex-php=/^[\t ]*trait[\t ]+([a-z_][0-9a-z_]*)/\1/t,traits/i
