@@ -6,4 +6,5 @@
 --pager=less -R
 --smart-case
 --sort-files
---type-set=twig:ext:twig
+--type-add=scss:ext:sass,scss
+--type-add=twig:ext:twig
