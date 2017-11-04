@@ -1,0 +1,5 @@
+#!/bin/sh
+
+jq=$(= jq) || exit
+
+exec "$jq" "${@:-.}"

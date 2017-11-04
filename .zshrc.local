@@ -10,6 +10,8 @@ export BLOCK_SIZE=human-readable
 
 export COMPOSER_HOME=$HOME/.composer
 
+export ERL_AFLAGS='+pc unicode -kernel shell_history enabled'
+
 export GOPATH=$HOME/go
 
 export GPG_TTY=$TTY
@@ -22,15 +24,13 @@ export MANWIDTH=80
 
 export PERLDOC=-oman
 
-if [[ -x $HOME/.nodenv/bin/nodenv ]]; then
-    path=($HOME/.nodenv/bin $path)
-    eval "$(nodenv init - --no-rehash zsh)"
-fi
-
-if [[ -x $HOME/.plenv/bin/plenv ]]; then
-    path=($HOME/.plenv/bin $path)
-    eval "$(plenv init - --no-rehash zsh)"
-fi
+for xenv (nodenv plenv); do
+    if [[ -x $HOME/.$xenv/bin/$xenv ]]; then
+        path=($HOME/.$xenv/bin $path)
+        eval "$($xenv init - --no-rehash zsh)"
+    fi
+done
+unset xenv
 
 path=(
     $HOME/bin
@@ -45,7 +45,7 @@ cdpath=(.. $HOME $HOME/src)
 alias -g C='| wc -l'
 alias -g G='| grep -Ei'
 alias -g GE='|& grep -Ei'
-alias -g J='| python -m json.tool'
+alias -g J='| jq'
 alias -g L='| less'
 alias -g LE='|& less'
 alias -g N='>&/dev/null'
@@ -53,15 +53,15 @@ alias -g NE='2>/dev/null'
 alias -g V='| vim -'
 alias -g X='| xargs'
 
-alias ,='cd ..'
+alias ,='cd ..' -='cd -'
+for n ({1..9}) alias $n="cd +$n"; unset n
+
 alias d='dirs -v'
 alias h='history -d'
 alias j=jobs
 alias po=popd
 alias pu=pushd
 alias type='type -a'
-
-for n ({1..9}) alias $n="cd +$n"; unset n
 
 alias bc='bc -lq'
 alias crawl='telnet crawl.develz.org 345'
@@ -70,6 +70,7 @@ alias git='noglob git'
 alias info='info --vi-keys'
 alias men='erl -man'
 alias mkdir='mkdir -p'
+alias mmv='noglob zmv -W'
 alias psu='ps -o pid,user,tty,etime,args -U $USERNAME'
 alias topu='top -U $USERNAME'
 alias unnethack='telnet eu.un.nethack.nu'
@@ -77,8 +78,7 @@ alias vi=vim
 alias view='vim -R'
 
 function vim {
-    if (( ! ARGC )) set .
-    command vim $@
+    command vim ${@:-.}
 }
 
 bindkey '\eq' push-line-or-edit
@@ -119,7 +119,7 @@ zstyle :prompt:grml:right:setup use-rprompt no
 zstyle ':vcs_info:*' enable git hg svn
 
 zstyle ':vcs_info:*' actionformats \
-    '%F{magenta}[%F{green}%b%F{yellow}|%F{red}%a%F{magenta}]%f ' '%s:%r'
+    '%F{magenta}[%F{green}%b%F{yellow}|%F{red}%a%F{magenta}]%f ' %s:%r
 
 zstyle ':vcs_info:*' formats \
-    '%F{magenta}[%F{green}%b%F{magenta}]%f ' '%s:%r'
+    '%F{magenta}[%F{green}%b%F{magenta}]%f ' %s:%r
