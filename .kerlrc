@@ -1,0 +1,8 @@
+#
+# ~/.kerlrc
+#
+
+KERL_CONFIGURE_OPTIONS="--enable-builtin-zlib --with-ssl=$HOME/.local/opt/openssl"
+KERL_BUILD_PLT=yes
+KERL_INSTALL_MANPAGES=yes
+KERL_DEFAULT_INSTALL_DIR=$KERL_BASE_DIR/installations
