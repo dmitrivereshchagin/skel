@@ -4,11 +4,11 @@
 
 [core]
 	excludesFile = ~/.cvsignore
-	pager = less -eFRSX
+	pager = diff-highlight | less -eFRSX
 
 [alias]
 	ap = add --patch
-	br = branch
+	br = branch --verbose
 	ca = commit --amend
 	ci = commit
 	co = checkout
@@ -23,9 +23,16 @@
 	rc = rebase --continue
 	ri = rebase --interactive
 	sp = stash pop
-	ss = stash save
+	ss = stash push
 	st = status
 	up = pull
+
+[color "diff-highlight"]
+	oldHighlight = bold
+	oldReset = no-bold
+
+[commit]
+	verbose = true
 
 [diff]
 	mnemonicPrefix = true
@@ -38,7 +45,11 @@
 	patternType = perl
 
 [merge]
-	tool = vimdiff
+	tool = vimfugitive
+
+[mergetool "vimfugitive"]
+	cmd = vim -c Gdiffsplit! "$MERGED"
+	trustExitCode = true
 
 [pull]
 	rebase = true

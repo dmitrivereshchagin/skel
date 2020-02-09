@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -- \
+    /usr/share/doc/git/contrib/diff-highlight/diff-highlight \
+    /usr/share/git-core/contrib/diff-highlight \
+    /usr/share/git/diff-highlight/diff-highlight
+
+for pathname do
+    test -x "$pathname" && exec "$pathname"
+done
+
+exec cat
