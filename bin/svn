@@ -1,27 +1,29 @@
 #!/bin/sh
 
-svn=$(= svn) || exit
+svn=/usr/bin/svn
 
 test -t 1 || exec "$svn" "$@"
 
-case "$1" in
-di|diff|log)
+case $1 in
+blame|ann|help|h|status|st)
+    "$svn" "$@" | less -eFSX
+    ;;
+
+diff|di|log)
     e=$(printf '\33')
     "$svn" "$@" |
     sed "
         /^-\{72\}$/,/^=\{67\}$/ !{
-            s/^-.*/$e[31m&$e[m/
+            s/^-.*/${e}[31m&${e}[m/
             t
-            s/^+.*/$e[32m&$e[m/
+            s/^+.*/${e}[32m&${e}[m/
             t
-            s/^@.*/$e[36m&$e[m/
+            s/^@.*/${e}[36m&${e}[m/
         }
         " |
     less -eFRSX
     ;;
-ann|blame|h|st)
-    "$svn" "$@" | less -eFSX
-    ;;
+
 *)
     exec "$svn" "$@"
     ;;

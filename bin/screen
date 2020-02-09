@@ -1,9 +1,7 @@
 #!/bin/sh
 
-screen=$(= screen) || exit
-
-case "$TERM" in
+case $TERM in
 *-256color) set -- -T screen-256color "$@"
 esac
 
-exec "$screen" "$@"
+exec /usr/bin/screen "$@"

@@ -1,5 +1,8 @@
 #!/bin/sh
 
-jq=$(= jq) || exit
+jq=/usr/bin/jq
 
-exec "$jq" "${@:-.}"
+{ test -t 0 || ! test -t 1 ; } &&
+    exec "$jq" "${@:-.}"
+
+"$jq" -C "${@:-.}" | less -eFRX

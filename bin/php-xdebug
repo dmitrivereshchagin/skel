@@ -1,10 +1,10 @@
 #!/bin/sh
 
-if ! php -m | grep -Fxq xdebug
-then
-    set -- -d "zend_extension=${PHP_ZEND_EXTENSION_XDEBUG:-xdebug.so}" "$@"
-fi
-
 export XDEBUG_CONFIG=${XDEBUG_CONFIG-remote_enable=1}
+
+if ! php -m | grep -Fqx xdebug
+then
+    set -- -d zend_extension="${PHP_ZEND_EXTENSION_XDEBUG:-xdebug.so}" "$@"
+fi
 
 exec php "$@"

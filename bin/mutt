@@ -1,5 +1,3 @@
 #!/bin/sh
 
-mutt=$(= mutt) || exit
-
-exec "$mutt" -n "$@"
+exec /usr/bin/mutt -n "$@"
