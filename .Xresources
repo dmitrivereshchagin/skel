@@ -3,18 +3,37 @@
 *customization:	-color
 
 XTerm.termName:	xterm-256color
-XTerm*vt100.background:	black
-XTerm*vt100.charClass:	45-47:48,64:48,126:48
-XTerm*vt100.color4:	DodgerBlue1
-XTerm*vt100.color12:	SteelBlue1
+
 XTerm*vt100.faceName:	DejaVu Sans Mono
 XTerm*vt100.faceSize:	18
-XTerm*vt100.foreground:	gray90
+
 XTerm*vt100.geometry:	80x25
+
+XTerm*vt100.charClass:	35:48,37-38:48,43:48,45-47:48,58:48,61:48,63-64:48,126:48
 XTerm*vt100.highlightSelection:	true
-XTerm*vt100.metaSendsEscape:	true
-XTerm*vt100.pointerMode:	2
-XTerm*vt100.saveLines:	2048
-XTerm*vt100.scrollBar:	false
 XTerm*vt100.trimSelection:	true
+
+XTerm*vt100.eightBitInput:	true
+XTerm*vt100.metaSendsEscape:	true
+
+XTerm*vt100.background:	gray10
+XTerm*vt100.color0:	gray10
+
+XTerm*vt100.foreground:	beige
+XTerm*vt100.color7:	beige
+
+XTerm*vt100.color4:	DodgerBlue1
+XTerm*vt100.color12:	SteelBlue1
+
+XTerm*vt100.pointerMode:	2
+
+XTerm*vt100.saveLines:	4096
+XTerm*vt100.scrollBar:	false
+
+XTerm*vt100.translations:	#override \n\
+	Ctrl Shift <KeyPress> 6: set-altscreen(toggle) \n\
+	Ctrl Shift <KeyPress> 0: set-vt-font(d) \n\
+	Ctrl Shift <KeyPress> minus: smaller-vt-font() \n\
+	Ctrl Shift <KeyPress> equal: larger-vt-font()
+
 XTerm*vt100.visualBell:	true
