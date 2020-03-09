@@ -2,19 +2,36 @@
 # ~/.screenrc
 #
 
-altscreen on
-defscrollback 2000
-ignorecase on
-silencewait 15
+altscreen       on
+defscrollback   4000
+ignorecase      on
 startup_message off
-vbell on
+time            '%D %d %M %Y %0c:%s %H%? %l%?'
+vbell           on
+vbell_msg       'Bell in current window'
 
-caption splitonly '%?%F%{=b bw}%?%3n %t'
+termcapinfo *  vb@
+
+caption    splitonly      '%?%F%{=b bw}%?%3n %t'
 hardstatus alwayslastline '%-Lw%{=b bw}%50>%n*%f %t%{-}%+Lw%<'
-time '%D %d %M %Y %0c:%s %H%? %l%?'
 
-bind \" windowlist -b -g
-bind %  collapse
-bind (  bumpleft
-bind )  bumpright
-bind x
+rendition bell    r
+rendition monitor c
+rendition silence c
+
+bind  %  collapse
+bind  (  bumpleft
+bind  )  bumpright
+
+bind ^K  digraph
+bind  k  digraph
+
+bind ^V  screen vim
+bind  v  screen vim
+
+bind \"  windowlist -b -g
+bind ^W  windowlist -b -g
+bind  w  windowlist -b -g
+
+bind ^X
+bind  x
