@@ -10,7 +10,7 @@ color  indicator   black        yellow
 color  tree        red          default
 
 color  attachment  red          default
-color  error       brightwhite  red
+color  error       white        red
 color  markers     brightblue   default
 color  search      black        yellow
 color  tilde       brightblue   default

@@ -1,5 +1,5 @@
 #
-# ~/.mutt/mailcap
+# ~/.mailcap
 #
 
 application/pdf; evince %s; test=test -n "$DISPLAY"
@@ -11,4 +11,4 @@ application/x-gtar; gzip -cd | tar tvf -; copiousoutput
 image/*; display %s; test=test -n "$DISPLAY"
 image/*; cacaview %s; needsterminal
 
-text/html; w3m -I %{charset} -T %t -dump; copiousoutput
+text/html; lynx --assume-charset=%{charset} --dump --stdin; copiousoutput

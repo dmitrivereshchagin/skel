@@ -2,14 +2,18 @@
 # ~/.mutt/muttrc
 #
 
-source ~/.mutt/muttrc.personal
+set my_muttdir=~/.mutt
+
+source $my_muttdir/muttrc.private
 
 set smtp_url=smtps://$my_user@smtp.gmail.com
+set smtp_pass=$my_pass
 
 set from=$my_from
 set realname=$my_realname
 
 set folder=imaps://$my_user@imap.gmail.com
+set imap_pass=$my_pass
 set spoolfile=+INBOX
 
 set mbox='+[Gmail]/All Mail'
@@ -18,15 +22,12 @@ set move=ask-yes
 set postponed=+[Gmail]/Drafts
 set postpone=ask-no
 
-set record=
-
-set trash=+[Gmail]/Trash
+set record='+[Gmail]/Sent Mail'
+set copy=no
 
 set imap_check_subscribed
-set imap_idle
-set mail_check=90
-set read_inc=100
-set timeout=10
+set imap_keepalive=90
+set mail_check=60
 
 set ascii_chars
 set nobeep
@@ -35,56 +36,61 @@ set index_format='%4C %Z %[%m%d] %-15.15L %?M?(#%03M)&(%4c)? %s'
 set menu_scroll
 set reverse_alias
 
-set nocollapse_unread
 set nomail_check_recent
 set nomark_old
 
 set pager_context=1
-set pager_index_lines=5
+set pager_index_lines=6
 set pager_stop
 set tilde
 
 set narrow_tree
 set sort=threads
 set sort_aux=reverse-last-date-received
-set strict_threads
 
 set abort_unmodified=ask-yes
 set attribution='On %{!%a, %b %d}, %n wrote:'
 set edit_headers
 set text_flowed
 
-set alias_file=~/.mutt/muttrc.personal
+set alias_file=$my_muttdir/muttrc.private
 
-set header_cache=~/.mutt/cache
-set message_cachedir=~/.mutt/cache
+set message_cachedir=$my_muttdir/cache
+set header_cache=$message_cachedir
 
 set crypt_use_gpgme
 
-set mailcap_path=~/.mutt/mailcap:$mailcap_path
-
+unalternative_order *
 alternative_order text/plain text
+
+unauto_view *
 auto_view application/zip application/x-gtar text/html
+
+unmime_lookup *
+mime_lookup application/octet-stream
 
 ignore *
 unignore Cc: Date: From: Reply-To: Subject: To:
 
+unhdr_order *
 hdr_order Date: From: To: Subject:
 
-source ~/.mutt/muttrc.colors
+source $my_muttdir/muttrc.colors
 
 bind index G imap-fetch-mail
 
 bind pager Z previous-page
 bind pager z next-page
 
-macro attach,compose,index,pager \cb '\
-<enter-command> set my_pipe_decode=$pipe_decode pipe_decode<Return>\
-<pipe-message> w3m<Return>\
-<enter-command> set pipe_decode=$my_pipe_decode; unset my_pipe_decode<Return>\
-' 'call w3m to browse URLs'
-
-macro index \eb '<search>=b ' 'search in message bodies'
-
 macro index,pager y '<change-folder>?<toggle-mailboxes>' 'list mailboxes'
 bind browser y exit
+
+macro attach,compose,index,pager \cb '\
+<enter-command> set my_pipe_decode=$pipe_decode<Return>\
+<enter-command> set pipe_decode<Return>\
+<pipe-message> urlview<Return>\
+<enter-command> set pipe_decode=$my_pipe_decode<Return>\
+<enter-command> unset my_pipe_decode<Return>\
+' 'call urlview to extract URLs out of a message'
+
+macro index \eb '<search>=b ' 'search in message bodies'
