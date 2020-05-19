@@ -1,11 +1,10 @@
 " ~/.vim/after/plugin/ale.vim
 
-if !exists(':ALELint')
+if exists(':ALELint') != 2
   finish
 endif
 
-function! s:StatusFlag() abort
-  return ale#statusline#Count(bufnr('')).total > 0 ? '[!]' : ''
+function! ALEStatuslineFlag() abort
+  let l:count = ale#statusline#Count(bufnr('%'))
+  return l:count.total > 0 ? '[!]' : ''
 endfunction
-
-call mine#lines#AddFlags(function('s:StatusFlag'))

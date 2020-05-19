@@ -1,5 +1,4 @@
 " ~/.vim/after/indent/php.vim
 
 setlocal formatoptions-=w
-
-call mine#filetype#UndoIndent('setlocal formatoptions<')
+call filetype#UndoIndent('setlocal formatoptions<')

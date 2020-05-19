@@ -1,3 +1,7 @@
-/.netrwhist
+/local/
 /spell/
-/vimrc.local
+/view/
+/.netrwbook
+/.netrwhist
+/.viminf[a-z].tmp
+/.viminfo

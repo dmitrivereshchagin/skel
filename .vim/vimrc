@@ -1,17 +1,11 @@
 " ~/.vim/vimrc
 
-language messages C
+let $MYVIM = expand('$HOME/.vim')
 
 runtime bundle/pathogen/autoload/pathogen.vim
-silent! execute pathogen#infect()
+silent! execute pathogen#infect('local/bundle/{}', 'bundle/{}')
 
-let $VIMFILES = expand('<sfile>:h')
-
-if empty(&termencoding)
-  let &termencoding = exists('$MSYSTEM') ? 'cp1251' : &encoding
-endif
-set encoding=utf-8
-set fileencodings=ucs-bom,utf-8,cp1251
+set fileencodings=ucs-bom,utf-8,koi8-r
 
 set cpoptions-=a cpoptions-=A
 set pastetoggle=<F2>
@@ -20,166 +14,182 @@ set incsearch
 set ignorecase smartcase
 
 set tags=./tags;,tags
+set nocscopetag
 
 set scrolloff=1
-if has('patch-7.4.338')
+if has#('patch-7.4.338')
   set breakindent breakindentopt=sbr
 endif
 set showbreak=+
-set sidescrolloff=5
+set sidescroll=1 sidescrolloff=5
 set display=lastline
 set cmdheight=2
-set listchars=eol:$,tab:>-,trail:-,extends:>,precedes:<,nbsp:%
+set lazyredraw
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
-set background=dark
 set hlsearch
 set spelllang=en_us,ru_yo
 
 set laststatus=2
-set statusline=%n\ %<%.20f\ %h%m%r%{mine#lines#GetFlags()}%=%-14.(%l,%c%V%)\ %P
+set statusline=%n\ %<%.20f\ %h%m%r%{statusline#Flags()}%=%-14.(%l,%c%V%)\ %P
 
-set tabline=%!mine#lines#GetTabLine()
+set tabline=%!tabline#()
 
 set notitle
 
+set noshowcmd
+if has#('patch-8.1.1270')
+  set shortmess-=S
+endif
+set confirm
 set visualbell t_vb=
 
-set undofile
-let &undodir = $VIMFILES . '/undo'
+set undofile undodir=$MYVIM/undo
 set backspace=indent,eol,start
-if has('patch-7.3.541')
+set formatoptions+=l1
+if has#('patch-7.3.541')
   set formatoptions+=j
 endif
 set complete-=i complete-=t
 set completeopt-=preview
-set infercase
 set nrformats-=octal
 
 set shiftwidth=4 softtabstop=4
 set expandtab
 set autoindent
+set lispwords-=if
 
-set timeoutlen=3000
-set ttimeoutlen=100
-
-set modeline
-if has('patch-7.4.785')
+set nomodeline
+if has#('patch-7.4.785')
   set nofixendofline
 endif
 set autowrite
 set autoread
 
-set history=200
-set wildmode=longest:full,full
+set history=1000
 set wildmenu
+set wildmode=longest:full,full
+set wildoptions=tagfile
 
 if executable('ack')
-  set grepprg=ack\ -H\ --column grepformat=%f:%l:%c:%m
+  set grepprg=ack\ --with-filename\ --column
+  set grepformat^=%f:%l:%c:%m
 endif
 
 set keymap=russian
 set iminsert=0 imsearch=-1
 
 set virtualedit=block
-set sessionoptions-=blank sessionoptions-=options
-set viminfo=!,'20,<50,s10,h
+set sessionoptions-=options
+set viewoptions-=options
+set viminfo=!,'100,<50,s10,h,n$MYVIM/.viminfo
 
 filetype plugin indent on
-syntax on
 
+syntax on
 colorscheme mine
 
-call mine#lines#ResetFlags()
-call mine#lines#AddFlags(['fugitive#statusline', 'SyntasticStatuslineFlag'])
+let g:statusline#flags =
+    \ ['FugitiveStatusline', 'ALEStatuslineFlag', 'SyntasticStatuslineFlag']
 
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_insert_leave = 1
-let g:ale_linters = {'erlang': ['syntaxerl']}
 
 let g:user_emmet_leader_key = '<C-\>'
 
+let g:lion_squeeze_spaces = 1
+
 let g:netrw_bufsettings = 'noma nomod nonu nobl nowrap ro rnu'
-let g:netrw_banner = 0
-let g:netrw_list_hide = '\v\C%(\~|\.swp)\*?$'
-let g:netrw_timefmt = '%a %d %b %Y %H:%M:%S'
+let g:netrw_banner      = 0
+let g:netrw_list_hide   = '\v\C%(\~|\.swp)\*?$'
+let g:netrw_timefmt     = '%a %d %b %Y %H:%M:%S'
 
-let g:sneak#s_next = 1
 let g:sneak#map_netrw = 0
-
-let g:surround_56 = "/* \r */"
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_stl_format = '[!]'
-
-let g:tern#command = ['tern', '--no-port-file']
-let g:tern_show_signature_in_pum = 1
+let g:syntastic_stl_format  = '[!]'
 
 let g:vdebug_options = {}
 let g:vdebug_options.watch_window_style = 'compact'
-let g:vdebug_options.marker_default = '*'
+let g:vdebug_options.marker_default     = '*'
 let g:vdebug_options.marker_closed_tree = '+'
-let g:vdebug_options.marker_open_tree = '-'
-let g:vdebug_options.continuous_mode = 1
+let g:vdebug_options.marker_open_tree   = '-'
+let g:vdebug_options.sign_breakpoint    = 'B>'
+let g:vdebug_options.sign_current       = '->'
+let g:vdebug_options.continuous_mode    = 1
+let g:vdebug_options.simplified_status  = 0
 
-let g:go_highlight_trailing_whitespace_error = 0
-if executable('goimports')
-  let g:gofmt_command = 'goimports'
-endif
-
-let g:html_no_rendering = 1
-let g:html_indent_autotags = 'html'
-let g:html_indent_script1 = 'auto'
-let g:html_indent_style1 = 'auto'
-
-let g:perl_include_pod = 0
-
-if has('digraphs')
+if has#('digraphs')
   " HORIZONTAL ELLIPSIS.
   digraphs ,. 8230
 endif
 
-cnoremap <C-X>n <Down>
-cnoremap <C-X>p <Up>
+let g:mapleader = ','
 
-inoremap <C-U> <C-G>u<C-U>
+nmap <Leader>,  <Plug>Sneak_,
+omap <Leader>,  <Plug>Sneak_,
+xmap <Leader>,  <Plug>Sneak_,
 
-nnoremap + <C-W>+
-nnoremap _ <C-W>-
+" Just for the case when Sneak isn't installed ...
+nnoremap <Plug>Sneak_,  ,
+onoremap <Plug>Sneak_,  ,
+xnoremap <Plug>Sneak_,  ,
 
-nnoremap <silent> - :Explore<CR>
+cnoremap <C-X>n  <Down>
+cnoremap <C-X>p  <Up>
 
-nnoremap  <BS> <C-W>w
-nnoremap g<BS> <C-W>W
+inoremap <C-U>  <C-G>u<C-U>
+inoremap <C-W>  <C-G>u<C-W>
 
-nnoremap <C-J> gT
-nnoremap <C-K> gt
+nnoremap +  <C-W>+
+nnoremap _  <C-W>-
 
-nnoremap ymm :mksession! <C-R>=fnameescape(v:this_session)<CR><CR>
+nnoremap -  :Explore<CR>
 
-nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
+nnoremap <BS>  <C-^>
 
-nnoremap Q @q
+nnoremap <Space>  <C-F>
 
-nnoremap gK :grep -w <C-R>=shellescape(expand('<cword>'))<CR><CR>
+nnoremap <C-J>  gT
+nnoremap <C-K>  gt
 
-nnoremap gY :tselect<Space>
-nnoremap gy :tag<Space>
+nnoremap <silent> <C-L>  :nohlsearch<CR><C-L>
 
-nnoremap <expr> j v:count ? 'j' : 'gj'
-nnoremap <expr> k v:count ? 'k' : 'gk'
+nnoremap Q  @q
 
-noremap! <F3> <C-^>
+nnoremap <expr> j  v:count ? 'j' : 'gj'
+nnoremap <expr> k  v:count ? 'k' : 'gk'
 
-runtime macros/matchit.vim
+nnoremap <Leader>m  :marks<CR>
+nnoremap <Leader>r  :registers<CR>
+
+nnoremap <Leader>tt  :TestNearest<CR>
+nnoremap <Leader>tf  :TestFile<CR>
+nnoremap <Leader>ts  :TestSuite<CR>
+nnoremap <Leader>tl  :TestLast<CR>
+nnoremap <Leader>tg  :TestVisit<CR>
+
+xnoremap <  <gv
+xnoremap >  >gv
+
+xnoremap <C-E>  :move '>+1<CR>gv
+xnoremap <C-Y>  :move '<-2<CR>gv
+
+noremap! <F3>  <C-^>
 
 if exists('#fedora')
   autocmd! fedora BufReadPost *
 endif
 
-let s:localrc = $VIMFILES . '/vimrc.local'
-if filereadable(s:localrc)
-  let $MYLOCALVIMRC = s:localrc
-  execute 'source' fnameescape(s:localrc)
-endif
-unlet s:localrc
+augroup vimrc_paste
+  autocmd!
+  autocmd InsertLeave *  set nopaste
+augroup END
+
+augroup vimrc_undofile
+  autocmd!
+  autocmd BufWritePre {,/usr,/var}/tmp/*  setlocal noundofile
+augroup END
+
+runtime local/vimrc

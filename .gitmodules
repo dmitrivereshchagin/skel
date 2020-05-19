@@ -70,14 +70,10 @@
 	path = .vim/bundle/syntastic
 	url = https://github.com/vim-syntastic/syntastic.git
 
-[submodule "vim-tern"]
-	path = .vim/bundle/tern
-	url = https://github.com/ternjs/tern_for_vim.git
+[submodule "vim-test"]
+	path = .vim/bundle/test
+	url = https://github.com/vim-test/vim-test.git
 
 [submodule "vim-unimpaired"]
 	path = .vim/bundle/unimpaired
 	url = https://github.com/tpope/vim-unimpaired.git
-
-[submodule "vim-vdebug"]
-	path = .vim/bundle/vdebug
-	url = https://github.com/joonty/vdebug.git

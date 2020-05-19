@@ -1,10 +1,12 @@
 " ~/.vim/after/syntax/erlang.vim
 
-silent! syntax clear erlangAnnotation
-silent! syntax clear erlangCommentAnnotation
+syntax match erlangTodo /@\%(todo\|TODO\)\>/ contained
+
+silent! syntax clear erlangComment
+syntax match erlangComment /%.*/ contains=erlangTodo,@Spell
 
 syntax region erlangTypeSpec
-    \ start=/^\s*-\%(callback\|opaque\|spec\|type\)\s\+/
+    \ start=/^\s*-\s*\%(callback\|opaque\|spec\|type\)\>/
     \ end=/\%(%.*\)\@<!\.\s*\%(%.*\)\?$/
     \ contains=erlangComment
     \ keepend

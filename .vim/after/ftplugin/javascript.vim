@@ -1,17 +1,7 @@
 " ~/.vim/after/ftplugin/javascript.vim
 
-setlocal iskeyword+=$
-
-call mine#filetype#UndoFtplugin('setlocal iskeyword<')
-
+setlocal suffixesadd+=.js iskeyword+=$
+call filetype#UndoPlugin('setlocal suffixesadd< iskeyword<')
 
 let b:syntastic_checkers = ['eslint']
-
-call mine#filetype#UndoFtplugin('unlet! b:syntastic_checkers')
-
-
-if exists(':TernDef')
-  nnoremap <silent> <buffer> gd :TernDef<CR>
-endif
-
-call mine#filetype#UndoFtplugin('silent! nunmap <buffer> gd')
+call filetype#UndoPlugin('unlet b:syntastic_checkers')

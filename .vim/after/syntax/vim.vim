@@ -2,3 +2,5 @@
 
 silent! syntax clear vimCommentString
 silent! syntax clear vimCommentTitle
+
+highlight link vimScriptDelim NONE

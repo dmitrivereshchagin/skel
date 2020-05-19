@@ -1,24 +1,24 @@
 " ~/.vim/after/plugin/alias.vim
 
-if !exists(':Alias')
+if exists(':Alias') != 2
   finish
 endif
 
-Alias gw  grep\ -w
-Alias hh  helpgrep
-Alias ww  write!
+Alias gw   grep\ -w
+Alias hh   helpgrep
+Alias th   tab\ help
+Alias thh  tab\ helpgrep
+Alias tta  tab\ tag
+Alias tts  tab\ tselect
+Alias ww   write!
 
-Alias bt  Breakpoint
-Alias btr BreakpointRemove
-Alias btt BreakpointRemove\ *
+Alias bt   Breakpoint
+Alias btr  BreakpointRemove
+Alias vt   VdebugTrace
+Alias vv   VdebugEval
 
-Alias vt  VdebugTrace
-Alias vv  VdebugEval
+Alias ct   Ctags
+Alias et   ErlangTags
 
-Alias ct  Ctags
-Alias et  ErlangTags
-
-Alias gb  Gblame
-Alias gc  Gcommit
-Alias gd  Gdiff
-Alias gs  Gstatus
+Alias gb   Git\ blame
+Alias gd   Gdiffsplit

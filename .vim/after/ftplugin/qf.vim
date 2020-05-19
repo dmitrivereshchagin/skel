@@ -1,10 +1,7 @@
 " ~/.vim/after/ftplugin/qf.vim
 
-setlocal nobuflisted nowrap
+setlocal nowrap relativenumber nobuflisted
+call filetype#UndoPlugin('setlocal wrap< relativenumber< buflisted<')
 
-call mine#filetype#UndoFtplugin('setlocal buflisted< wrap<')
-
-
-noremap <buffer> <silent> q :<C-U>bdelete<CR>
-
-call mine#filetype#UndoFtplugin('silent! unmap <buffer> q')
+nnoremap <buffer> q  :bdelete<CR>
+call filetype#UndoPlugin('nunmap <buffer> q')

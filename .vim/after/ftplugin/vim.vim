@@ -1,5 +1,10 @@
 " ~/.vim/after/ftplugin/vim.vim
 
-setlocal shiftwidth=2 softtabstop=2 keywordprg=:help
+let &l:path = &runtimepath
+call filetype#UndoPlugin('setlocal path<')
 
-call mine#filetype#UndoFtplugin('setlocal shiftwidth< softtabstop< keywordprg<')
+setlocal shiftwidth=2 softtabstop=2
+call filetype#UndoPlugin('setlocal shiftwidth< softtabstop<')
+
+setlocal keywordprg=:help
+call filetype#UndoPlugin('setlocal keywordprg<')

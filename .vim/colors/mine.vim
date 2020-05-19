@@ -1,39 +1,44 @@
 " ~/.vim/colors/mine.vim
 
+set background=dark
 highlight clear
-
 if exists('g:syntax_on')
   syntax reset
 endif
+let g:colors_name = 'mine'
 
-let g:colors_name = expand('<sfile>:t:r')
+highlight DiffAdd       cterm=NONE     ctermfg=DarkGreen    ctermbg=NONE
+highlight DiffChange    cterm=NONE     ctermfg=DarkCyan     ctermbg=NONE
+highlight DiffDelete    cterm=NONE     ctermfg=DarkRed      ctermbg=NONE
+highlight DiffText      cterm=NONE     ctermfg=DarkMagenta  ctermbg=NONE
+highlight VertSplit     cterm=NONE     ctermfg=NONE         ctermbg=NONE
+highlight Folded        cterm=bold     ctermfg=NONE         ctermbg=NONE
+highlight FoldColumn    cterm=NONE     ctermfg=NONE         ctermbg=NONE
+highlight SignColumn    cterm=NONE     ctermfg=NONE         ctermbg=NONE
+highlight Pmenu         cterm=NONE     ctermfg=Black        ctermbg=LightGray
+highlight PmenuSel      cterm=NONE     ctermfg=White        ctermbg=Blue
+highlight QuickFixLine  cterm=NONE     ctermfg=White        ctermbg=Blue
+highlight Search        cterm=NONE     ctermfg=White        ctermbg=Blue
+highlight SpellBad      cterm=NONE     ctermfg=White        ctermbg=DarkRed
+highlight TabLine       cterm=reverse  ctermfg=NONE         ctermbg=NONE
+highlight WarningMsg    cterm=NONE     ctermfg=Red          ctermbg=NONE
+highlight WildMenu      cterm=NONE     ctermfg=White        ctermbg=Blue
+highlight Comment       cterm=NONE     ctermfg=LightCyan    ctermbg=NONE
 
-highlight DiffAdd         ctermfg=DarkGreen    ctermbg=NONE
-highlight DiffChange      ctermfg=DarkCyan     ctermbg=NONE
-highlight DiffDelete      ctermfg=DarkRed      ctermbg=NONE
-highlight DiffText        ctermfg=DarkMagenta  ctermbg=NONE       cterm=NONE
-highlight VertSplit                                               cterm=NONE
-highlight Folded          ctermfg=NONE         ctermbg=NONE       cterm=bold
-highlight FoldColumn                           ctermbg=NONE
-highlight SignColumn                           ctermbg=NONE
-highlight Pmenu           ctermfg=Black        ctermbg=LightGray
-highlight PmenuSel        ctermfg=LightGray    ctermbg=Black
-highlight SpellBad        ctermfg=White        ctermbg=DarkRed
-highlight SpellCap        ctermfg=White        ctermbg=DarkCyan
-highlight SpellLocal      ctermfg=White        ctermbg=DarkCyan
-highlight SpellRare       ctermfg=White        ctermbg=DarkCyan
-highlight TabLine         ctermfg=NONE         ctermbg=NONE       cterm=reverse
-highlight WarningMsg      ctermfg=Red
-
-if &background ==# 'dark'
-  highlight LineNr        ctermfg=Blue
-  highlight CursorLineNr  ctermfg=Blue
-  highlight QuickFixLine  ctermfg=White        ctermbg=Blue
-  highlight Search        ctermfg=White        ctermbg=Blue
-  highlight WildMenu      ctermfg=White        ctermbg=Blue
-endif
-
+highlight! link CursorLineNr      LineNr
+highlight! link LineNr            NonText
+highlight! link Sneak             Normal
+highlight! link SpecialKey        NonText
+highlight! link SpellCap          SpellBad
+highlight! link SpellLocal        SpellBad
+highlight! link SpellRare         SpellBad
 highlight! link StatusLineTerm    StatusLine
 highlight! link StatusLineTermNC  StatusLineNC
+highlight! link Title             Normal
 
-highlight! link Sneak Normal
+highlight Constant    NONE
+highlight Identifier  NONE
+highlight PreProc     NONE
+highlight Special     NONE
+highlight Statement   NONE
+highlight Type        NONE
