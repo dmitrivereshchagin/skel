@@ -1,20 +1,29 @@
 #
 # ~/.zshrc.local
 #
+# This file is intended to be used with Grml's zshrc
+#
+# <https://git.grml.org/f/grml-etc-core/etc/zsh/zshrc>
+#
 
-setopt cshnullglob
+setopt CSH_NULL_GLOB
 
-READNULLCMD=less
+export PAGER=less
+READNULLCMD=$PAGER
+
+export EDITOR=vim
 
 export BLOCK_SIZE=human-readable
 
 export COMPOSER_HOME=$HOME/.composer
+path=($COMPOSER_HOME/vendor/bin $path)
 
 export ERL_AFLAGS='+pc unicode -kernel shell_history enabled'
+xsource $HOME/erlang/.default/activate
+path=($HOME/.cache/rebar3/bin $path)
 
 export GOPATH=$HOME/go
-
-export GPG_TTY=$TTY
+path=($GOPATH/bin $HOME/.local/opt/go/bin $path)
 
 export LESS=-iMQR
 export LESSHISTFILE=-
@@ -22,25 +31,16 @@ export LESSHISTFILE=-
 export MANOPT='--no-hyphenation --no-justification'
 export MANWIDTH=80
 
+path=($HOME/.nodenv/bin $path)
+if (( ${+commands[nodenv]} )) eval "$(nodenv init - --no-rehash)"
+
 export PERLDOC=-oman
 
-for xenv (nodenv plenv); do
-    if [[ -x $HOME/.$xenv/bin/$xenv ]]; then
-        path=($HOME/.$xenv/bin $path)
-        eval "$($xenv init - --no-rehash zsh)"
-    fi
-done
-unset xenv
+path=($HOME/.local/opt/universal-ctags/bin $path)
 
-path=(
-    $HOME/bin
-    $HOME/.local/bin
-    $COMPOSER_HOME/vendor/bin
-    $GOPATH/bin
-    $path
-)
+path=($HOME/.local/bin $HOME/bin $path)
 
-cdpath=(.. $HOME $HOME/src)
+cdpath=(.. $HOME $HOME/src/*(/N))
 
 alias -g C='| wc -l'
 alias -g G='| grep -Ei'
@@ -54,8 +54,6 @@ alias -g V='| vim -'
 alias -g X='| xargs'
 
 alias ,='cd ..' -='cd -'
-for n ({1..9}) alias $n="cd +$n"; unset n
-
 alias d='dirs -v'
 alias h='history -d'
 alias j=jobs
@@ -68,18 +66,15 @@ alias crawl='telnet crawl.develz.org 345'
 alias free='free -hl'
 alias git='noglob git'
 alias info='info --vi-keys'
-alias men='erl -man'
 alias mkdir='mkdir -p'
 alias mmv='noglob zmv -W'
 alias psu='ps -o pid,user,tty,etime,args -U $USERNAME'
 alias topu='top -U $USERNAME'
-alias unnethack='telnet eu.un.nethack.nu'
+
+unalias vim 2>/dev/null
+unfunction vim 2>/dev/null
 alias vi=vim
 alias view='vim -R'
-
-function vim {
-    command vim ${@:-.}
-}
 
 bindkey '\eq' push-line-or-edit
 
@@ -94,26 +89,19 @@ bindkey -M menuselect j vi-down-line-or-history
 bindkey -M menuselect k vi-up-line-or-history
 bindkey -M menuselect l vi-forward-char
 
-function __prompt_hostname {
-    REPLY=${${${+STY}#1}/0/${SSH_CONNECTION+%m }}
+function __prompt_remote_host {
+    if (( ! ${+STY} )) REPLY=${SSH_CONNECTION+%m }
 }
 
 function __prompt_kerl {
     if (( ${+commands[kerl]} )) REPLY=$(kerl prompt '<%s> ')
 }
 
-function __prompt_virtual_env {
-    REPLY=${VIRTUAL_ENV+(${VIRTUAL_ENV:t}) }
-}
-
 grml_theme_add_token cwd '%1~ ' '%B%F{blue}' %f%b
-grml_theme_add_token hostname -i __prompt_hostname
+grml_theme_add_token remote-host -i __prompt_remote_host
 grml_theme_add_token kerl -f __prompt_kerl %B %b
-grml_theme_add_token virtual-env -f __prompt_virtual_env %B %b
 
-zstyle :prompt:grml:left:setup items \
-    rc kerl virtual-env hostname cwd vcs percent
-
+zstyle :prompt:grml:left:setup items rc kerl remote-host cwd vcs percent
 zstyle :prompt:grml:right:setup use-rprompt no
 
 zstyle ':vcs_info:*' enable git hg svn
