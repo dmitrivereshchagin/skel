@@ -28,6 +28,8 @@ path=($GOPATH/bin $HOME/.local/opt/go/bin $path)
 export LESS=-iMQR
 export LESSHISTFILE=-
 
+path=($HOME/.local/opt/mit-scheme/bin $path)
+
 export MANOPT='--no-hyphenation --no-justification'
 export MANWIDTH=80
 
