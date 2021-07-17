@@ -1,0 +1,39 @@
+#
+# ~/.screen/screenrc
+#
+
+backtick 1 30 30 $HOME/.screen/backticks/battery
+
+altscreen       on
+defscrollback   4000
+ignorecase      on
+startup_message off
+time            '%D %d %M %Y %0c:%s %H%? %l%?%? %1`%?'
+vbell           on
+vbell_msg       'Bell in current window'
+
+termcapinfo *  vb@
+
+caption    splitonly      '%?%F%{=b bw}%?%3n %t'
+hardstatus alwayslastline '%-Lw%{=b bw}%50>%n*%f %t%{-}%+Lw%<'
+
+rendition bell    r
+rendition monitor c
+rendition silence c
+
+bind  %  collapse
+bind  (  bumpleft
+bind  )  bumpright
+
+bind ^K  digraph
+bind  k  digraph
+
+bind ^V  screen vim
+bind  v  screen vim
+
+bind \"  windowlist -b -g
+bind ^W  windowlist -b -g
+bind  w  windowlist -b -g
+
+bind ^X
+bind  x

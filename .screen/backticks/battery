@@ -1,0 +1,13 @@
+#!/bin/sh
+
+capacities=''
+
+for file in /sys/class/power_supply/*/capacity
+do
+    if test -e "$file"
+    then
+        capacities=${capacities:+$capacities }$(cat "$file")%
+    fi
+done
+
+printf '%s\n' "$capacities"
