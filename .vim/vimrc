@@ -16,7 +16,7 @@ set tags=./tags;,tags
 set nocscopetag
 
 set scrolloff=1
-if has#('patch-7.4.338')
+if exists('+breakindent')
   set breakindent
 endif
 set showbreak=...
@@ -59,7 +59,7 @@ set autoindent
 set lispwords-=if
 
 set nomodeline
-if has#('patch-7.4.785')
+if exists('+fixendofline')
   set nofixendofline
 endif
 set autowrite
