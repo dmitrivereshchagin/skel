@@ -17,14 +17,14 @@ set nocscopetag
 
 set scrolloff=1
 if has#('patch-7.4.338')
-  set breakindent breakindentopt=sbr
+  set breakindent
 endif
-set showbreak=+
+set showbreak=...
 set sidescroll=1 sidescrolloff=5
 set display=lastline
 set cmdheight=2
 set lazyredraw
-set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+set listchars=eol:$,tab:>-,extends:>,precedes:<,nbsp:~
 
 set hlsearch
 set spelllang=en_us,ru_yo
