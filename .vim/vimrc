@@ -170,14 +170,6 @@ nnoremap <Leader>ts  :TestSuite<CR>
 nnoremap <Leader>tl  :TestLast<CR>
 nnoremap <Leader>tg  :TestVisit<CR>
 
-xnoremap <  <gv
-xnoremap >  >gv
-
-xnoremap <C-E>  :move '>+1<CR>gv
-xnoremap <C-Y>  :move '<-2<CR>gv
-
-noremap! <F3>  <C-^>
-
 if exists('#fedora')
   autocmd! fedora BufReadPost *
 endif

@@ -59,6 +59,3 @@ call filetype#UndoPlugin('iunabbrev <buffer>', ['!=', '=='])
 " The following shades bit string generator.
 inoreabbrev <buffer> <=  =<
 call filetype#UndoPlugin('iunabbrev <buffer> <=')
-
-inoreabbrev <buffer> pft  erlang:process_flag(trap_exit, true)
-call filetype#UndoPlugin('iunabbrev <buffer> pft')

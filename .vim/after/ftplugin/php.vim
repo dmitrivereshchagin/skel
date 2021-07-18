@@ -22,6 +22,3 @@ call filetype#UndoPlugin('nunmap <buffer> <LocalLeader>i')
 
 nnoremap <buffer> <LocalLeader>e  :call PhpExpandClass()<CR>
 call filetype#UndoPlugin('nunmap <buffer> <LocalLeader>e')
-
-inoreabbrev <buffer> dst  declare(strict_types=1);
-call filetype#UndoPlugin('iunabbrev <buffer> dst')
