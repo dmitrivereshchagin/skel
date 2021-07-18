@@ -86,7 +86,10 @@ set viminfo=!,'100,<50,s10,h,n$MYVIM/.viminfo
 
 filetype plugin indent on
 
-syntax on
+if !exists('g:syntax_on')
+  syntax enable
+endif
+
 colorscheme mine
 
 let g:statusline#flags =
