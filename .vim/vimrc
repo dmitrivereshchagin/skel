@@ -147,7 +147,7 @@ inoremap <C-W>  <C-G>u<C-W>
 nnoremap +  <C-W>+
 nnoremap _  <C-W>-
 
-nnoremap -  :Explore<CR>
+nnoremap -  :<C-U>Explore<CR>
 
 nnoremap <BS>  <C-^>
 
@@ -156,22 +156,22 @@ nnoremap <Space>  <C-F>
 nnoremap <C-J>  gT
 nnoremap <C-K>  gt
 
-nnoremap <silent> <C-L>  :nohlsearch<CR><C-L>
+nnoremap <silent> <C-L>  :<C-U>nohlsearch<CR><C-L>
 
 nnoremap Q  @q
 
 nnoremap <expr> j  v:count ? 'j' : 'gj'
 nnoremap <expr> k  v:count ? 'k' : 'gk'
 
-nnoremap <Leader>m  :marks<CR>
-nnoremap <Leader>r  :registers<CR>
 
-nnoremap <Leader>tt  :TestNearest<CR>
-nnoremap <Leader>tf  :TestFile<CR>
-nnoremap <Leader>ts  :TestSuite<CR>
-nnoremap <Leader>tl  :TestLast<CR>
-nnoremap <Leader>tg  :TestVisit<CR>
+nnoremap <Leader>m  :<C-U>marks<CR>
+nnoremap <Leader>r  :<C-U>registers<CR>
 
+nnoremap <Leader>tt  :<C-U>TestNearest<CR>
+nnoremap <Leader>tf  :<C-U>TestFile<CR>
+nnoremap <Leader>ts  :<C-U>TestSuite<CR>
+nnoremap <Leader>tl  :<C-U>TestLast<CR>
+nnoremap <Leader>tg  :<C-U>TestVisit<CR>
 
 " Toggle 'paste' only in Insert mode.
 set pastetoggle=<C-_>

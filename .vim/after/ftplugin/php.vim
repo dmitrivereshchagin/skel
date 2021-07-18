@@ -13,12 +13,15 @@ let b:surround_{char2nr('=')} = "<?= \r ?>"
 call filetype#UndoPlugin("unlet b:surround_{char2nr('=')}")
 
 " It's assumed that 'autowrite' and 'autoread' are set.
-nnoremap <buffer> <LocalLeader>=
-    \ :!php-cs-fixer fix --quiet -- <C-R>=shellescape(expand('%:p'))<CR><CR>
+command -buffer Format
+    \ execute '!php-cs-fixer fix --quiet --' shellescape(expand('%:p'))
+call filetype#UndoPlugin('delcommand Format')
+
+nnoremap <buffer> <LocalLeader>=  :<C-U>Format<CR>
 call filetype#UndoPlugin('nunmap <buffer> <LocalLeader>=')
 
-nnoremap <buffer> <LocalLeader>i  :call PhpInsertUse()<CR>
+nnoremap <buffer> <LocalLeader>i  :<C-U>call PhpInsertUse()<CR>
 call filetype#UndoPlugin('nunmap <buffer> <LocalLeader>i')
 
-nnoremap <buffer> <LocalLeader>e  :call PhpExpandClass()<CR>
+nnoremap <buffer> <LocalLeader>e  :<C-U>call PhpExpandClass()<CR>
 call filetype#UndoPlugin('nunmap <buffer> <LocalLeader>e')

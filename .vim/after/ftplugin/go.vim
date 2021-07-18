@@ -9,8 +9,8 @@ call filetype#UndoPlugin('setlocal shiftwidth< softtabstop< expandtab<')
 let b:syntastic_checkers = ['go']
 call filetype#UndoPlugin('unlet b:syntastic_checkers')
 
-nnoremap <buffer> <LocalLeader>=  :Fmt<CR>
+nnoremap <buffer> <LocalLeader>=  :<C-U>Fmt<CR>
 call filetype#UndoPlugin('nunmap <buffer> <LocalLeader>=')
 
-nnoremap <buffer> <LocalLeader>i  :Import <C-R><C-W><CR>
+nnoremap <buffer> <LocalLeader>i  :<C-U>Import <C-R><C-W><CR>
 call filetype#UndoPlugin('nunmap <buffer> <LocalLeader>i')

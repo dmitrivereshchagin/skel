@@ -8,7 +8,7 @@ function! s:Strategy(cmd) abort
   let l:cmd = ['/bin/sh', '-c', s:WithEcho(a:cmd)]
   new
   call term_start(l:cmd, {'term_name': a:cmd, 'curwin': 1})
-  nnoremap <buffer> q  :bdelete<CR>
+  nnoremap <buffer> q  :<C-U>bdelete<CR>
 endfunction
 
 function! s:WithEcho(cmd) abort
