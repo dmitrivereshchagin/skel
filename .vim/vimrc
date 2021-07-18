@@ -8,7 +8,6 @@ silent! execute pathogen#infect('local/bundle/{}', 'bundle/{}')
 set fileencodings=ucs-bom,utf-8,koi8-r
 
 set cpoptions-=a cpoptions-=A
-set pastetoggle=<F2>
 
 set incsearch
 set ignorecase smartcase
@@ -173,9 +172,10 @@ nnoremap <Leader>ts  :TestSuite<CR>
 nnoremap <Leader>tl  :TestLast<CR>
 nnoremap <Leader>tg  :TestVisit<CR>
 
-if exists('#fedora')
-  autocmd! fedora BufReadPost *
-endif
+
+" Toggle 'paste' only in Insert mode.
+set pastetoggle=<C-_>
+noremap <C-_>  <Nop>
 
 augroup vimrc_paste
   autocmd!
@@ -186,5 +186,9 @@ augroup vimrc_undofile
   autocmd!
   autocmd BufWritePre {,/usr,/var}/tmp/*  setlocal noundofile
 augroup END
+
+if exists('#fedora')
+  autocmd! fedora BufReadPost *
+endif
 
 runtime local/vimrc
