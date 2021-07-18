@@ -66,8 +66,11 @@ set autowrite
 set autoread
 
 set history=1000
-set wildmenu
 set wildmode=longest:full,full
+if exists('+wildignorecase')
+  set wildignorecase
+endif
+set wildmenu
 set wildoptions=tagfile
 
 if executable('ack')
