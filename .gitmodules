@@ -10,6 +10,10 @@
 	path = .vim/bundle/editorconfig
 	url = https://github.com/editorconfig/editorconfig-vim.git
 
+[submodule "vim-elixir"]
+	path = .vim/bundle/elixir
+	url = https://github.com/elixir-editors/vim-elixir.git
+
 [submodule "vim-emmet"]
 	path = .vim/bundle/emmet
 	url = https://github.com/mattn/emmet-vim.git
