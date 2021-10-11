@@ -65,6 +65,8 @@ endif
 set autowrite
 set autoread
 
+set directory=$MYVIM/swap//
+
 set history=1000
 set wildmode=longest:full,full
 if exists('+wildignorecase')
@@ -106,7 +108,6 @@ let g:lion_squeeze_spaces = 1
 
 let g:netrw_bufsettings = 'noma nomod nonu nobl nowrap ro rnu'
 let g:netrw_banner      = 0
-let g:netrw_list_hide   = '\v\C%(\~|\.swp)\*?$'
 let g:netrw_timefmt     = '%a %d %b %Y %H:%M:%S'
 
 let g:sneak#map_netrw = 0
