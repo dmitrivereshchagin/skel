@@ -11,7 +11,7 @@ function! s:Strategy(cmd) abort
 endfunction
 
 function! s:WithEcho(cmd) abort
-  return join(['echo', shellescape(a:cmd), ';', a:cmd])
+  return printf("printf '%%s\\n' %s ; %s", shellescape(a:cmd), a:cmd)
 endfunction
 
 let g:test#custom_strategies = {'mine': function('s:Strategy')}
