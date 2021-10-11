@@ -2,7 +2,8 @@
 
 function! s:HasPatch(major, minor, patch) abort
   let l:version = a:major * 100 + a:minor
-  return l:version < v:version + has('patch' . a:patch)
+  return v:version > l:version ||
+      \ v:version == l:version && has('patch' . a:patch)
 endfunction
 
 function! has#(feature) abort
