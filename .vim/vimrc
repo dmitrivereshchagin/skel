@@ -1,7 +1,12 @@
 " ~/.vim/vimrc
 
+if !exists('$VIM_CONFIG_HOME')
+  let $VIM_CONFIG_HOME = xdg#ConfigHome() . '/vim'
+endif
+set runtimepath^=$VIM_CONFIG_HOME runtimepath+=$VIM_CONFIG_HOME/after
+
 runtime bundle/pathogen/autoload/pathogen.vim
-silent! execute pathogen#infect('local/bundle/{}', 'bundle/{}')
+silent! execute pathogen#infect()
 
 if !exists('$VIM_STATE_HOME')
   let $VIM_STATE_HOME = xdg#StateHome() . '/vim'
@@ -202,5 +207,3 @@ augroup END
 if exists('#fedora')
   autocmd! fedora BufReadPost *
 endif
-
-runtime local/vimrc

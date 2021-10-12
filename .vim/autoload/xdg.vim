@@ -1,7 +1,8 @@
 " ~/.vim/autoload/xdg.vim
 
 let s:defaults = {
-    \ 'XDG_STATE_HOME': $HOME . '/.local/state',
+    \ 'XDG_CONFIG_HOME': $HOME . '/.config',
+    \ 'XDG_STATE_HOME':  $HOME . '/.local/state',
     \}
 
 function! s:Home(name) abort
@@ -10,6 +11,10 @@ function! s:Home(name) abort
     return s:defaults[a:name]
   endif
   return l:path
+endfunction
+
+function! xdg#ConfigHome() abort
+  return s:Home('XDG_CONFIG_HOME')
 endfunction
 
 function! xdg#StateHome() abort
