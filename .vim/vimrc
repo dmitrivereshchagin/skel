@@ -1,9 +1,12 @@
 " ~/.vim/vimrc
 
-let $MYVIM = expand('$HOME/.vim')
-
 runtime bundle/pathogen/autoload/pathogen.vim
 silent! execute pathogen#infect('local/bundle/{}', 'bundle/{}')
+
+if !exists('$VIM_STATE_HOME')
+  let $VIM_STATE_HOME = xdg#StateHome() . '/vim'
+endif
+call os#MkdirAll($VIM_STATE_HOME, 0700)
 
 set fileencodings=ucs-bom,utf-8,koi8-r
 
@@ -43,7 +46,8 @@ endif
 set confirm
 set visualbell t_vb=
 
-set undofile undodir=$MYVIM/undo
+set undofile
+set undodir=$VIM_STATE_HOME/undo// | call os#MkdirAll(&undodir, 0700)
 set backspace=indent,eol,start
 set formatoptions+=l1
 if has#('patch-7.3.541')
@@ -65,7 +69,7 @@ endif
 set autowrite
 set autoread
 
-set directory=$MYVIM/swap//
+set directory=$VIM_STATE_HOME/swap// | call os#MkdirAll(&directory, 0700)
 
 set history=1000
 set wildmode=longest:full,full
@@ -86,7 +90,8 @@ set iminsert=0 imsearch=-1
 set virtualedit=block
 set sessionoptions-=options
 set viewoptions-=options
-set viminfo=!,'100,<50,s10,h,n$MYVIM/.viminfo
+set viewdir=$VIM_STATE_HOME/view | call os#MkdirAll(&viewdir, 0700)
+set viminfo=!,'100,<50,s10,h,n$VIM_STATE_HOME/viminfo
 
 filetype plugin indent on
 
@@ -106,6 +111,7 @@ let g:user_emmet_leader_key = '<C-\>'
 
 let g:lion_squeeze_spaces = 1
 
+let g:netrw_home        = $VIM_STATE_HOME
 let g:netrw_bufsettings = 'noma nomod nonu nobl nowrap ro rnu'
 let g:netrw_banner      = 0
 let g:netrw_timefmt     = '%a %d %b %Y %H:%M:%S'
