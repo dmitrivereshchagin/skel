@@ -98,6 +98,9 @@ set viewoptions-=options
 set viewdir=$VIM_STATE_HOME/view | call os#MkdirAll(&viewdir, 0700)
 set viminfo=!,'100,<50,s10,h,n$VIM_STATE_HOME/viminfo
 
+" modifyOtherKeys breaks <C-_> mapping in xterm.
+set t_TI= t_TE=
+
 filetype plugin indent on
 
 if !exists('g:syntax_on')
