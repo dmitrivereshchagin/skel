@@ -182,6 +182,7 @@ nnoremap <expr> j  v:count ? 'j' : 'gj'
 nnoremap <expr> k  v:count ? 'k' : 'gk'
 
 nnoremap <Leader>b  :<C-U>buffers<CR>
+nnoremap <Leader>B  :<C-U>buffers!<CR>
 nnoremap <Leader>x  :<C-U>bdelete<CR>
 
 nnoremap <Leader>m  :<C-U>marks<CR>
