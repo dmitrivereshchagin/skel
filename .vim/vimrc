@@ -13,8 +13,6 @@ if !exists('$VIM_STATE_HOME')
 endif
 call os#MkdirAll($VIM_STATE_HOME, 0700)
 
-set fileencodings=ucs-bom,utf-8,koi8-r
-
 set cpoptions-=a cpoptions-=A
 
 set incsearch
@@ -44,10 +42,10 @@ set tabline=%!tabline#()
 
 set notitle
 
-set noshowcmd
 if has#('patch-8.1.1270')
   set shortmess-=S
 endif
+set noshowcmd
 set confirm
 set visualbell t_vb=
 
@@ -91,6 +89,8 @@ endif
 
 set keymap=russian
 set iminsert=0 imsearch=-1
+
+set fileencodings=ucs-bom,utf-8,koi8-r
 
 set virtualedit=block
 set sessionoptions-=options
