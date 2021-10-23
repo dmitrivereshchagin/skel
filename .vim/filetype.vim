@@ -10,6 +10,7 @@ augroup filetypedetect
   autocmd BufNewFile,BufRead */src/*.app.src  setfiletype erlang
   autocmd BufNewFile,BufRead elvis.config     setfiletype erlang
   autocmd BufNewFile,BufRead rebar.config     setfiletype erlang
+  autocmd BufNewFile,BufRead rebar.lock       setfiletype erlang
   autocmd BufNewFile,BufRead sys.config       setfiletype erlang
   autocmd BufNewFile,BufRead sys[._]*.config  setfiletype erlang
   autocmd BufNewFile,BufRead *[._]sys.config  setfiletype erlang
