@@ -10,7 +10,7 @@ function! s:Pattern(word) abort
 endfunction
 
 " Setting 'hlsearch' from a function doesn't work.
-command! -nargs=1 StickyStar
+command -nargs=1 StickyStar
     \ let [@/, &hlsearch] = [s:Pattern(<f-args>), &hlsearch]
 
 nnoremap <Plug>StickyStar

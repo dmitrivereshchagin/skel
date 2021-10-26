@@ -1,6 +1,6 @@
 " ~/.vim/after/ftplugin/elixir/format.vim
 
-command! -buffer Format  call s:Format()
+command -buffer Format  call s:Format()
 call filetype#UndoPlugin('delcommand Format')
 
 if exists('*s:Format')
