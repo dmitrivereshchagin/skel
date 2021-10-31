@@ -3,7 +3,10 @@
 if !exists('$VIM_CONFIG_HOME')
   let $VIM_CONFIG_HOME = xdg#ConfigHome() . '/vim'
 endif
-set runtimepath^=$VIM_CONFIG_HOME runtimepath+=$VIM_CONFIG_HOME/after
+
+" Place for local plugins and overrides.
+set runtimepath^=$VIM_CONFIG_HOME
+set runtimepath+=$VIM_CONFIG_HOME/after
 
 runtime bundle/pathogen/autoload/pathogen.vim
 silent! execute pathogen#infect()
@@ -108,6 +111,35 @@ if !exists('g:syntax_on')
 endif
 
 colorscheme mine
+
+" ftplugin/go/fmt.vim
+if executable('goimports')
+  let g:gofmt_command = 'goimports'
+endif
+
+" indent/html.vim
+let g:html_indent_script1  = 'auto'
+let g:html_indent_style1   = 'auto'
+let g:html_indent_autotags = 'html'
+
+" indent/vim.vim
+let g:vim_indent_cont = 4
+
+" syntax/c.vim
+unlet! g:c_comment_strings
+let g:c_no_curly_error = 1
+
+" syntax/go.vim
+let g:go_highlight_trailing_whitespace_error = 0
+
+" syntax/html.vim
+let g:html_no_rendering = 1
+
+" syntax/perl.vim
+let g:perl_include_pod = 0
+
+" syntax/vim.vim
+let g:vimsyn_noerror = 1
 
 let g:statusline#flags =
     \ ['FugitiveStatusline', 'ALEStatuslineFlag', 'SyntasticStatuslineFlag']
