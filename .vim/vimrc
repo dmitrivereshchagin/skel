@@ -138,6 +138,9 @@ let g:html_no_rendering = 1
 " syntax/perl.vim
 let g:perl_include_pod = 0
 
+" syntax/sh.vim
+let g:sh_no_error = 1
+
 " syntax/vim.vim
 let g:vimsyn_noerror = 1
 
