@@ -2,9 +2,8 @@
 # ~/.mutt/muttrc
 #
 
-set my_muttdir=~/.mutt
-
-source $my_muttdir/muttrc.private
+set my_muttrc=$MUTT_CONFIG_HOME/muttrc.private
+source $my_muttrc
 
 set smtp_url=smtps://$my_user@smtp.gmail.com
 set smtp_pass=$my_pass
@@ -53,9 +52,9 @@ set attribution='On %{!%a, %b %d}, %n wrote:'
 set edit_headers
 set text_flowed
 
-set alias_file=$my_muttdir/muttrc.private
+set alias_file=$my_muttrc
 
-set message_cachedir=$my_muttdir/cache
+set message_cachedir=$MUTT_CACHE_HOME
 set header_cache=$message_cachedir
 
 set crypt_use_gpgme
@@ -75,7 +74,7 @@ unignore Cc: Date: From: Reply-To: Subject: To:
 unhdr_order *
 hdr_order Date: From: To: Subject:
 
-source $my_muttdir/muttrc.colors
+source ~/.mutt/muttrc.colors
 
 bind index G imap-fetch-mail
 
