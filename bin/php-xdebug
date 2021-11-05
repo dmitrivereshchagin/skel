@@ -1,10 +1,17 @@
 #!/bin/sh
 
-export XDEBUG_CONFIG=${XDEBUG_CONFIG-remote_enable=1}
+: "${XDEBUG_CONFIG=client_port=9000}"
+export XDEBUG_CONFIG
 
-if ! php -m | grep -Fqx xdebug
+: "${XDEBUG_MODE=develop,debug}"
+export XDEBUG_MODE
+
+set -- -d xdebug.start_with_request=yes "$@"
+
+if ! php -m | grep -Fiqx xdebug
 then
-    set -- -d zend_extension="${PHP_ZEND_EXTENSION_XDEBUG:-xdebug.so}" "$@"
+    xdebug=${PHP_XDEBUG:-xdebug.so}
+    set -- -d zend_extension="$xdebug" "$@"
 fi
 
 exec php "$@"
