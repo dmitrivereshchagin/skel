@@ -1,22 +1,14 @@
 " ~/.vim/autoload/xdg.vim
 
-let s:defaults = {
-    \ 'XDG_CONFIG_HOME': $HOME . '/.config',
-    \ 'XDG_STATE_HOME':  $HOME . '/.local/state',
-    \}
-
-function! s:Home(name) abort
+function! s:Path(name, default) abort
   let l:path = os#Getenv(a:name)
-  if l:path[:0] isnot# '/'
-    return s:defaults[a:name]
-  endif
-  return l:path
+  return l:path[:0] is# '/' ? l:path : a:default
 endfunction
 
 function! xdg#ConfigHome() abort
-  return s:Home('XDG_CONFIG_HOME')
+  return s:Path('XDG_CONFIG_HOME', $HOME . '/.config')
 endfunction
 
 function! xdg#StateHome() abort
-  return s:Home('XDG_STATE_HOME')
+  return s:Path('XDG_STATE_HOME', $HOME . '/.local/state')
 endfunction
