@@ -1,5 +1,8 @@
 #!/bin/sh
 
+: "${SCREENRC:=$HOME/.screen/screenrc}"
+export SCREENRC
+
 case $TERM in
 *-256color) set -- -T screen-256color "$@"
 esac
