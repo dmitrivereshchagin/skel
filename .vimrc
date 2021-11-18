@@ -1,3 +1,0 @@
-" ~/.vimrc
-
-runtime vimrc

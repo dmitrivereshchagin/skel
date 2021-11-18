@@ -22,7 +22,6 @@ set incsearch
 set ignorecase smartcase
 
 set tags=./tags;,tags
-set nocscopetag
 
 set scrolloff=1
 if exists('+breakindent')
@@ -48,7 +47,6 @@ set notitle
 if has#('patch-8.1.1270')
   set shortmess-=S
 endif
-set noshowcmd
 set confirm
 set visualbell t_vb=
 
@@ -99,7 +97,7 @@ set virtualedit=block
 set sessionoptions-=options
 set viewoptions-=options
 set viewdir=$VIM_STATE_HOME/view | call os#MkdirAll(&viewdir, 0700)
-set viminfo=!,'100,<50,s10,h,n$VIM_STATE_HOME/viminfo
+set viminfo+=!,n$VIM_STATE_HOME/viminfo
 
 " modifyOtherKeys breaks <C-_> mapping in xterm.
 set t_TI= t_TE=
@@ -126,7 +124,6 @@ let g:html_indent_autotags = 'html'
 let g:vim_indent_cont = 4
 
 " syntax/c.vim
-unlet! g:c_comment_strings
 let g:c_no_curly_error = 1
 
 " syntax/go.vim
@@ -248,7 +245,3 @@ augroup vimrc_undofile
   autocmd!
   autocmd BufWritePre {,/usr,/var}/tmp/*  setlocal noundofile
 augroup END
-
-if exists('#fedora')
-  autocmd! fedora BufReadPost *
-endif

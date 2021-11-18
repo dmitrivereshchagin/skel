@@ -78,7 +78,6 @@ alias topu='top -U $USERNAME'
 unalias vim 2>/dev/null
 unfunction vim 2>/dev/null
 alias vi=vim
-alias view='vim -R'
 
 bindkey '\eq' push-line-or-edit
 
