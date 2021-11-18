@@ -1,4 +1,4 @@
 " ~/.vim/after/ftplugin/markdown.vim
 
-setlocal textwidth=72
-call filetype#UndoPlugin('setlocal textwidth<')
+setlocal formatoptions+=ro textwidth=72
+call filetype#UndoPlugin('setlocal formatoptions< textwidth<')
