@@ -23,3 +23,9 @@ endfunction
 function! filetype#UndoIndent(command, ...) abort
   call s:AddCommand('b:undo_indent', a:command, a:000)
 endfunction
+
+function! filetype#Set(filetype) abort
+  if &filetype !=# a:filetype
+    let &filetype = a:filetype
+  endif
+endfunction

@@ -1,5 +1,5 @@
 " ~/.vim/after/ftdetect/markdown.vim
 
 " vint: -ProhibitAutocmdWithNoGroup
-autocmd BufNewFile,BufRead *.md  set filetype=markdown
+autocmd BufNewFile,BufRead *.md  call filetype#Set('markdown')
 " vint: +ProhibitAutocmdWithNoGroup
