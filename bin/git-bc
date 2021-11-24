@@ -1,8 +1,5 @@
 #!/bin/sh
 
-branch=$(git symbolic-ref --short HEAD) ||
-    exit
+branch=$(git symbolic-ref --short HEAD) || exit
 
-printf %s "$branch" |
-    xclip -selection primary -filter |
-    xclip -selection clipboard
+printf %s "$branch" | xsel --input --clipboard
