@@ -63,8 +63,8 @@ inoreabbrev <buffer> ieu  -include_lib("eunit/include/eunit.hrl").
 inoreabbrev <buffer> ikl  -include_lib("kernel/include/logger.hrl").
 call filetype#UndoPlugin('iunabbrev <buffer>', ['ict', 'ieu', 'ikl'])
 
-inoreabbrev <buffer> <expr> 2=  '%%'  . repeat('=', 68)
-inoreabbrev <buffer> <expr> 3=  '%%%' . repeat('=', 67)
+inoreabbrev <buffer> <expr> 2=  '%%'  . repeat('=', 70 - 2)
+inoreabbrev <buffer> <expr> 3=  '%%%' . repeat('=', 70 - 3)
 call filetype#UndoPlugin('iunabbrev <buffer>', ['2=', '3='])
 
 inoreabbrev <buffer> <expr> !=  v:char is# '=' ? '=/' : '/='
