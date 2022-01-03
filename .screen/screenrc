@@ -2,7 +2,7 @@
 # ~/.screen/screenrc
 #
 
-backtick 1 30 30 $HOME/.screen/backticks/battery
+backtick 1 30 30 $HOME/.screen/bin/battery
 
 altscreen       on
 defscrollback   4000
