@@ -5,4 +5,4 @@ jq=/usr/bin/jq
 { test -t 0 || ! test -t 1 ; } &&
     exec "$jq" "${@:-.}"
 
-"$jq" -C "${@:-.}" | less -eFRX
+"$jq" -C "${@:-.}" | less -R

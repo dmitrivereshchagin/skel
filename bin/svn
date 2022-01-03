@@ -6,7 +6,7 @@ test -t 1 || exec "$svn" "$@"
 
 case $1 in
 blame|ann|help|h|status|st)
-    "$svn" "$@" | less -eFSX
+    "$svn" "$@" | less
     ;;
 
 diff|di|log)
@@ -21,7 +21,7 @@ diff|di|log)
             s/^@.*/${e}[36m&${e}[m/
         }
         " |
-    less -eFRSX
+    less -R
     ;;
 
 *)

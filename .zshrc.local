@@ -27,7 +27,7 @@ xsource $HOME/.kiex/scripts/kiex
 export GOPATH=$HOME/go
 path=($GOPATH/bin $HOME/.local/opt/go/bin $path)
 
-export LESS=-iMQR
+export LESS=eFiQRX
 export LESSHISTFILE=-
 
 path=($HOME/.local/opt/mit-scheme/bin $path)

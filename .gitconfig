@@ -4,7 +4,7 @@
 
 [core]
 	excludesFile = ~/.cvsignore
-	pager = diff-highlight | less -eFRSX
+	pager = diff-highlight | less -R
 
 [alias]
 	ap = add --patch
