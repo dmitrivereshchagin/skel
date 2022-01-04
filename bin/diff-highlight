@@ -5,8 +5,9 @@ set -- \
     /usr/share/git-core/contrib/diff-highlight \
     /usr/share/git/diff-highlight/diff-highlight
 
-for pathname do
-    test -x "$pathname" && exec "$pathname"
+for diff_highlight do
+    # The file might not be executable, but it's known to be a Perl script.
+    test -f "$diff_highlight" && exec perl "$diff_highlight"
 done
 
 exec cat
