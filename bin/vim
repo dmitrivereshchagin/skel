@@ -1,6 +1,6 @@
 #!/bin/sh
 
-: "${MYVIMRC:=$HOME/.vim/vimrc}"
+MYVIMRC=$HOME/.vim/vimrc
 export MYVIMRC
 
 # Sometimes it's easier to skip system vimrc file than override its settings.

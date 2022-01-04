@@ -1,8 +1,6 @@
 " ~/.vim/vimrc
 
-if empty($VIM_CONFIG_HOME)
-  let $VIM_CONFIG_HOME = xdg#ConfigHome() . '/vim'
-endif
+let $VIM_CONFIG_HOME = xdg#ConfigHome() . '/vim'
 
 " Place for local plugins and overrides.
 set runtimepath^=$VIM_CONFIG_HOME
@@ -11,9 +9,7 @@ set runtimepath+=$VIM_CONFIG_HOME/after
 runtime bundle/pathogen/autoload/pathogen.vim
 silent! execute pathogen#infect()
 
-if empty($VIM_STATE_HOME)
-  let $VIM_STATE_HOME = xdg#StateHome() . '/vim'
-endif
+let $VIM_STATE_HOME = xdg#StateHome() . '/vim'
 call os#MkdirAll($VIM_STATE_HOME, 0700)
 
 set cpoptions-=a cpoptions-=A

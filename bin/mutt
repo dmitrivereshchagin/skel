@@ -2,13 +2,12 @@
 
 . xdg-basedir.sh
 
-: "${MUTT_CACHE_HOME:=$(xdg_cache_home)/mutt}"
+MUTT_CACHE_HOME=$(xdg_cache_home)/mutt
 export MUTT_CACHE_HOME
-
 # shellcheck disable=SC2174
 mkdir -p -m 0700 -- "$MUTT_CACHE_HOME"
 
-: "${MUTT_CONFIG_HOME:=$(xdg_config_home)/mutt}"
+MUTT_CONFIG_HOME=$(xdg_config_home)/mutt
 export MUTT_CONFIG_HOME
 
 exec /usr/bin/mutt -n "$@"
