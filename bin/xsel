@@ -1,0 +1,9 @@
+#!/bin/sh
+
+. xdg-basedir.sh
+
+state_home=$(xdg_state_home)/xsel
+# shellcheck disable=SC2174
+mkdir -p -m 0700 -- "$state_home"
+
+exec /usr/bin/xsel --logfile "$state_home/log" "$@"
