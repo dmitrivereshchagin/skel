@@ -1,0 +1,11 @@
+#!/bin/sh
+
+test -t 1 || exec jq "${@-.}"
+
+if test -t 0
+then
+    # Prevent jq and less from fighting for stdin.
+    jq() { command jq "$@" </dev/null ; }
+fi
+
+jq --color-output "${@-.}" | less -R
