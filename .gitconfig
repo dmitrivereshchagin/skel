@@ -45,9 +45,9 @@
 	patternType = perl
 
 [merge]
-	tool = vimfugitive
+	tool = vim-fugitive
 
-[mergetool "vimfugitive"]
+[mergetool "vim-fugitive"]
 	cmd = vim -c Gdiffsplit! "$MERGED"
 	trustExitCode = true
 
