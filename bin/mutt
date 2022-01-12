@@ -1,6 +1,6 @@
 #!/bin/sh
 
-. xdg-basedir.sh
+. xdg.sh
 
 MUTT_CACHE_HOME=$(xdg_cache_home)/mutt
 export MUTT_CACHE_HOME

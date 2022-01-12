@@ -1,6 +1,6 @@
 #!/bin/sh
 
-. xdg-basedir.sh
+. xdg.sh
 
 state_home=$(xdg_state_home)/xsel
 # shellcheck disable=SC2174
