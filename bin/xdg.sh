@@ -1,5 +1,5 @@
 __xdg_path() {
-    case $(eval echo "\${$1-}") in
+    case $(eval echo "\$$1") in
     /*) eval echo "\$$1" ;;
     *)  echo "$2"
     esac
