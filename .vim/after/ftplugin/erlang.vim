@@ -26,10 +26,10 @@ let b:match_words =
 call filetype#UndoPlugin('unlet b:match_words')
 
 let b:surround_{char2nr('.')} = "<<\"\r\">>"
-call filetype#UndoPlugin("unlet b:surround_{char2nr('.')}")
+call filetype#UndoPlugin('unlet b:surround_' . char2nr('.'))
 
 let b:surround_{char2nr('>')} = "<<\r>>"
-call filetype#UndoPlugin("unlet b:surround_{char2nr('>')}")
+call filetype#UndoPlugin('unlet b:surround_' . char2nr('>'))
 
 " It's assumed that 'autowrite' and 'autoread' are set.
 command -buffer Format
