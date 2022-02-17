@@ -13,36 +13,29 @@ READNULLCMD=$PAGER
 
 export EDITOR=vim
 
+xsource $HOME/.asdf/asdf.sh
+export KERL_BUILD_DOCS=yes
+export KERL_DOC_TARGETS='man chunks'
+
 export BLOCK_SIZE=human-readable
 
-export COMPOSER_HOME=$HOME/.composer
-path=($COMPOSER_HOME/vendor/bin $path)
-
 export ERL_AFLAGS='+pc unicode -kernel shell_history enabled'
-xsource $HOME/erlang/.default/activate
-path=($HOME/.cache/rebar3/bin $path)
-
-xsource $HOME/.kiex/scripts/kiex
-
-export GOPATH=$HOME/go
-path=($GOPATH/bin $HOME/.local/opt/go/bin $path)
 
 export LESS=eFiQRX
 export LESSHISTFILE=-
 
-path=($HOME/.local/opt/mit-scheme/bin $path)
-
 export MANOPT='--no-hyphenation --no-justification'
 export MANWIDTH=80
 
-path=($HOME/.nodenv/bin $path)
-if (( ${+commands[nodenv]} )) eval "$(nodenv init - --no-rehash)"
-
 export PERLDOC=-oman
 
-path=($HOME/.local/opt/universal-ctags/bin $path)
-
-path=($HOME/.local/bin $HOME/bin $path)
+path=(
+    $HOME/.local/bin
+    $HOME/bin
+    $HOME/.local/opt/universal-ctags/bin
+    $HOME/.local/opt/mit-scheme/bin
+    $path
+)
 
 cdpath=(.. $HOME $HOME/src/*(/N))
 
@@ -96,13 +89,8 @@ function __prompt_remote_host {
     if (( ! ${+STY} )) REPLY=${SSH_CONNECTION+%m }
 }
 
-function __prompt_kerl {
-    if (( ${+commands[kerl]} )) REPLY=$(kerl prompt '<%s> ')
-}
-
 grml_theme_add_token cwd '%1~ ' '%B%F{blue}' %f%b
 grml_theme_add_token remote-host -i __prompt_remote_host
-grml_theme_add_token kerl -f __prompt_kerl %B %b
 
 zstyle :prompt:grml:left:setup items rc kerl remote-host cwd vcs percent
 zstyle :prompt:grml:right:setup use-rprompt no

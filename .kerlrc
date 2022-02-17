@@ -1,8 +1,0 @@
-#
-# ~/.kerlrc
-#
-
-KERL_CONFIGURE_OPTIONS=--enable-builtin-zlib
-KERL_BUILD_BACKEND=tarball
-KERL_INSTALL_MANPAGES=yes
-KERL_DEFAULT_INSTALL_DIR=$HOME/erlang

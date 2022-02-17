@@ -1,5 +1,0 @@
-#!/bin/sh
-
-php=${PHP_EXECUTABLE:-/usr/bin/php}
-
-exec "$php" "$@"
