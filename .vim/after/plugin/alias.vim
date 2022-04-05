@@ -12,6 +12,9 @@ Alias tta  tab\ tag
 Alias tts  tab\ tselect
 Alias ww   write!
 
+Alias man  Man
+Alias tam  tab\ Man
+
 Alias bt   Breakpoint
 Alias btr  BreakpointRemove
 Alias vt   VdebugTrace
