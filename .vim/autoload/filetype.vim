@@ -24,8 +24,10 @@ function! filetype#UndoIndent(command, ...) abort
   call s:AddCommand('b:undo_indent', a:command, a:000)
 endfunction
 
-function! filetype#Set(filetype) abort
-  if &filetype !=# a:filetype
-    let &filetype = a:filetype
+function! filetype#Ensure(filetype) abort
+  if &filetype is# a:filetype
+    " Don't trigger FileType event again for the same file type.
+    return
   endif
+  let &filetype = a:filetype
 endfunction
