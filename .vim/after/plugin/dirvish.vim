@@ -1,12 +1,12 @@
-" ~/.vim/after/plugin/netrw.vim
+" ~/.vim/after/plugin/dirvish.vim
 
-if exists(':Explore') != 2
+if exists(':Dirvish') != 2
   finish
 endif
 
-augroup after_netrw
+augroup after_dirvish
   autocmd!
   autocmd VimEnter *  if !argc() && line2byte('$') == -1
-  autocmd VimEnter *    Explore
+  autocmd VimEnter *    Dirvish
   autocmd VimEnter *  endif
 augroup END

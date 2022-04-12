@@ -149,16 +149,12 @@ let g:ale_sign_style_error   = 'S>'
 let g:ale_sign_warning       = '>>'
 let g:ale_sign_style_warning = 'S>'
 
+" Sort dotfiles properly and group directories first.
+let g:dirvish_mode = ':sort | sort #\v.*/#'
+
 let g:user_emmet_leader_key = '<C-\>'
 
 let g:lion_squeeze_spaces = 1
-
-let g:netrw_home        = $VIM_STATE_HOME
-let g:netrw_bufsettings = 'noma nomod nonu nobl nowrap ro rnu'
-let g:netrw_banner      = 0
-let g:netrw_timefmt     = '%a %d %b %Y %H:%M:%S'
-
-let g:sneak#map_netrw = 0
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_wq = 0
@@ -195,8 +191,6 @@ cnoremap <C-X>p  <Up>
 
 nnoremap +  <C-W>+
 nnoremap _  <C-W>-
-
-nnoremap -  :<C-U>Explore<CR>
 
 nnoremap <BS>  <C-^>
 
