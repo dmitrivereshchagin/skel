@@ -150,7 +150,8 @@ let g:ale_sign_warning       = '>>'
 let g:ale_sign_style_warning = 'S>'
 
 " Sort dotfiles properly and group directories first.
-let g:dirvish_mode = ':sort | sort #\v.*/#'
+let g:dirvish_mode = ':sort | sort #\v.*/|\ze#'
+let g:dirvish_relative_paths = !has#('conceal')
 
 let g:user_emmet_leader_key = '<C-\>'
 
