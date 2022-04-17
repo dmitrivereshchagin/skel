@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# The file may not be executable, but it's known to be a Shell script.
+. /usr/share/doc/git/contrib/git-jump/git-jump
