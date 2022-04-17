@@ -1,13 +1,6 @@
-#!/bin/sh
+#!/usr/bin/env perl
 
-set -- \
-    /usr/share/doc/git/contrib/diff-highlight/diff-highlight \
-    /usr/share/git-core/contrib/diff-highlight \
-    /usr/share/git/diff-highlight/diff-highlight
+use lib '/usr/share/doc/git/contrib/diff-highlight';
+use DiffHighlight;
 
-for diff_highlight do
-    # The file might not be executable, but it's known to be a Perl script.
-    test -f "$diff_highlight" && exec perl "$diff_highlight"
-done
-
-exec cat
+DiffHighlight::highlight_stdin();
