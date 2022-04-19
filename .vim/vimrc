@@ -7,7 +7,9 @@ set runtimepath^=$VIM_CONFIG_HOME
 set runtimepath+=$VIM_CONFIG_HOME/after
 
 runtime bundle/pathogen/autoload/pathogen.vim
-silent! execute pathogen#infect()
+if exists('*pathogen#infect')
+  execute pathogen#infect('bundle/{}')
+endif
 
 let $VIM_STATE_HOME = xdg#StateHome() . '/vim'
 call os#MkdirAll($VIM_STATE_HOME, 0700)
