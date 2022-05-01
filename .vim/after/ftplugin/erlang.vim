@@ -61,10 +61,13 @@ call filetype#UndoPlugin('iunabbrev <buffer>', ['-o', '-s', '-t'])
 inoreabbrev <buffer> cea  -compile([export_all, nowarn_export_all]).
 call filetype#UndoPlugin('iunabbrev <buffer> cea')
 
+inoreabbrev <buffer> ikl  -include_lib("kernel/include/logger.hrl").
+call filetype#UndoPlugin('iunabbrev <buffer> ikl')
+
 inoreabbrev <buffer> ict  -include_lib("common_test/include/ct.hrl").
 inoreabbrev <buffer> ieu  -include_lib("eunit/include/eunit.hrl").
-inoreabbrev <buffer> ikl  -include_lib("kernel/include/logger.hrl").
-call filetype#UndoPlugin('iunabbrev <buffer>', ['ict', 'ieu', 'ikl'])
+inoreabbrev <buffer> ipe  -include_lib("proper/include/proper.hrl").
+call filetype#UndoPlugin('iunabbrev <buffer>', ['ict', 'ieu', 'ipe'])
 
 inoreabbrev <buffer> <expr> 2=  '%%'  . repeat('=', 70 - 2)
 inoreabbrev <buffer> <expr> 3=  '%%%' . repeat('=', 70 - 3)
