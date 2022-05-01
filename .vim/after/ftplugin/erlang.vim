@@ -49,11 +49,14 @@ call filetype#UndoPlugin('nunmap <buffer> <LocalLeader>=')
 inoreabbrev <buffer> <expr> -m  printf('-module(%s).', expand('%:t:r'))
 call filetype#UndoPlugin('iunabbrev <buffer> -m')
 
+inoreabbrev <buffer> -b  -behaviour
 inoreabbrev <buffer> -c  -callback
+call filetype#UndoPlugin('iunabbrev <buffer>', ['-b', '-c'])
+
 inoreabbrev <buffer> -o  -opaque
 inoreabbrev <buffer> -s  -spec
 inoreabbrev <buffer> -t  -type
-call filetype#UndoPlugin('iunabbrev <buffer>', ['-c', '-o', '-s', '-t'])
+call filetype#UndoPlugin('iunabbrev <buffer>', ['-o', '-s', '-t'])
 
 inoreabbrev <buffer> cea  -compile([export_all, nowarn_export_all]).
 call filetype#UndoPlugin('iunabbrev <buffer> cea')
