@@ -159,6 +159,13 @@ let g:user_emmet_leader_key = '<C-\>'
 
 let g:lion_squeeze_spaces = 1
 
+let g:netrw_home        = $VIM_STATE_HOME
+let g:netrw_bufsettings = 'noma nomod nonu nobl nowrap ro rnu'
+let g:netrw_banner      = 0
+let g:netrw_timefmt     = '%a %d %b %Y %H:%M:%S'
+
+let g:sneak#map_netrw = 0
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_stl_format  = '[!]'
