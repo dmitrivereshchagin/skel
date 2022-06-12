@@ -2,6 +2,10 @@
 	path = .vim/bundle/abolish
 	url = https://github.com/tpope/vim-abolish.git
 
+[submodule "vim-ale"]
+	path = .vim/bundle/ale
+	url = https://github.com/dense-analysis/ale.git
+
 [submodule "vim-commentary"]
 	path = .vim/bundle/commentary
 	url = https://github.com/tpope/vim-commentary.git
