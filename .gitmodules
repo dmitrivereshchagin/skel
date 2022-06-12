@@ -18,17 +18,9 @@
 	path = .vim/bundle/elixir
 	url = https://github.com/elixir-editors/vim-elixir.git
 
-[submodule "vim-emmet"]
-	path = .vim/bundle/emmet
-	url = https://github.com/mattn/emmet-vim.git
-
 [submodule "vim-erlang-motions"]
 	path = .vim/bundle/erlang-motions
 	url = https://github.com/edkolev/erlang-motions.vim.git
-
-[submodule "vim-erlang-omnicomplete"]
-	path = .vim/bundle/erlang-omnicomplete
-	url = https://github.com/vim-erlang/vim-erlang-omnicomplete.git
 
 [submodule "vim-erlang-tags"]
 	path = .vim/bundle/erlang-tags
