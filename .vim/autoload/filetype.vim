@@ -25,7 +25,7 @@ function! filetype#UndoIndent(command, ...) abort
 endfunction
 
 function! filetype#Ensure(filetype) abort
-  if &filetype is# a:filetype
+  if &filetype is# a:filetype && did_filetype()
     " Don't trigger FileType event again for the same file type.
     return
   endif
