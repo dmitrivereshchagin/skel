@@ -14,6 +14,9 @@ call filetype#UndoPlugin('unlet b:ale_linters')
 let b:syntastic_checkers = ['syntaxerl']
 call filetype#UndoPlugin('unlet b:syntastic_checkers')
 
+let b:commentary_format = '%% %s'
+call filetype#UndoPlugin('unlet b:commentary_format')
+
 let b:match_ignorecase = 0
 call filetype#UndoPlugin('unlet b:match_ignorecase')
 
