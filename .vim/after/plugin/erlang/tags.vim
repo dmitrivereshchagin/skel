@@ -5,9 +5,9 @@ function! s:FirstInRuntime(glob) abort
   return get(l:files, 0, '')
 endfunction
 
-let s:script = s:FirstInRuntime('bin/vim_erlang_tags.erl')
+let s:ESCRIPT = s:FirstInRuntime('bin/vim_erlang_tags.erl')
 
-if !empty(s:script)
+if !empty(s:ESCRIPT)
   command! -nargs=* -complete=file ErlangTags
-      \ execute '!escript' s:script empty(<q-args>) ? '.' : <q-args>
+      \ execute '!escript' s:ESCRIPT empty(<q-args>) ? '.' : <q-args>
 endif
