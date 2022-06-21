@@ -36,18 +36,17 @@ let b:surround_{char2nr('>')} = "<<\r>>"
 call filetype#UndoPlugin('unlet b:surround_' . char2nr('>'))
 
 " It's assumed that 'autowrite' and 'autoread' are set.
-command -buffer Format
-    \ execute '!emacs --batch'
-    \ '--find-file=' . shellescape(expand('%:p'))
+command -buffer Indent
+    \ execute '!emacs --batch --find-file=' . shellescape(expand('%:p'))
     \ '--eval="(setq-default indent-tabs-mode nil)"'
     \ '--eval="(erlang-mode)"'
     \ '--eval="(indent-region (point-min) (point-max))"'
     \ '--eval="(setq retabify (if indent-tabs-mode ''tabify ''untabify))"'
     \ '--eval="(funcall retabify (point-min) (point-max))"'
     \ '--eval="(save-buffer 0)"'
-call filetype#UndoPlugin('delcommand Format')
+call filetype#UndoPlugin('delcommand Indent')
 
-nnoremap <buffer> <LocalLeader>=  :<C-U>Format<CR>
+nnoremap <buffer> <LocalLeader>=  :<C-U>Indent<CR>
 call filetype#UndoPlugin('nunmap <buffer> <LocalLeader>=')
 
 inoreabbrev <buffer> <expr> -m  printf('-module(%s).', expand('%:t:r'))
