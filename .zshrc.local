@@ -1,25 +1,24 @@
 #
 # ~/.zshrc.local
 #
-# This file is intended to be used with Grml's zshrc
+# This file is read at the end of Grml's zshrc
 #
 # <https://git.grml.org/f/grml-etc-core/etc/zsh/zshrc>
 #
 
 setopt CSH_NULL_GLOB
 
-export PAGER=less
+HISTFILE=$ZSH_STATE_HOME/history
+
+export EDITOR=vim PAGER=less
 READNULLCMD=$PAGER
-
-export EDITOR=vim
-
-xsource $HOME/.asdf/asdf.sh
-export KERL_BUILD_DOCS=yes
-export KERL_DOC_TARGETS='man chunks'
 
 export BLOCK_SIZE=human-readable
 
 export ERL_AFLAGS='+pc unicode -kernel shell_history enabled'
+
+export KERL_BUILD_DOCS=yes
+export KERL_DOC_TARGETS='man chunks'
 
 export LESS=eFiQRX
 export LESSHISTFILE=-
@@ -68,9 +67,11 @@ alias mmv='noglob zmv -W'
 alias psu='ps -o pid,user,tty,etime,args -U $USERNAME'
 alias topu='top -U $USERNAME'
 
-unalias vim 2>/dev/null
-unfunction vim 2>/dev/null
+unhash -a vim 2>/dev/null
+unhash -f vim 2>/dev/null
 alias vi=vim
+
+HELP_ZLE_CACHE_FILE=$ZSH_CACHE_HOME/helpzle
 
 bindkey '\eq' push-line-or-edit
 
@@ -93,7 +94,7 @@ grml_theme_add_token cwd '%1~ ' '%B%F{blue}' %f%b
 grml_theme_add_token remote-host -i __prompt_remote_host
 
 zstyle :prompt:grml:left:setup items rc kerl remote-host cwd vcs percent
-zstyle :prompt:grml:right:setup use-rprompt no
+zstyle :prompt:grml:right:setup use-rprompt false
 
 zstyle ':vcs_info:*' enable git hg svn
 
@@ -102,3 +103,6 @@ zstyle ':vcs_info:*' actionformats \
 
 zstyle ':vcs_info:*' formats \
     '%F{magenta}[%F{green}%b%F{magenta}]%f ' %s:%r
+
+for rc ($ZSH_CONFIG_HOME/rc.d/*.zsh(.N)) source $rc
+unset rc
