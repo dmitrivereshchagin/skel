@@ -1,13 +1,12 @@
 " ~/.vim/after/syntax/markdown.vim
 
-highlight link markdownH1 Comment
-highlight link markdownH2 Comment
-highlight link markdownH3 Comment
-highlight link markdownH4 Comment
-highlight link markdownH5 Comment
-highlight link markdownH6 Comment
-
-highlight link markdownHeadingDelimiter Comment
-highlight link markdownHeadingRule Comment
-
-highlight link markdownRule Comment
+highlight link markdownHeading           Comment
+highlight link markdownH1                markdownHeading
+highlight link markdownH2                markdownHeading
+highlight link markdownH3                markdownHeading
+highlight link markdownH4                markdownHeading
+highlight link markdownH5                markdownHeading
+highlight link markdownH6                markdownHeading
+highlight link markdownHeadingDelimiter  markdownHeading
+highlight link markdownHeadingRule       markdownHeading
+highlight link markdownError             NONE

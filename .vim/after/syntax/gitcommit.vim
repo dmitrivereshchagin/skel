@@ -1,3 +1,3 @@
 " ~/.vim/after/syntax/gitcommit.vim
 
-highlight link gitCommitOverflow Error
+highlight link gitCommitOverflow  Error

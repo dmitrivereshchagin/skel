@@ -11,4 +11,4 @@ syntax region erlangTypeSpec
     \ contains=erlangComment
     \ keepend
 
-highlight link erlangTypeSpec Comment
+highlight link erlangTypeSpec  Comment

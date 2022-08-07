@@ -1,6 +1,5 @@
 " ~/.vim/after/syntax/vim.vim
 
-silent! syntax clear vimCommentString
-silent! syntax clear vimCommentTitle
-
-highlight link vimScriptDelim NONE
+highlight link vimCommentString  vimComment
+highlight link vimCommentTitle   vimComment
+highlight link vimScriptDelim    NONE

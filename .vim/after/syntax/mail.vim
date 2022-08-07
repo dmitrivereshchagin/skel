@@ -1,5 +1,5 @@
 " ~/.vim/after/syntax/mail.vim
 
-silent! syntax clear mailEmail
-
-highlight link mailQuoted2 mailQuoted1
+highlight link mailQuoted   Comment
+highlight link mailQuoted1  mailQuoted
+highlight link mailQuoted2  mailQuoted

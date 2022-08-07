@@ -1,12 +1,10 @@
 " ~/.vim/after/syntax/elixir.vim
 
-silent! syntax clear elixirUnusedVariable
+syntax match elixirDoc /@\w*doc\>/
 
 syntax cluster elixirDocStringContained contains=elixirTodo,@Spell
 
-syntax match elixirDocAttribute /@\w*doc\>/
-
-highlight link elixirDocAttribute Comment
-
-highlight link elixirDocSigilDelimiter  Comment
-highlight link elixirDocStringDelimiter Comment
+highlight link elixirDoc                 Comment
+highlight link elixirDocSigilDelimiter   elixirDoc
+highlight link elixirDocStringDelimiter  elixirDoc
+highlight link elixirUnusedVariable      NONE
