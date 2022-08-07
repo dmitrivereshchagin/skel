@@ -13,6 +13,8 @@ set realname=$my_realname
 
 set folder=imaps://$my_user@imap.gmail.com
 set imap_pass=$my_pass
+
+set sort_browser=unsorted
 set spoolfile=+INBOX
 
 set mbox='+[Gmail]/All Mail'
