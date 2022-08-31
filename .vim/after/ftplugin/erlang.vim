@@ -53,20 +53,21 @@ inoreabbrev <buffer> <expr> -m  printf('-module(%s).', expand('%:t:r'))
 call filetype#UndoPlugin('iunabbrev <buffer> -m')
 
 inoreabbrev <buffer> -e  -export
-inoreabbrev <buffer> -E  -export_type
-call filetype#UndoPlugin('iunabbrev <buffer>', ['-e', '-E'])
-
-inoreabbrev <buffer> -b  -behaviour
-inoreabbrev <buffer> -d  -define
-call filetype#UndoPlugin('iunabbrev <buffer>', ['-b', '-d'])
-
-inoreabbrev <buffer> -c  -callback
-inoreabbrev <buffer> -s  -spec
-call filetype#UndoPlugin('iunabbrev <buffer>', ['-c', '-s'])
+call filetype#UndoPlugin('iunabbrev <buffer> -e')
 
 inoreabbrev <buffer> -o  -opaque
 inoreabbrev <buffer> -t  -type
-call filetype#UndoPlugin('iunabbrev <buffer>', ['-o', '-t'])
+inoreabbrev <buffer> -E  -export_type
+inoreabbrev <buffer> -s  -spec
+call filetype#UndoPlugin('iunabbrev <buffer>', ['-o', '-t', '-E', '-s'])
+
+inoreabbrev <buffer> -d  -define
+inoreabbrev <buffer> -r  -record
+call filetype#UndoPlugin('iunabbrev <buffer>', ['-d', '-r'])
+
+inoreabbrev <buffer> -b  -behaviour
+inoreabbrev <buffer> -c  -callback
+call filetype#UndoPlugin('iunabbrev <buffer>', ['-b', '-c'])
 
 inoreabbrev <buffer> cea  -compile([export_all, nowarn_export_all]).
 call filetype#UndoPlugin('iunabbrev <buffer> cea')
