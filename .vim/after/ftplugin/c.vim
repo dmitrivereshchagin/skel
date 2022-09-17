@@ -7,8 +7,8 @@ inoreabbrev <buffer> #d  #define
 inoreabbrev <buffer> #i  #include
 inoreabbrev <buffer> #p  #pragma
 inoreabbrev <buffer> #u  #undef
-call filetype#UndoPlugin('iunabbrev <buffer>', ['#d', '#i', '#p', '#u'])
+call filetype#UndoPlugin('silent! iunabbrev <buffer>', ['#d', '#i', '#p', '#u'])
 
 inoreabbrev <buffer> #l  #pragma unroll
 inoreabbrev <buffer> _i  __always_inline
-call filetype#UndoPlugin('iunabbrev <buffer>', ['#l', '_i'])
+call filetype#UndoPlugin('silent! iunabbrev <buffer>', ['#l', '_i'])

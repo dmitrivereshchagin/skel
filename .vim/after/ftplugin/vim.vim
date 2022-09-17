@@ -10,4 +10,4 @@ setlocal keywordprg=:help
 call filetype#UndoPlugin('setlocal keywordprg<')
 
 let b:syntastic_checkers = ['vint']
-call filetype#UndoPlugin('unlet b:syntastic_checkers')
+call filetype#UndoPlugin('unlet! b:syntastic_checkers')
