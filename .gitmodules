@@ -28,7 +28,7 @@
 
 [submodule "vim-erlang-tags"]
 	path = .vim/bundle/erlang-tags
-	url = https://github.com/vim-erlang/vim-erlang-tags.git
+	url = https://github.com/dmitrivereshchagin/vim-erlang-tags.git
 
 [submodule "vim-eunuch"]
 	path = .vim/bundle/eunuch
