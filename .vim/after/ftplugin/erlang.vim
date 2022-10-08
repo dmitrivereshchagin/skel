@@ -26,7 +26,11 @@ call filetype#UndoPlugin('unlet! b:match_skip')
 let b:match_words =
     \ '^\s*-\s*\%(ifdef\|ifndef\|if\)\>:' .
     \ '^\s*-\s*\%(elif\|else\)\>:' .
-    \ '^\s*-\s*endif\>'
+    \ '^\s*-\s*endif\>' .
+    \ ',' .
+    \ '\<\%(begin\|case\|fun\|if\|maybe\|receive\|try\)\>:' .
+    \ '\<\%(after\|catch\|else\|of\)\>:' .
+    \ '\<end\>'
 call filetype#UndoPlugin('unlet! b:match_words')
 
 let b:surround_{char2nr('.')} = "<<\"\r\">>"
