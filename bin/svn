@@ -10,18 +10,13 @@ blame|ann|help|h|status|st)
     ;;
 
 diff|di|log)
-    e=$(printf '\33')
+    esc=$(printf '\33')
     "$svn" "$@" |
-    sed "
-        /^-\{72\}$/,/^=\{67\}$/ !{
-            s/^-.*/${e}[31m&${e}[m/
-            t
-            s/^+.*/${e}[32m&${e}[m/
-            t
-            s/^@.*/${e}[36m&${e}[m/
-        }
-        " |
-    less -R
+        sed -e '/^-\{72\}$/,/^=\{67\}$/ b' \
+            -e "/^-/ s/.*/${esc}[31m&${esc}[m/" \
+            -e "/^+/ s/.*/${esc}[32m&${esc}[m/" \
+            -e "/^@/ s/.*/${esc}[36m&${esc}[m/" |
+        less -R
     ;;
 
 *)
