@@ -15,6 +15,8 @@ Alias ww   write!
 Alias man  Man
 Alias tam  tab\ Man
 
+Alias ss   ALESymbolSearch\ -relative
+
 Alias bt   Breakpoint
 Alias btr  BreakpointRemove
 Alias vt   VdebugTrace
