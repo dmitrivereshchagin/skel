@@ -13,7 +13,7 @@ let &l:include = '\v\C^\s*-\s*%(include_lib|include)'
 let &l:define  = '\v\C^\s*-\s*%(define|record)'
 call mine#filetype#UndoPlugin('setlocal include< define<')
 
-let b:ale_linters = ['elvis', 'syntaxerl']
+let b:ale_linters = ['erlang_ls']
 call mine#filetype#UndoPlugin('unlet! b:ale_linters')
 
 let b:syntastic_checkers = ['syntaxerl']
