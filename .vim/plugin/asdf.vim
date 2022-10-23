@@ -7,8 +7,8 @@ let g:loaded_asdf = 1
 
 let s:INSTALLS = '\V\C\^' . escape($ASDF_DIR, '\') . '/installs/'
 
-let g:ale_pattern_options = get(g:, 'ale_pattern_options', {})
-let g:ale_pattern_options[s:INSTALLS] = {'ale_enabled': 0}
+" let g:ale_pattern_options = get(g:, 'ale_pattern_options', {})
+" let g:ale_pattern_options[s:INSTALLS] = {'ale_enabled': 0}
 
 let g:EditorConfig_exclude_patterns =
     \ get(g:, 'EditorConfig_exclude_patterns', []) + [s:INSTALLS]
