@@ -93,7 +93,7 @@ function __prompt_remote_host {
 grml_theme_add_token cwd '%1~ ' '%B%F{blue}' %f%b
 grml_theme_add_token remote-host -i __prompt_remote_host
 
-zstyle :prompt:grml:left:setup items rc kerl remote-host cwd vcs percent
+zstyle :prompt:grml:left:setup items rc remote-host cwd vcs percent
 zstyle :prompt:grml:right:setup use-rprompt false
 
 zstyle ':vcs_info:*' enable git hg svn
