@@ -1,6 +1,4 @@
 " ~/.vim/after/ftplugin/text/spell.vim
 
-if !&readonly && &modifiable
-  setlocal spell
-  call filetype#UndoPlugin('setlocal spell<')
-endif
+let &l:spell = !&readonly && &modifiable
+call filetype#UndoPlugin('setlocal spell<')
