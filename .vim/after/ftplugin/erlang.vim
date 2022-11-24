@@ -57,13 +57,17 @@ inoreabbrev <buffer> <expr> -m  printf('-module(%s).', expand('%:t:r'))
 call filetype#UndoPlugin('silent! iunabbrev <buffer> -m')
 
 inoreabbrev <buffer> -e  -export
-call filetype#UndoPlugin('silent! iunabbrev <buffer> -e')
+inoreabbrev <buffer> -E  -export_type
+call filetype#UndoPlugin('silent! iunabbrev <buffer>', ['-e', '-E'])
+
+inoreabbrev <buffer> -i  -include
+inoreabbrev <buffer> -I  -include_lib
+call filetype#UndoPlugin('silent! iunabbrev <buffer>', ['-i', '-I'])
 
 inoreabbrev <buffer> -o  -opaque
-inoreabbrev <buffer> -t  -type
-inoreabbrev <buffer> -E  -export_type
 inoreabbrev <buffer> -s  -spec
-call filetype#UndoPlugin('silent! iunabbrev <buffer>', ['-o', '-t', '-E', '-s'])
+inoreabbrev <buffer> -t  -type
+call filetype#UndoPlugin('silent! iunabbrev <buffer>', ['-o', '-s', '-t'])
 
 inoreabbrev <buffer> -d  -define
 inoreabbrev <buffer> -r  -record
