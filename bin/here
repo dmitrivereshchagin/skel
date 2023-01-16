@@ -1,0 +1,9 @@
+#!/bin/sh
+
+directory=${1-$PWD}
+
+case $directory in
+[!/]*)  directory=$PWD/$directory
+esac
+
+exec screen -X chdir "$directory"
