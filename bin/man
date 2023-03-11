@@ -1,6 +1,6 @@
 #!/bin/sh
 
-erlang=$(asdf where erlang 2>/dev/null) &&
-    export MANPATH=$erlang/man:${MANPATH-''}
+otproot=$(asdf where erlang 2>/dev/null) &&
+    export MANPATH="$otproot/man:${MANPATH-}"
 
 exec /usr/bin/man "$@"
