@@ -5,7 +5,7 @@ setlocal path=.,,apps/*/include,apps,lib/*/include,lib,
 call filetype#UndoPlugin('setlocal path<')
 
 let &l:include = '\v\C^\s*-\s*%(include_lib|include)'
-let &l:define  = '\v\C^\s*-\s*define'
+let &l:define  = '\v\C^\s*-\s*%(define|record)'
 call filetype#UndoPlugin('setlocal include< define<')
 
 let b:ale_linters = ['elvis', 'syntaxerl']
