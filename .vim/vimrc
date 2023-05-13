@@ -164,6 +164,9 @@ let g:netrw_timefmt     = '%a %d %b %Y %H:%M:%S'
 
 let g:sneak#map_netrw = 0
 
+let g:surround_{char2nr('q')} = "`\r'"
+let g:surround_{char2nr('Q')} = "``\r''"
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_stl_format  = '[!]'
