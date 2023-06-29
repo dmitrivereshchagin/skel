@@ -9,7 +9,7 @@ endif
 
 function! s:Format() abort
   let l:view = winsaveview()
-  silent %!mix format -
+  execute 'silent %!' . s:MixFormatCmd()
   if v:shell_error
     let l:errors = s:Errors(getline(1, '$'))
     silent undo
@@ -24,13 +24,13 @@ function! s:Errors(output) abort
   let l:errors  = []
   let l:pattern = '\v^\*\* \((\w+)\) (\f{-1,}):(\d+)%(:(\d+))?: (.+)$'
   for l:match in s:Matches(a:output, l:pattern)
-    let l:error = l:match[2] is# 'stdin'
+    let l:error = l:match[2] is# s:Stdin()
         \ ? {'bufnr': bufnr('%')}
         \ : {'filename': l:match[2]}
     call extend(l:error, {
         \ 'lnum': l:match[3],
         \ 'col':  l:match[4],
-        \ 'text': printf('%s: %s', l:match[1], l:match[5]),
+        \ 'text': l:match[1] . ': ' . l:match[5],
         \})
     call add(l:errors, l:error)
   endfor
@@ -52,4 +52,21 @@ function! s:Shout(message) abort
   echohl ErrorMsg
   echomsg 'Format:' a:message
   echohl NONE
+endfunction
+
+function! s:MixFormatCmd() abort
+  return s:HasStdinFilename()
+      \ ? 'mix format --stdin-filename=' . shellescape(expand('%:.')) . ' -'
+      \ : 'mix format -'
+endfunction
+
+function! s:Stdin() abort
+  return s:HasStdinFilename() ? 'stdin.exs' : 'stdin'
+endfunction
+
+function! s:HasStdinFilename() abort
+  if !exists('s:has_stdin_filename')
+    let s:has_stdin_filename = system('mix help format') =~# '--stdin-filename'
+  endif
+  return s:has_stdin_filename
 endfunction
