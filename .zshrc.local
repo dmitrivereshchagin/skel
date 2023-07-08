@@ -71,6 +71,11 @@ unhash -a vim 2>/dev/null
 unhash -f vim 2>/dev/null
 alias vi=vim
 
+function source-env {
+    setopt LOCAL_OPTIONS ALL_EXPORT
+    source $@
+}
+
 HELP_ZLE_CACHE_FILE=$ZSH_CACHE_HOME/help-zle
 ZLE_SPACE_SUFFIX_CHARS='&|'
 
