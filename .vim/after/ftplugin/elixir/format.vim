@@ -55,9 +55,14 @@ function! s:Shout(message) abort
 endfunction
 
 function! s:MixFormatCmd() abort
-  return s:HasStdinFilename()
-      \ ? 'mix format --stdin-filename=' . shellescape(expand('%:.')) . ' -'
+  let l:filename = s:StdinFilename()
+  return !empty(l:filename)
+      \ ? 'mix format --stdin-filename=' . shellescape(l:filename) . ' -'
       \ : 'mix format -'
+endfunction
+
+function! s:StdinFilename() abort
+  return s:HasStdinFilename() ? expand('%:.') : ''
 endfunction
 
 function! s:Stdin() abort
