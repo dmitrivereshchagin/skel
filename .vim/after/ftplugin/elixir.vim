@@ -14,8 +14,10 @@ call filetype#UndoPlugin('silent! iunabbrev <buffer>', ['@o', '@s', '@t', '@T'])
 
 inoreabbrev <buffer> @b  @behaviour
 inoreabbrev <buffer> @c  @callback
-inoreabbrev <buffer> @i  @impl true
-call filetype#UndoPlugin('silent! iunabbrev <buffer>', ['@b', '@c', '@i'])
+call filetype#UndoPlugin('silent! iunabbrev <buffer>', ['@b', '@c'])
+
+inoreabbrev <buffer> <expr> @i  v:char is# "\<CR>" ? '@impl true' : '@impl'
+call filetype#UndoPlugin('silent! iunabbrev <buffer> @i')
 
 inoreabbrev <buffer> _M  __MODULE__
 call filetype#UndoPlugin('silent! iunabbrev <buffer> _M')
