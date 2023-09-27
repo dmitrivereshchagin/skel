@@ -7,4 +7,5 @@
 --smart-case
 --sort-files
 --type-add=scss:ext:sass,scss
+--type-add=thrift:ext:thrift
 --type-add=twig:ext:twig
