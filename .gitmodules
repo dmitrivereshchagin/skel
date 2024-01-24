@@ -76,7 +76,7 @@
 
 [submodule "vim-test"]
 	path = .vim/bundle/test
-	url = https://github.com/vim-test/vim-test.git
+	url = https://github.com/dmitrivereshchagin/vim-test.git
 
 [submodule "vim-unimpaired"]
 	path = .vim/bundle/unimpaired
