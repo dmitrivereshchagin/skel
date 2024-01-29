@@ -27,13 +27,19 @@ if exists('+breakindent')
 endif
 set showbreak=...
 set sidescroll=1 sidescrolloff=5
-set display=lastline
+set display+=lastline
+if has#('patch-7.4.2109')
+  set display+=truncate
+endif
 set cmdheight=2
 set lazyredraw
 set listchars=eol:$,tab:>-,extends:>,precedes:<,nbsp:~
 
 set hlsearch
 set spelllang=en_us,ru_yo
+if exists('+spelloptions')
+  set spelloptions+=camel
+endif
 
 set laststatus=2
 set statusline=%n\ %<%.20f\ %h%m%r%{statusline#Flags()}%=%-14.(%l,%c%V%)\ %P
@@ -64,6 +70,9 @@ set expandtab
 set autoindent
 set lispwords-=if
 
+set ttimeout
+set ttimeoutlen=50
+
 set nomodeline
 if exists('+fixendofline')
   set nofixendofline
@@ -79,7 +88,6 @@ if exists('+wildignorecase')
   set wildignorecase
 endif
 set wildmenu
-set wildoptions=tagfile
 
 if executable('ack')
   set grepprg=ack\ --with-filename\ --column
@@ -91,7 +99,7 @@ set iminsert=0 imsearch=-1
 
 set fileencodings=ucs-bom,utf-8,koi8-r
 
-set virtualedit=block
+set virtualedit+=block
 set sessionoptions-=options
 set viewoptions-=options
 set viewdir=$VIM_STATE_HOME/view | call os#MkdirAll(&viewdir, 0700)
@@ -192,7 +200,7 @@ nmap <Leader>,  <Plug>Sneak_,
 omap <Leader>,  <Plug>Sneak_,
 xmap <Leader>,  <Plug>Sneak_,
 
-" Just for the case when Sneak isn't installed ...
+" Just for the case when Sneak is not installed ...
 nnoremap <Plug>Sneak_,  ,
 onoremap <Plug>Sneak_,  ,
 xnoremap <Plug>Sneak_,  ,
