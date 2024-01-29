@@ -1,7 +1,8 @@
 " ~/.vim/after/ftplugin/erlang.vim
 
-setlocal path=.,,apps/*/include,apps,lib/*/include,lib,
-    \include,_checkouts,_build/default/lib,_build/test/lib
+setlocal path=.,,
+    \apps/*/include,apps,lib/*/include,lib,include,
+    \_checkouts,_build/default/lib,_build/test/lib
 call filetype#UndoPlugin('setlocal path<')
 
 let &l:include = '\v\C^\s*-\s*%(include_lib|include)'
@@ -41,12 +42,14 @@ call filetype#UndoPlugin('unlet! b:surround_' . char2nr('>'))
 
 " It's assumed that 'autowrite' and 'autoread' are set.
 command -buffer Indent
-    \ execute '!emacs --batch --find-file=' . shellescape(expand('%:p'))
+    \ execute '!emacs --batch'
+    \ '--find-file=' . shellescape(expand('%:p'))
     \ '--eval="(setq-default indent-tabs-mode nil)"'
     \ '--eval="(erlang-mode)"'
+    \ '--eval="(font-lock-fontify-region (point-min) (point-max))"'
     \ '--eval="(indent-region (point-min) (point-max))"'
-    \ '--eval="(setq retabify (if indent-tabs-mode ''tabify ''untabify))"'
-    \ '--eval="(funcall retabify (point-min) (point-max))"'
+    \ '--eval="(funcall (if indent-tabs-mode ''tabify ''untabify)'
+    \                  '(point-min) (point-max))"'
     \ '--eval="(save-buffer 0)"'
 call filetype#UndoPlugin('silent! delcommand Indent')
 
