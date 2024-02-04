@@ -6,7 +6,7 @@
 # <https://git.grml.org/f/grml-etc-core/etc/zsh/zshrc>
 #
 
-source $HOME/bin/xdg.sh
+source xdg.sh
 
 ( umask 0077 ; mkdir -p -- $XDG_CACHE_HOME/zsh )
 
