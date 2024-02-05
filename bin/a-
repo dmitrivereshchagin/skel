@@ -1,0 +1,4 @@
+#!/bin/sh
+
+tab=$(printf '\t')
+exec sed "s/^${tab}//"

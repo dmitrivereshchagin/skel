@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=Plumber
+TryExec=plumber
+Exec=plumber
