@@ -42,6 +42,11 @@ path_prepend "$HOME/bin"
 path_prepend "$HOME/.local/opt/mit-scheme/bin"
 path_prepend "$HOME/.local/bin"
 
+PLAN9=/usr/local/plan9
+export PLAN9
+
+path_append "$PLAN9/bin"
+
 # shellcheck source=/dev/null
 test -f "$HOME/.profile.local" &&
     . "$HOME/.profile.local"

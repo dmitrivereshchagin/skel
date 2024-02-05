@@ -1,0 +1,11 @@
+#!/usr/bin/env rc
+
+# dnf install google-go-fonts google-go-mono-fonts
+varfont=/mnt/font/GoRegular/16a/font
+fixfont=/mnt/font/GoMono/16a/font
+
+EDITOR=E
+PAGER=p GIT_PAGER=$PAGER
+SHELL=rc
+
+exec $PLAN9/bin/acme -a -f $varfont -F $fixfont $*

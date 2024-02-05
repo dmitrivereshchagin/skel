@@ -1,0 +1,5 @@
+#!/bin/sh
+# Run it as "|a+" from acme window tag.
+
+tab=$(printf '\t')
+exec sed "s/^/${tab}/"
