@@ -6,9 +6,11 @@
 # <https://git.grml.org/f/grml-etc-core/etc/zsh/zshrc>
 #
 
-setopt CSH_NULL_GLOB
+source $HOME/bin/xdg.sh
 
-HISTFILE=$ZSH_STATE_HOME/history
+( umask 0077 ; mkdir -p -- $XDG_STATE_HOME/zsh )
+
+HISTFILE=$XDG_STATE_HOME/zsh/history
 
 export EDITOR=vim PAGER=less
 READNULLCMD=$PAGER
@@ -27,6 +29,8 @@ export MANOPT='--no-hyphenation --no-justification'
 export MANWIDTH=80
 
 export PERLDOC=-oman
+
+setopt CSH_NULL_GLOB
 
 path=(
     $HOME/.local/bin
@@ -76,7 +80,7 @@ function source-env {
     source $@
 }
 
-HELP_ZLE_CACHE_FILE=$ZSH_CACHE_HOME/help-zle
+HELP_ZLE_CACHE_FILE=$XDG_CACHE_HOME/zsh/help-zle
 ZLE_SPACE_SUFFIX_CHARS='&|'
 
 bindkey '\eq' push-line-or-edit
@@ -110,5 +114,5 @@ zstyle ':vcs_info:*' actionformats \
 zstyle ':vcs_info:*' formats \
     '%F{magenta}[%F{green}%b%F{magenta}]%f ' %s:%r
 
-for rc ($ZSH_CONFIG_HOME/rc.d/*.zsh(.N)) source $rc
+for rc ($XDG_CONFIG_HOME/zsh/rc.d/*.zsh(.N)) source $rc
 unset rc

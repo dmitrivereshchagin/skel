@@ -2,9 +2,8 @@
 
 . xdg.sh
 
-state_home=$(xdg_state_home)/xsel
-( umask 0077 ; mkdir -p -- "$state_home" )
+set -- --logfile "$XDG_STATE_HOME/xsel/log" "$@"
 
-set -- --logfile "$state_home/log" "$@"
+( umask 0077 ; mkdir -p -- "$XDG_STATE_HOME/xsel" )
 
 exec /usr/bin/xsel "$@"
