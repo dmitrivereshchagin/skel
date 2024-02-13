@@ -8,16 +8,10 @@
 
 source $HOME/bin/xdg.sh
 
-ZSH_CACHE_HOME=$(xdg_cache_home)/zsh
-( umask 0077 ; mkdir -p -- $ZSH_CACHE_HOME )
+( umask 0077 ; mkdir -p -- $XDG_CACHE_HOME/zsh )
 
-ZSH_STATE_HOME=$(xdg_state_home)/zsh
-( umask 0077 ; mkdir -p -- $ZSH_STATE_HOME )
-
-ZSH_CONFIG_HOME=$(xdg_config_home)/zsh
-
-COMPDUMPFILE=$ZSH_CACHE_HOME/compdump
-GRML_COMP_CACHE_DIR=$ZSH_CACHE_HOME/compcache
+COMPDUMPFILE=$XDG_CACHE_HOME/zsh/compdump
+GRML_COMP_CACHE_DIR=$XDG_CACHE_HOME/zsh/compcache
 NOCOR=1
 
 zstyle :grml:chpwd:dirstack enable false
