@@ -1,5 +1,9 @@
 # shellcheck shell=sh
 
+case ${XDG_DATA_HOME-} in
+''|[!/]*) XDG_DATA_HOME=$HOME/.local/share
+esac
+
 case ${XDG_CONFIG_HOME-} in
 ''|[!/]*) XDG_CONFIG_HOME=$HOME/.config
 esac
