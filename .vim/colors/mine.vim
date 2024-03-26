@@ -21,6 +21,7 @@ highlight QuickFixLine  cterm=NONE     ctermfg=White        ctermbg=Blue
 highlight Search        cterm=NONE     ctermfg=White        ctermbg=Blue
 highlight SpellBad      cterm=NONE     ctermfg=White        ctermbg=DarkRed
 highlight TabLine       cterm=reverse  ctermfg=NONE         ctermbg=NONE
+highlight Visual        cterm=NONE     ctermfg=NONE         ctermbg=DarkGray
 highlight WarningMsg    cterm=NONE     ctermfg=Red          ctermbg=NONE
 highlight WildMenu      cterm=NONE     ctermfg=White        ctermbg=Blue
 highlight Comment       cterm=NONE     ctermfg=LightCyan    ctermbg=NONE
