@@ -58,6 +58,10 @@
 	path = .vim/bundle/php-namespace
 	url = https://github.com/arnaud-lb/vim-php-namespace.git
 
+[submodule "vim-python-indent"]
+	path = .vim/bundle/python-indent
+	url = https://github.com/Vimjas/vim-python-pep8-indent.git
+
 [submodule "vim-repeat"]
 	path = .vim/bundle/repeat
 	url = https://github.com/tpope/vim-repeat.git
