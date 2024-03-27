@@ -22,10 +22,6 @@
 	path = .vim/bundle/elixir
 	url = https://github.com/elixir-editors/vim-elixir.git
 
-[submodule "vim-erlang-motions"]
-	path = .vim/bundle/erlang-motions
-	url = https://github.com/edkolev/erlang-motions.vim.git
-
 [submodule "vim-erlang-tags"]
 	path = .vim/bundle/erlang-tags
 	url = https://github.com/dmitrivereshchagin/vim-erlang-tags.git

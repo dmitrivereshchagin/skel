@@ -56,6 +56,15 @@ call filetype#UndoPlugin('silent! delcommand Indent')
 nnoremap <buffer> <LocalLeader>=  :<C-U>Indent<CR>
 call filetype#UndoPlugin('silent! nunmap <buffer> <LocalLeader>=')
 
+command -buffer -bang NextFunctionClause
+    \ call search('\v\C^%([a-z][A-Za-z@_]*|''%([^''\\]|\\.)*'')\s*\(',
+    \       <bang>0 ? 'bsW' : 'sW')
+call filetype#UndoPlugin('silent! delcommand NextFunctionClause')
+
+nnoremap <buffer> ]]  :<C-U>NextFunctionClause<CR>
+nnoremap <buffer> [[  :<C-U>NextFunctionClause!<CR>
+call filetype#UndoPlugin('silent! nunmap <buffer>', [']]', '[['])
+
 inoreabbrev <buffer> <expr> -m  printf('-module(%s).', expand('%:t:r'))
 call filetype#UndoPlugin('silent! iunabbrev <buffer> -m')
 
