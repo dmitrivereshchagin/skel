@@ -29,7 +29,7 @@ let b:match_words =
     \ '^\s*-\s*\%(elif\|else\)\>:' .
     \ '^\s*-\s*endif\>' .
     \ ',' .
-    \ '\<\%(begin\|case\|fun\|if\|maybe\|receive\|try\)\>:' .
+    \ '\<\%(begin\|case\|if\|maybe\|receive\|try\)\>\|\<fun\%(\s*(\)\@=:' .
     \ '\<\%(after\|catch\|else\|of\)\>:' .
     \ '\<end\>'
 call filetype#UndoPlugin('unlet! b:match_words')
