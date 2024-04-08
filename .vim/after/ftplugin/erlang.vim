@@ -21,7 +21,7 @@ call filetype#UndoPlugin('unlet! b:commentary_format')
 let b:match_ignorecase = 0
 call filetype#UndoPlugin('unlet! b:match_ignorecase')
 
-let b:match_skip = 's:erlangComment\|erlangQuotedAtom\|erlangString'
+let b:match_skip = 's:\<erlang\%(Comment\|QuotedAtom\|String\|Sigil\)\>'
 call filetype#UndoPlugin('unlet! b:match_skip')
 
 let b:match_words =
