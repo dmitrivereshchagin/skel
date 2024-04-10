@@ -1,6 +1,9 @@
 #!/bin/sh
 
-otproot=$(asdf where erlang 2>/dev/null) &&
-    export MANPATH="$otproot/man:${MANPATH-}"
+if erlang=$(asdf where erlang 2>/dev/null)
+then
+    MANPATH=$erlang/man:${MANPATH-}
+    export MANPATH
+fi
 
 exec /usr/bin/man "$@"
