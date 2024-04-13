@@ -8,7 +8,10 @@
 
 source xdg.sh
 
-( umask 0077 ; mkdir -p -- $XDG_CACHE_HOME/zsh )
+(
+umask 0077
+mkdir -p -- {$XDG_STATE_HOME,$XDG_CACHE_HOME}/zsh
+)
 
 COMPDUMPFILE=$XDG_CACHE_HOME/zsh/compdump
 GRML_COMP_CACHE_DIR=$XDG_CACHE_HOME/zsh/compcache

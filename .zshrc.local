@@ -8,8 +8,6 @@
 
 source xdg.sh
 
-( umask 0077 ; mkdir -p -- $XDG_STATE_HOME/zsh )
-
 HISTFILE=$XDG_STATE_HOME/zsh/history
 
 READNULLCMD=${PAGER:-less}
