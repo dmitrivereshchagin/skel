@@ -70,14 +70,21 @@ bindkey -M menuselect j vi-down-line-or-history
 bindkey -M menuselect k vi-up-line-or-history
 bindkey -M menuselect l vi-forward-char
 
-function __prompt_remote_host {
+function _prompt_python_venv {
+    REPLY=${VIRTUAL_ENV+(${VIRTUAL_ENV:t}) }
+}
+
+function _prompt_remote_host {
     if (( ! ${+STY} )) REPLY=${SSH_CONNECTION+%m }
 }
 
 grml_theme_add_token cwd '%1~ ' '%B%F{blue}' %f%b
-grml_theme_add_token remote-host -i __prompt_remote_host
+grml_theme_add_token python-venv -f _prompt_python_venv %B %b
+grml_theme_add_token remote-host -i _prompt_remote_host
 
-zstyle :prompt:grml:left:setup items rc remote-host cwd vcs percent
+zstyle :prompt:grml:left:setup items \
+    rc python-venv remote-host cwd vcs percent
+
 zstyle :prompt:grml:right:setup use-rprompt false
 
 zstyle ':vcs_info:*' enable git hg svn
