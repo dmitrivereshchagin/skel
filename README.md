@@ -84,3 +84,49 @@
 
     gsettings set org.gnome.desktop.peripherals.pointingstick \
         scroll-method "'none'"
+
+---
+
+    git clone --branch=v0.14.0 \
+        https://github.com/asdf-vm/asdf.git \
+        ~/.asdf
+
+<!---->
+
+    exec zsh
+
+<!---->
+
+    sudo dnf install \
+        gcc \
+        gcc-c++ \
+        ncurses-devel \
+        openssl-devel \
+        wxGTK-devel \
+        libxslt \
+        perl-File-Copy \
+        make
+
+<!---->
+
+    sudo apt install \
+        gcc \
+        g++ \
+        libncurses-dev \
+        libssl-dev \
+        libwxgtk3.2-dev \
+        libwxgtk-webview3.2-dev \
+        xsltproc \
+        make
+
+<!---->
+
+    asdf plugin add erlang &&
+        asdf install erlang 25.3.2.12 &&
+        asdf global erlang 25.3.2.12
+
+<!---->
+
+    asdf plugin add rebar &&
+        asdf install rebar 3.23.0 &&
+        asdf global rebar 3.23.0
