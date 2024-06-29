@@ -1,0 +1,38 @@
+; ~/.xboardrc
+
+; -firstEngine is not recognized.
+-fe fruit
+
+-firstChessProgramNames {fruit -fUCI
+stockfish -fUCI
+}
+
+-adapterCommand "polyglotted %fcp"
+
+-showButtonBar false
+
+-boardSize Large
+-overrideLineGap 1
+
+-useBoardTexture true
+
+-darkBackTextureFile ~~/themes/textures/hatch.png
+-liteBackTextureFile ""
+
+-darkSquareColor  #C0C0C0
+-lightSquareColor #FFFFFF
+
+-highlightLastMove true
+-highlightMoveWithArrow true
+-showTargetSquares false
+
+-highlightSquareColor  #808080
+-premoveHighlightColor #808080
+
+-whitePieceColor #FFFFFF
+-blackPieceColor #000000
+
+-startupMessage ""
+
+-settingsFile ~/.xboardrc.local
+-saveSettingsFile ~/.xboardrc.local
