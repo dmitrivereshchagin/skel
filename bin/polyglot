@@ -1,0 +1,17 @@
+#!/bin/sh
+
+if test $# -eq 1 && ! test -f "$1"
+then
+    . xdg.sh
+    set -- "$XDG_CONFIG_HOME/polyglot/$1"
+fi
+
+for polyglot in \
+    /usr/bin/polyglot-chess \
+    /usr/games/polyglot
+do
+    test -x "$polyglot" && exec "$polyglot" "$@"
+done
+
+printf 'polyglot: not found\n' >&2
+exit 127
