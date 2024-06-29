@@ -1,0 +1,13 @@
+#!/bin/sh
+
+. xdg.sh
+
+engine=${1?}
+config_home=$XDG_CONFIG_HOME/polyglotted
+
+ini=$config_home/$engine.ini
+
+command -v polyglot-chess >/dev/null &&
+    exec polyglot-chess "$ini"
+
+exec polyglot "$ini"

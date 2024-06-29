@@ -145,3 +145,31 @@
     asdf plugin add rebar &&
         asdf install rebar 3.23.0 &&
         asdf global rebar 3.23.0
+
+---
+
+    sudo dnf install \
+        xboard \
+        polyglot-chess \
+        fruit \
+        stockfish
+
+<!---->
+
+    sudo apt install \
+        xboard \
+        polyglot \
+        fruit \
+        stockfish
+
+<!---->
+
+    ln -s \
+        ../.skel/.config/polyglotted \
+        ~/.config
+
+<!---->
+
+    ln -s \
+        .skel/.xboardrc \
+        ~
