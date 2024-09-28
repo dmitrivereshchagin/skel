@@ -2,7 +2,7 @@
 
 set --
 
-for file in /sys/class/power_supply/*/capacity
+for file in /sys/class/power_supply/BAT*/capacity
 do
     test -e "$file" && set -- "$@" "$(cat "$file")%"
 done

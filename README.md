@@ -46,7 +46,7 @@
         .skel/.cvsignore \
         .skel/.gitconfig \
         .skel/.profile \
-        .skel/.screen \
+        .skel/.screenrc \
         .skel/.vim \
         .skel/.zprofile \
         .skel/.zshrc.local \

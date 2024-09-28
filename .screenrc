@@ -1,8 +1,8 @@
 #
-# ~/.screen/screenrc
+# ~/.screenrc
 #
 
-backtick 1 30 30 $HOME/.screen/bin/battery
+backtick 1 30 30 battery-capacity
 
 altscreen       on
 defscrollback   4000
