@@ -92,7 +92,8 @@ inoreabbrev <buffer> cea  -compile([export_all, nowarn_export_all]).
 call filetype#UndoPlugin('silent! iunabbrev <buffer> cea')
 
 inoreabbrev <buffer> ikl  -include_lib("kernel/include/logger.hrl").
-call filetype#UndoPlugin('silent! iunabbrev <buffer> ikl')
+inoreabbrev <buffer> isa  -include_lib("stdlib/include/assert.hrl").
+call filetype#UndoPlugin('silent! iunabbrev <buffer>', ['ikl', 'isa'])
 
 inoreabbrev <buffer> ict  -include_lib("common_test/include/ct.hrl").
 inoreabbrev <buffer> ieu  -include_lib("eunit/include/eunit.hrl").
