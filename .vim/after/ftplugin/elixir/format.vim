@@ -7,6 +7,8 @@ if exists('*s:Format')
   finish
 endif
 
+let s:ECHO = echo#WithPrefix('Format:')
+
 function! s:Format() abort
   let l:view = winsaveview()
   execute 'silent %!' . s:MixFormatCmd()
@@ -15,7 +17,7 @@ function! s:Format() abort
     silent undo
     call setqflist(l:errors)
     redraw
-    call s:Shout('mix format failed')
+    call s:ECHO.Error('mix format failed')
   endif
   call winrestview(l:view)
 endfunction
@@ -46,12 +48,6 @@ function! s:Matches(lines, pattern) abort
     endif
   endfor
   return l:matches
-endfunction
-
-function! s:Shout(message) abort
-  echohl ErrorMsg
-  echomsg 'Format:' a:message
-  echohl NONE
 endfunction
 
 function! s:MixFormatCmd() abort
