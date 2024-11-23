@@ -1,5 +1,5 @@
 " ~/.vim/plugin/cfilter.vim
 
-if exists(':packadd') == 2
+if has#('patch-8.1.311')
   packadd cfilter
 endif
