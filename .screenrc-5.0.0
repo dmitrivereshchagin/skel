@@ -8,17 +8,16 @@ altscreen       on
 defscrollback   4000
 ignorecase      on
 startup_message off
-time            '%D %d %M %Y %0c:%s %H%? %1`%?'
 vbell           on
 vbell_msg       'Bell in current window'
 
 termcapinfo *  vb@
 
 caption splitonly
-caption string '%?%F%{=b bw}%?%3n %t'
+caption string '%?%F%{b7;4}%?%3n %t'
 
 hardstatus alwayslastline
-hardstatus string '%{=r}%-Lw%{=b bw}%50>%n*%f %t%{-}%+Lw%='
+hardstatus string '%{r}%-Lw%{b7;4}%50>%n%f %t%{-}%+Lw%='
 
 bind  %  collapse
 bind  (  bumpleft
@@ -26,6 +25,9 @@ bind  )  bumpright
 
 bind ^K  digraph
 bind  k  digraph
+
+bind ^T  echo -p '%D %d %M %Y %0c %H%? %1`%?'
+bind  t  echo -p '%D %d %M %Y %0c %H%? %1`%?'
 
 bind  U  eval 'hardcopy -h $SCREEN_URLVIEW' 'screen urlview $SCREEN_URLVIEW'
 
