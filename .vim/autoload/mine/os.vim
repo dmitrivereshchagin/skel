@@ -1,16 +1,16 @@
-" ~/.vim/autoload/os.vim
+" ~/.vim/autoload/mine/os.vim
 
 " getenv() is not available until 8.1.1305.
-function! os#Getenv(name) abort
+function! mine#os#Getenv(name) abort
   execute 'return $' . a:name
 endfunction
 
-function! os#MkdirAll(path, perm) abort
-  if !has#('patch-8.0.1708') && isdirectory(a:path)
+function! mine#os#MkdirAll(path, perm) abort
+  if !mine#Has('patch-8.0.1708') && isdirectory(a:path)
     return
   endif
   let l:path = a:path
-  if !has#('patch-7.4.6')
+  if !mine#Has('patch-7.4.6')
     let l:path = substitute(l:path, '\v/+$', '', '')
   endif
   call mkdir(l:path, 'p', a:perm)

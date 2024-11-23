@@ -1,6 +1,6 @@
 " ~/.vim/vimrc
 
-let $VIM_CONFIG_HOME = xdg#ConfigHome() . '/vim'
+let $VIM_CONFIG_HOME = mine#xdg#ConfigHome() . '/vim'
 
 " Place for local plugins and overrides.
 set runtimepath^=$VIM_CONFIG_HOME
@@ -11,8 +11,8 @@ if exists('*pathogen#infect')
   execute pathogen#infect('bundle/{}')
 endif
 
-let $VIM_STATE_HOME = xdg#StateHome() . '/vim'
-call os#MkdirAll($VIM_STATE_HOME, 0700)
+let $VIM_STATE_HOME = mine#xdg#StateHome() . '/vim'
+call mine#os#MkdirAll($VIM_STATE_HOME, 0700)
 
 set cpoptions-=a cpoptions-=A
 
@@ -28,7 +28,7 @@ endif
 set showbreak=...
 set sidescroll=1 sidescrolloff=5
 set display+=lastline
-if has#('patch-7.4.2109')
+if mine#Has('patch-7.4.2109')
   set display+=truncate
 endif
 set cmdheight=2
@@ -42,23 +42,24 @@ if exists('+spelloptions')
 endif
 
 set laststatus=2
-set statusline=%n\ %<%.20f\ %h%m%r%{statusline#Flags()}%=%-14.(%l,%c%V%)\ %P
+set statusline=
+    \%n\ %<%.20f\ %h%m%r%{mine#statusline#Flags()}%=%-14.(%l,%c%V%)\ %P
 
-set tabline=%!tabline#()
+set tabline=%!mine#tabline#TabLine()
 
 set notitle
 
-if has#('patch-8.1.1270')
+if mine#Has('patch-8.1.1270')
   set shortmess-=S
 endif
 set confirm
 set visualbell t_vb=
 
 set undofile
-set undodir=$VIM_STATE_HOME/undo// | call os#MkdirAll(&undodir, 0700)
+set undodir=$VIM_STATE_HOME/undo// | call mine#os#MkdirAll(&undodir, 0700)
 set backspace=indent,eol,start
 set formatoptions+=l1
-if has#('patch-7.3.541')
+if mine#Has('patch-7.3.541')
   set formatoptions+=j
 endif
 set complete-=i complete-=t
@@ -80,7 +81,7 @@ endif
 set autowrite
 set autoread
 
-set directory=$VIM_STATE_HOME/swap// | call os#MkdirAll(&directory, 0700)
+set directory=$VIM_STATE_HOME/swap// | call mine#os#MkdirAll(&directory, 0700)
 
 set history=1000
 set wildmode=longest:full,full
@@ -102,7 +103,7 @@ set fileencodings=ucs-bom,utf-8,koi8-r
 set virtualedit+=block
 set sessionoptions-=options
 set viewoptions-=options
-set viewdir=$VIM_STATE_HOME/view | call os#MkdirAll(&viewdir, 0700)
+set viewdir=$VIM_STATE_HOME/view | call mine#os#MkdirAll(&viewdir, 0700)
 set viminfo+=!,n$VIM_STATE_HOME/viminfo
 
 " modifyOtherKeys breaks <C-_> mapping in xterm.
@@ -147,7 +148,7 @@ let g:sh_no_error = 1
 " syntax/vim.vim
 let g:vimsyn_noerror = 1
 
-let g:statusline#flags =
+let g:mine#statusline#flags =
     \ ['FugitiveStatusline', 'ALEStatuslineFlag', 'SyntasticStatuslineFlag']
 
 let g:ale_lint_on_text_changed = 'normal'
@@ -162,7 +163,7 @@ let g:ale_sign_style_warning = 'S>'
 
 " Sort dotfiles properly and group directories first.
 let g:dirvish_mode = ':sort | sort #\v.*/|\ze#'
-let g:dirvish_relative_paths = !has#('conceal')
+let g:dirvish_relative_paths = !mine#Has('conceal')
 
 let g:lion_squeeze_spaces = 1
 
@@ -191,7 +192,7 @@ let g:vdebug_options.sign_current       = '->'
 let g:vdebug_options.continuous_mode    = 1
 let g:vdebug_options.simplified_status  = 0
 
-if has#('digraphs')
+if mine#Has('digraphs')
   " HORIZONTAL ELLIPSIS.
   digraphs ,. 8230
 endif

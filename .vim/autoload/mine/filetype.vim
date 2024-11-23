@@ -1,4 +1,4 @@
-" ~/.vim/autoload/filetype.vim
+" ~/.vim/autoload/mine/filetype.vim
 
 function! s:AddCommand(varname, command, rest) abort
   let l:args = get(a:rest, 0, [])
@@ -16,15 +16,15 @@ function! s:ExpandCommand(command, args) abort
   return [a:command]
 endfunction
 
-function! filetype#UndoPlugin(command, ...) abort
+function! mine#filetype#UndoPlugin(command, ...) abort
   call s:AddCommand('b:undo_ftplugin', a:command, a:000)
 endfunction
 
-function! filetype#UndoIndent(command, ...) abort
+function! mine#filetype#UndoIndent(command, ...) abort
   call s:AddCommand('b:undo_indent', a:command, a:000)
 endfunction
 
-function! filetype#Ensure(filetype) abort
+function! mine#filetype#Ensure(filetype) abort
   if &filetype is# a:filetype && did_filetype()
     " Don't trigger FileType event again for the same file type.
     return

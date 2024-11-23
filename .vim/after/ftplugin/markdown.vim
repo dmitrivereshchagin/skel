@@ -3,4 +3,4 @@
 runtime! ftplugin/text/spell.vim
 
 setlocal formatoptions+=ro textwidth=72
-call filetype#UndoPlugin('setlocal formatoptions< textwidth<')
+call mine#filetype#UndoPlugin('setlocal formatoptions< textwidth<')

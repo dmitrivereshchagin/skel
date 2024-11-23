@@ -10,7 +10,7 @@ function! s:CharBeforeCursor() abort
 endfunction
 
 function! s:TriggerAbbrev() abort
-  return has#('patch-7.3.389') ? "\<C-]>" : ''
+  return mine#Has('patch-7.3.389') ? "\<C-]>" : ''
 endfunction
 
 function! s:Comma() abort

@@ -1,6 +1,6 @@
 " ~/.vim/after/plugin/test/strategy.vim
 
-if exists(':TestNearest') != 2 || !has#('patch-8.0.928')
+if exists(':TestNearest') != 2 || !mine#Has('patch-8.0.928')
   finish
 endif
 

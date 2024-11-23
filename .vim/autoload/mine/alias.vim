@@ -1,15 +1,15 @@
-" ~/.vim/autoload/alias.vim
+" ~/.vim/autoload/mine/alias.vim
 
 function! s:TrimLeft(str) abort
   return substitute(a:str, '\v^\s+', '', '')
 endfunction
 
-function! alias#Command(lhs, rhs) abort
-  let l:command = 'cnoreabbrev <expr> %s alias#Expand(%s, %s)'
+function! mine#alias#Command(lhs, rhs) abort
+  let l:command = 'cnoreabbrev <expr> %s mine#alias#Expand(%s, %s)'
   return printf(l:command, a:lhs, string(a:lhs), string(a:rhs))
 endfunction
 
-function! alias#Expand(lhs, rhs) abort
+function! mine#alias#Expand(lhs, rhs) abort
   if getcmdtype() isnot# ':'
     return a:lhs
   endif

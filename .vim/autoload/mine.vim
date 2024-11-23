@@ -1,4 +1,4 @@
-" ~/.vim/autoload/has.vim
+" ~/.vim/autoload/mine.vim
 
 function! s:HasPatch(major, minor, patch) abort
   let l:version = a:major * 100 + a:minor
@@ -6,7 +6,7 @@ function! s:HasPatch(major, minor, patch) abort
       \ v:version == l:version && has('patch' . a:patch)
 endfunction
 
-function! has#(feature) abort
+function! mine#Has(feature) abort
   if has('patch-7.4.237')
     return has(a:feature)
   endif

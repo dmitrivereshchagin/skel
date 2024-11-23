@@ -1,13 +1,13 @@
 " ~/.vim/after/ftplugin/elixir/format.vim
 
 command -buffer Format  call s:Format()
-call filetype#UndoPlugin('silent! delcommand Format')
+call mine#filetype#UndoPlugin('silent! delcommand Format')
 
 if exists('*s:Format')
   finish
 endif
 
-let s:ECHO = echo#WithPrefix('Format:')
+let s:ECHO = mine#echo#WithPrefix('Format:')
 
 function! s:Format() abort
   let l:view = winsaveview()

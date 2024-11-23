@@ -1,4 +1,4 @@
-" ~/.vim/autoload/tabline.vim
+" ~/.vim/autoload/mine/tabline.vim
 
 function! s:Tab(tab) abort
   let l:highlight = a:tab == tabpagenr() ? 'TabLineSel' : 'TabLine'
@@ -13,7 +13,7 @@ function! s:TabLabel(tab) abort
   return a:tab . repeat('+', l:nmod)
 endfunction
 
-function! tabline#() abort
+function! mine#tabline#TabLine() abort
   let l:tabs = map(range(1, tabpagenr('$')), 's:Tab(v:val)')
   return join(l:tabs + ['%#TabLineFill#%T'], '')
 endfunction

@@ -1,9 +1,9 @@
 " ~/.vim/after/ftplugin/perl.vim
 
 setlocal matchpairs+=<:>
-call filetype#UndoPlugin('setlocal matchpairs<')
+call mine#filetype#UndoPlugin('setlocal matchpairs<')
 
 if executable('perltidy')
   setlocal equalprg=perltidy\ --quiet
-  call filetype#UndoPlugin('setlocal equalprg<')
+  call mine#filetype#UndoPlugin('setlocal equalprg<')
 endif

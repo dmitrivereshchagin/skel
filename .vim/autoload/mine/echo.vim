@@ -1,14 +1,14 @@
-" ~/.vim/autoload/echo.vim
+" ~/.vim/autoload/mine/echo.vim
 
-function! echo#WithPrefix(prefix) abort
+function! mine#echo#WithPrefix(prefix) abort
   return {
       \ 'prefix': a:prefix,
-      \ 'Message': function('echo#Message'),
-      \ 'Error': function('echo#Error'),
+      \ 'Message': function('mine#echo#Message'),
+      \ 'Error': function('mine#echo#Error'),
       \}
 endfunction
 
-function! echo#Message(highlight, message, ...) abort dict
+function! mine#echo#Message(highlight, message, ...) abort dict
   execute 'echohl' a:highlight
   " printf() does not work with one argument until 8.0.1557.
   let l:message = len(a:000) > 0
@@ -18,6 +18,6 @@ function! echo#Message(highlight, message, ...) abort dict
   echohl NONE
 endfunction
 
-function! echo#Error(...) abort dict
+function! mine#echo#Error(...) abort dict
   call call(self.Message, ['ErrorMsg'] + a:000, self)
 endfunction

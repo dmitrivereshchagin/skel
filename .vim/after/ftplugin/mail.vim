@@ -3,4 +3,4 @@
 runtime! ftplugin/text/spell.vim
 
 setlocal formatoptions+=w
-call filetype#UndoPlugin('setlocal formatoptions<')
+call mine#filetype#UndoPlugin('setlocal formatoptions<')

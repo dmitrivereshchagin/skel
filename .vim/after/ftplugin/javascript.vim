@@ -1,7 +1,7 @@
 " ~/.vim/after/ftplugin/javascript.vim
 
 setlocal suffixesadd+=.js iskeyword+=$
-call filetype#UndoPlugin('setlocal suffixesadd< iskeyword<')
+call mine#filetype#UndoPlugin('setlocal suffixesadd< iskeyword<')
 
 let b:syntastic_checkers = ['eslint']
-call filetype#UndoPlugin('unlet! b:syntastic_checkers')
+call mine#filetype#UndoPlugin('unlet! b:syntastic_checkers')

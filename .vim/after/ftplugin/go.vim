@@ -1,16 +1,16 @@
 " ~/.vim/after/ftplugin/go.vim
 
 setlocal formatoptions+=ro
-call filetype#UndoPlugin('setlocal formatoptions<')
+call mine#filetype#UndoPlugin('setlocal formatoptions<')
 
 setlocal shiftwidth=8 softtabstop=0 noexpandtab
-call filetype#UndoPlugin('setlocal shiftwidth< softtabstop< expandtab<')
+call mine#filetype#UndoPlugin('setlocal shiftwidth< softtabstop< expandtab<')
 
 let b:syntastic_checkers = ['go']
-call filetype#UndoPlugin('unlet! b:syntastic_checkers')
+call mine#filetype#UndoPlugin('unlet! b:syntastic_checkers')
 
 nnoremap <buffer> <LocalLeader>=  :<C-U>Fmt<CR>
-call filetype#UndoPlugin('silent! nunmap <buffer> <LocalLeader>=')
+call mine#filetype#UndoPlugin('silent! nunmap <buffer> <LocalLeader>=')
 
 nnoremap <buffer> <LocalLeader>i  :<C-U>Import <C-R>=expand('<cword>')<CR><CR>
-call filetype#UndoPlugin('silent! nunmap <buffer> <LocalLeader>i')
+call mine#filetype#UndoPlugin('silent! nunmap <buffer> <LocalLeader>i')
