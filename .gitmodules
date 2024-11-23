@@ -4,7 +4,7 @@
 
 [submodule "vim-ale"]
 	path = .vim/bundle/ale
-	url = https://github.com/dense-analysis/ale.git
+	url = https://github.com/dmitrivereshchagin/ale.git
 
 [submodule "vim-commentary"]
 	path = .vim/bundle/commentary
