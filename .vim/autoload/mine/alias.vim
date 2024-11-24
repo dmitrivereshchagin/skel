@@ -5,8 +5,12 @@ function! s:TrimLeft(str) abort
 endfunction
 
 function! mine#alias#Command(lhs, rhs) abort
-  let l:command = 'cnoreabbrev <expr> %s mine#alias#Expand(%s, %s)'
-  return printf(l:command, a:lhs, string(a:lhs), string(a:rhs))
+  return printf(
+      \ 'cnoreabbrev <expr> %s  mine#alias#Expand(%s, %s)',
+      \ a:lhs,
+      \ string(a:lhs),
+      \ string(a:rhs),
+      \ )
 endfunction
 
 function! mine#alias#Expand(lhs, rhs) abort

@@ -7,10 +7,12 @@ endif
 let g:loaded_xsel = 1
 
 function! s:Xsel(clipboard, startline, endline) abort
-  execute printf('%d,%d write !xsel --input %s',
+  execute printf(
+      \ '%d,%d write !xsel --input %s',
       \ a:startline,
       \ a:endline,
-      \ a:clipboard ? '--clipboard' : '--primary')
+      \ a:clipboard ? '--clipboard' : '--primary',
+      \ )
 endfunction
 
 command -bang -range=% Xsel

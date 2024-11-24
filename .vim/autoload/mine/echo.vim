@@ -5,7 +5,7 @@ function! mine#echo#WithPrefix(prefix) abort
       \ 'prefix': a:prefix,
       \ 'Message': function('mine#echo#Message'),
       \ 'Error': function('mine#echo#Error'),
-      \}
+      \ }
 endfunction
 
 function! mine#echo#Message(highlight, message, ...) abort dict

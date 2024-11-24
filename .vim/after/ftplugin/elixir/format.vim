@@ -33,7 +33,7 @@ function! s:Errors(output) abort
         \ 'lnum': l:match[3],
         \ 'col':  l:match[4],
         \ 'text': l:match[1] . ': ' . l:match[5],
-        \})
+        \ })
     call add(l:errors, l:error)
   endfor
   return l:errors
