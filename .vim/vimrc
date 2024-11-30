@@ -43,7 +43,7 @@ endif
 
 set laststatus=2
 set statusline=
-    \%n\ %<%.20f\ %h%m%r%{mine#statusline#Flags()}%=%-14.(%l,%c%V%)\ %P
+    \%n\ %<%.30f\ %h%w%m%r%{mine#statusline#Flags()}%=%-14.(%l,%c%V%)\ %P
 
 set tabline=%!mine#tabline#TabLine()
 
