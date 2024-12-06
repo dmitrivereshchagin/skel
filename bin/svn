@@ -16,7 +16,7 @@ diff|di|log)
             -e "/^-/ s/.*/${esc}[31m&${esc}[m/" \
             -e "/^+/ s/.*/${esc}[32m&${esc}[m/" \
             -e "/^@/ s/.*/${esc}[36m&${esc}[m/" |
-        less -R
+        less -R --tabs=9,17
     ;;
 
 *)
