@@ -235,6 +235,9 @@ nnoremap <Leader>x  :<C-U>bdelete<CR>
 nnoremap <Leader>m  :<C-U>marks<CR>
 nnoremap <Leader>r  :<C-U>registers<CR>
 
+nmap <Leader>af  <Plug>(ale_fix)
+nmap <Leader>at  <Plug>(ale_toggle_buffer)
+
 nnoremap <Leader>tt  :<C-U>TestNearest<CR>
 nnoremap <Leader>tf  :<C-U>TestFile<CR>
 nnoremap <Leader>ts  :<C-U>TestSuite<CR>
