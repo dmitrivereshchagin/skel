@@ -25,3 +25,4 @@ Alias et   ErlangTags
 
 Alias gb   Git\ blame
 Alias gd   Gdiffsplit
+Alias git  Git
