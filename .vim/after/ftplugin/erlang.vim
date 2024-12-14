@@ -1,8 +1,12 @@
 " ~/.vim/after/ftplugin/erlang.vim
 
 setlocal path=
-    \.,,apps/*/include,apps,lib/*/include,lib,include,_checkouts,
-    \_build/default/lib,_build/test/lib
+    \.,,
+    \apps/*/include,apps,lib/*/include,lib,include,
+    \_checkouts/*/include,_checkouts,
+    \_build/default/lib/*/include,_build/default/lib,
+    \_build/test/lib/*/include,_build/test/lib,
+    \deps/*/include,deps
 call mine#filetype#UndoPlugin('setlocal path<')
 
 let &l:include = '\v\C^\s*-\s*%(include_lib|include)'
