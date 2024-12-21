@@ -3,7 +3,7 @@
 setlocal formatoptions+=ro
 call mine#filetype#UndoPlugin('setlocal formatoptions<')
 
-setlocal shiftwidth=8 softtabstop=0 noexpandtab
+execute 'setlocal shiftwidth=' . &l:tabstop 'softtabstop=0 noexpandtab'
 call mine#filetype#UndoPlugin('setlocal shiftwidth< softtabstop< expandtab<')
 
 let b:syntastic_checkers = ['go']

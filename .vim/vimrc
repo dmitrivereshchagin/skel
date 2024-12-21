@@ -66,8 +66,7 @@ set complete-=i complete-=t
 set completeopt-=preview
 set nrformats-=octal
 
-set shiftwidth=4 softtabstop=4
-set expandtab
+set shiftwidth=4 softtabstop=4 expandtab
 set autoindent
 set lispwords-=if
 
