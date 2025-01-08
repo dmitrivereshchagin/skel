@@ -47,7 +47,7 @@ call mine#filetype#UndoPlugin('unlet! b:surround_' . char2nr('>'))
 " It's assumed that 'autowrite' and 'autoread' are set.
 command -buffer Indent
     \ execute '!emacs --batch'
-    \ '--find-file=' . shellescape(expand('%:p'))
+    \ '--find-file=' . shellescape(expand('%:p'), 1)
     \ '--eval="(setq-default indent-tabs-mode nil)"'
     \ '--eval="(erlang-mode)"'
     \ '--eval="(font-lock-fontify-region (point-min) (point-max))"'

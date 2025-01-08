@@ -14,7 +14,7 @@ call mine#filetype#UndoPlugin('unlet! b:surround_' . char2nr('='))
 
 " It's assumed that 'autowrite' and 'autoread' are set.
 command -buffer Format
-    \ execute '!php-cs-fixer fix --quiet --' shellescape(expand('%:p'))
+    \ execute '!php-cs-fixer fix --quiet --' shellescape(expand('%:p'), 1)
 call mine#filetype#UndoPlugin('silent! delcommand Format')
 
 nnoremap <buffer> <LocalLeader>=  :<C-U>Format<CR>

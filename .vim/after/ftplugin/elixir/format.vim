@@ -53,7 +53,7 @@ endfunction
 function! s:MixFormatCmd() abort
   let l:filename = s:StdinFilename()
   return !empty(l:filename)
-      \ ? 'mix format --stdin-filename=' . shellescape(l:filename) . ' -'
+      \ ? 'mix format --stdin-filename=' . shellescape(l:filename, 1) . ' -'
       \ : 'mix format -'
 endfunction
 
