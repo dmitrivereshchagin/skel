@@ -20,7 +20,3 @@ endfunction
 function! mine#xdg#CacheHome() abort
   return s:Path('XDG_CACHE_HOME', $HOME . '/.cache')
 endfunction
-
-function! mine#xdg#Open(url) abort
-  call system('setsid xdg-open ' . shellescape(a:url))
-endfunction

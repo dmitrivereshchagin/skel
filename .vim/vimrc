@@ -116,6 +116,10 @@ endif
 
 colorscheme mine
 
+" Mainly for :GBrowse and g:plumb_rules.
+command! -nargs=1 Browse
+    \ call system('setsid xdg-open ' . shellescape(<q-args>))
+
 " ftplugin/go/fmt.vim
 if executable('goimports')
   let g:gofmt_command = 'goimports'
