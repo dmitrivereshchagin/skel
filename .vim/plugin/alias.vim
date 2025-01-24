@@ -7,7 +7,7 @@ let g:loaded_alias = 1
 
 let s:ECHO = mine#echo#WithPrefix('Alias:')
 
-function! s:Command(args) abort
+function! s:Alias(args) abort
   if len(a:args) != 2
     call s:ECHO.Error('Exactly two arguments required')
     return
@@ -15,4 +15,4 @@ function! s:Command(args) abort
   execute mine#alias#Command(a:args[0], a:args[1])
 endfunction
 
-command -nargs=* Alias  call s:Command([<f-args>])
+command -nargs=* Alias  call s:Alias([<f-args>])
