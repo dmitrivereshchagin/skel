@@ -4,7 +4,7 @@
 
 [core]
 	excludesFile = ~/.cvsignore
-	pager = diff-highlight | less -R --tabs=9,17
+	pager = diff-highlight | less -R
 
 [alias]
 	ap = add --patch
