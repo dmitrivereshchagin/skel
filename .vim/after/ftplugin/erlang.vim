@@ -60,12 +60,16 @@ call mine#filetype#UndoPlugin('silent! delcommand Indent')
 nnoremap <buffer> <LocalLeader>=  :<C-U>Indent<CR>
 call mine#filetype#UndoPlugin('silent! nunmap <buffer> <LocalLeader>=')
 
-command -buffer -bang SearchFunctionClause
-    \ call mine#filetype#erlang#SearchFunctionClause(<bang>0 ? 'bsW' : 'sW')
-call mine#filetype#UndoPlugin('silent! delcommand SearchFunctionClause')
+command -buffer NextFunctionClause
+    \ call mine#filetype#erlang#SearchFunctionClause('sW')
+call mine#filetype#UndoPlugin('silent! delcommand NextFunctionClause')
 
-nnoremap <buffer> ]]  :<C-U>SearchFunctionClause<CR>
-nnoremap <buffer> [[  :<C-U>SearchFunctionClause!<CR>
+command -buffer PrevFunctionClause
+    \ call mine#filetype#erlang#SearchFunctionClause('bsW')
+call mine#filetype#UndoPlugin('silent! delcommand PrevFunctionClause')
+
+nnoremap <buffer> ]]  :<C-U>NextFunctionClause<CR>
+nnoremap <buffer> [[  :<C-U>PrevFunctionClause<CR>
 call mine#filetype#UndoPlugin('silent! nunmap <buffer>', [']]', '[['])
 
 inoreabbrev <buffer> <expr> -m  printf('-module(%s).', expand('%:t:r'))
