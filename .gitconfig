@@ -44,6 +44,13 @@
 	lineNumber = true
 	patternType = perl
 
+[init]
+	defaultBranch = master
+
+[interactive]
+	singleKey = true
+	diffFilter = diff-highlight
+
 [merge]
 	tool = vim-fugitive
 
