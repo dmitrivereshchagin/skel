@@ -1,7 +1,7 @@
 " ~/.vim/autoload/mine/filetype/erlang.vim
 
 let s:FUNCTION_CLAUSE =
-    \ '\v\C^%([a-z][A-Za-z@_]*|''%([^''\\]|\\.)*'')\s*\('
+    \ '\v\C^%([a-z][0-9@_A-Za-z]*|''%([^''\\]|\\.)*'')\s*\('
 
 function! s:SyntaxGroupMatches(pattern) abort
   return synIDattr(synID(line('.'), col('.'), 1), 'name') =~? a:pattern
