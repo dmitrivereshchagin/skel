@@ -48,6 +48,7 @@ call mine#filetype#UndoPlugin('unlet! b:surround_' . char2nr('>'))
 command -buffer Indent
     \ execute '!emacs --batch'
     \ '--find-file=' . shellescape(expand('%:p'), 1)
+    \ '--eval="(setq enable-local-variables :safe)"'
     \ '--eval="(setq-default indent-tabs-mode nil)"'
     \ '--eval="(erlang-mode)"'
     \ '--eval="(font-lock-fontify-region (point-min) (point-max))"'
