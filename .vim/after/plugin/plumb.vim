@@ -6,6 +6,12 @@ let g:plumb_rules = [
     \
     \ {'matches': '\v\c([+\-.0-9_a-z]+)\(([1-8])\)',
     \  'execute': 'Man \2 \1'},
+    \
+    \ {'matches': '\v\CSC[0-9]{4}',
+    \  'execute': 'Plumb https://github.com/koalaman/shellcheck/wiki/\0'},
+    \
+    \ {'matches': '\v\CDL[0-9]{4}',
+    \  'execute': 'Plumb https://github.com/hadolint/hadolint/wiki/\0'},
     \ ]
 "   \ {'matches': '\v\c([+\-./0-9_a-z]+)!([0-9]+)',
 "   \  'execute': 'Plumb https://gitlab.example.com/\1/-/merge_requests/\2'},
