@@ -16,8 +16,9 @@ export EDITOR PAGER
 BLOCK_SIZE=human-readable
 export BLOCK_SIZE
 
-ERL_AFLAGS='+pc unicode -kernel shell_history enabled'
-export ERL_AFLAGS
+ERL_AFLAGS='+pc unicode'
+ERL_ZFLAGS='-kernel shell_history enabled -stdlib shell_docs_columns 80'
+export ERL_AFLAGS ERL_ZFLAGS
 
 KERL_BUILD_DOCS=yes
 KERL_DOC_TARGETS='man chunks'
