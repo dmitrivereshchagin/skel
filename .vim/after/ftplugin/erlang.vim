@@ -84,9 +84,10 @@ inoreabbrev <buffer> -i  -include
 inoreabbrev <buffer> -I  -include_lib
 call mine#filetype#UndoPlugin('silent! iunabbrev <buffer>', ['-i', '-I'])
 
+inoreabbrev <buffer> -n  -nominal
 inoreabbrev <buffer> -o  -opaque
 inoreabbrev <buffer> -t  -type
-call mine#filetype#UndoPlugin('silent! iunabbrev <buffer>', ['-o', '-t'])
+call mine#filetype#UndoPlugin('silent! iunabbrev <buffer>', ['-n', '-o', '-t'])
 
 inoreabbrev <buffer> -s  -spec
 call mine#filetype#UndoPlugin('silent! iunabbrev <buffer> -s')

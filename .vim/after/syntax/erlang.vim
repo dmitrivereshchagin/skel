@@ -35,7 +35,7 @@ syntax region erlangDocString
     \ fold
 
 silent! syntax clear erlangType
-syntax match erlangType /^\s*-\s*\%(callback\|opaque\|spec\|type\)\>/
+syntax match erlangType /^\s*-\s*\%(callback\|nominal\|opaque\|spec\|type\)\>/
 
 syntax sync clear
 syntax sync minlines=500
