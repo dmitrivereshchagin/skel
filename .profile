@@ -28,6 +28,10 @@ LESS=eFiQRX
 LESSHISTFILE=-
 export LESS LESSHISTFILE
 
+# Make grotty(1) output ANSI escapes for man pages on Debian and Ubuntu.
+GROFF_SGR=1
+export GROFF_SGR
+
 MANOPT='--no-hyphenation --no-justification'
 MANWIDTH=80
 export MANOPT MANWIDTH
