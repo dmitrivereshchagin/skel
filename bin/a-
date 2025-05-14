@@ -1,5 +1,3 @@
-#!/bin/sh
-# Run it as "|a-" from acme window tag.
+#!/usr/bin/env rc
 
-tab=$(printf '\t')
-exec sed "s/^${tab}//"
+exec sed 's/^	//'

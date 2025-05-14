@@ -1,0 +1,11 @@
+#!/usr/bin/env rc
+
+switch ($%) {
+case *.[ch] *.go; comment=//
+case *; comment='#'
+}
+
+exec sed '
+	s,^'$comment',,; t
+	s,^,'$comment',
+'
