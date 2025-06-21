@@ -7,6 +7,7 @@ if exists('g:syntax_on')
 endif
 let g:colors_name = 'mine'
 
+highlight CursorLine    cterm=NONE     ctermfg=NONE         ctermbg=DarkGray
 highlight DiffAdd       cterm=NONE     ctermfg=DarkGreen    ctermbg=NONE
 highlight DiffChange    cterm=NONE     ctermfg=DarkCyan     ctermbg=NONE
 highlight DiffDelete    cterm=NONE     ctermfg=DarkRed      ctermbg=NONE
@@ -26,6 +27,7 @@ highlight WarningMsg    cterm=NONE     ctermfg=Red          ctermbg=NONE
 highlight WildMenu      cterm=NONE     ctermfg=White        ctermbg=Blue
 highlight Comment       cterm=NONE     ctermfg=LightCyan    ctermbg=NONE
 
+highlight! link CursorColumn      CursorLine
 highlight! link CursorLineNr      LineNr
 highlight! link LineNr            NonText
 highlight! link Sneak             Normal
