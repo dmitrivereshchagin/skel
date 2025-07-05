@@ -12,12 +12,13 @@ vbell           on
 vbell_msg       'Bell in current window'
 
 termcapinfo *  vb@
+termcapinfo xterm|xterm-* 'hs:ts=\E]0;:fs=\E\\:ds=\E]0;screen\E\\'
 
-caption splitonly
 caption string '%?%F%{b7;4}%?%3n %t'
+caption splitonly
 
-hardstatus alwayslastline
 hardstatus string '%{r}%-Lw%{b7;4}%50>%n%f %t%{-}%+Lw%='
+hardstatus alwayslastline
 
 bind  %  collapse
 bind  (  bumpleft
