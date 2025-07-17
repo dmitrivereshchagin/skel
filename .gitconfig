@@ -22,6 +22,7 @@
 	rb = rebase
 	rc = rebase --continue
 	ri = rebase --interactive
+	rp = rebase --show-current-patch
 	sp = stash pop
 	ss = stash push
 	st = status
