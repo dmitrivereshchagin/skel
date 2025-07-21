@@ -6,6 +6,10 @@
 --pager=less -R
 --smart-case
 --sort-files
+
+--type-add=po:ext:po,pot
 --type-add=scss:ext:sass,scss
 --type-add=thrift:ext:thrift
 --type-add=twig:ext:twig
+
+--type=nopo
