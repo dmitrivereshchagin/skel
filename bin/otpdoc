@@ -1,0 +1,89 @@
+#!/usr/bin/env escript
+-mode(compile).
+
+-include_lib("kernel/include/eep48.hrl").
+
+-record(context, {module, docs, config}).
+
+main(Args) ->
+    ParserOpts = #{progname => otpdoc},
+    Command =
+        #{arguments =>
+              [#{name => ansi, long => "ansi", type => boolean,
+                 default => false},
+               #{name => columns, long => "columns", type => integer,
+                 default => 80},
+               #{name => module, type => {atom, unsafe}}],
+          handler => fun otpdoc/1},
+    argparse:run(Args, Command, ParserOpts).
+
+otpdoc(ArgMap) ->
+    {Module, Config} = maps:take(module, ArgMap),
+    {ok, Docs} = code:get_doc(Module),
+    Ctx = #context{module = Module, docs = Docs, config = Config},
+    print_docs(Ctx).
+
+print_docs(#context{} = Ctx) ->
+    print_module_doc(Ctx),
+    print_entities(type, Ctx),
+    print_entities(callback, Ctx),
+    print_entities(function, Ctx).
+
+print_module_doc(#context{} = Ctx) ->
+    #context{module = Module, docs = Docs, config = Config} = Ctx,
+    print(render_header(atom_to_list(Module), Config)),
+    print("\n"),
+    print(trim_header(shell_docs:render(Module, Docs, Config))).
+
+print_entities(Kind, #context{} = Ctx) ->
+    #context{docs = Docs, config = Config} = Ctx,
+    case sorted_entities(Kind, Docs) of
+        [_ | _] = Entities ->
+            print("\n"),
+            print(render_header(entity_header(Kind), Config)),
+            lists:foreach(
+              fun(Entity) -> print(render_entity(Entity, Ctx)) end,
+              Entities);
+        [] ->
+            ok
+    end.
+
+sorted_entities(Kind, #docs_v1{} = Docs) ->
+    lists:sort(
+      lists:filtermap(
+        fun({{EntityKind, _, _} = Entity, _, _, Doc, _}) when
+                  EntityKind =:= Kind, Doc =/= hidden -> {true, Entity};
+           (_) -> false
+        end,
+        Docs#docs_v1.docs)).
+
+entity_header(type)     -> "Types";
+entity_header(callback) -> "Callbacks";
+entity_header(function) -> "Functions".
+
+render_entity({Kind, Name, Arity}, #context{} = Ctx) ->
+    Render = entity_renderer(Kind),
+    #context{module = Module, docs = Docs, config = Config} = Ctx,
+    Render(Module, Name, Arity, Docs, Config).
+
+entity_renderer(type)     -> fun shell_docs:render_type/5;
+entity_renderer(callback) -> fun shell_docs:render_callback/5;
+entity_renderer(function) -> fun shell_docs:render/5.
+
+render_header(Header, Config) ->
+    Text = unicode:characters_to_binary(Header),
+    Docs = #docs_v1{module_doc = #{<<"en">> => [{h1, [], [Text]}]}},
+    trim_header(shell_docs:render('', Docs, Config)).
+
+trim_header(String) ->
+    re:replace(String, "^.*?\n\n", "", [dotall]).
+
+print(String) ->
+    try
+        io:format(standard_io, "~ts", [String])
+    catch
+        error:Reason when
+              Reason =:= badarg;        % EPIPE in OTP 26.
+              Reason =:= terminated ->  % EPIPE since OTP 27.
+            halt(1)
+    end.
