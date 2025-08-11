@@ -1,16 +1,11 @@
 #!/usr/bin/env rc
 
-fn hasfont { fontsrv -p $1 >/dev/null >[2=1] }
+. env.rc
 
 if (hasfont GoMono) fixfont=/mnt/font/GoMono/18a/font
 if not fixfont=/mnt/font/DejaVuSansMono/18a/font
 
 if (hasfont GoRegular) varfont=/mnt/font/GoRegular/18a/font
 if not varfont=/mnt/font/DejaVuSans/18a/font
-
-EDITOR=E
-PAGER=nobs GROFF_NO_SGR=1
-SHELL=rc
-GIT_PAGER=$PAGER
 
 exec $PLAN9/bin/acme -a -f $varfont -F $fixfont $*
