@@ -24,6 +24,8 @@ bind  %  collapse
 bind  (  bumpleft
 bind  )  bumpright
 
+bind  K  kill
+
 bind ^K  digraph
 bind  k  digraph
 
