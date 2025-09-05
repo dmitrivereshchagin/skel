@@ -6,16 +6,16 @@
 -record(context, {module, docs, config}).
 
 main(Args) ->
-    ParserOpts = #{progname => otpdoc},
-    Command =
-        #{arguments =>
-              [#{name => ansi, long => "ansi", type => boolean,
-                 default => false},
-               #{name => columns, long => "columns", type => integer,
-                 default => 80},
-               #{name => module, type => {atom, unsafe}}],
-          handler => fun otpdoc/1},
-    argparse:run(Args, Command, ParserOpts).
+    argparse:run(Args, cli(), #{progname => otpdoc}).
+
+cli() ->
+    #{arguments =>
+          [#{name => ansi, long => "ansi", type => boolean,
+             default => false},
+           #{name => columns, long => "columns", type => integer,
+             default => 80},
+           #{name => module, type => {atom, unsafe}}],
+      handler => fun otpdoc/1}.
 
 otpdoc(ArgMap) ->
     {Module, Config} = maps:take(module, ArgMap),
