@@ -36,9 +36,6 @@ MANOPT='--no-hyphenation --no-justification'
 MANWIDTH=80
 export MANOPT MANWIDTH
 
-PERLDOC=-oman
-export PERLDOC
-
 # shellcheck source=/dev/null
 test -d "$HOME/.asdf" &&
     . "$HOME/.asdf/asdf.sh"
