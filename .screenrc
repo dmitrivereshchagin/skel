@@ -2,7 +2,7 @@
 # ~/.screenrc
 #
 
-backtick 1 30 30 battery-capacity
+backtick 1 30 30 battery
 
 altscreen       on
 defscrollback   4000
