@@ -1,0 +1,37 @@
+#!/usr/bin/env rc
+. 9.rc
+
+. $PLAN9/lib/acme.rc
+
+fn usage {
+	echo usage: Editor file >[1=2]
+	exit usage
+}
+
+if (! ~ $#* 1) usage
+
+ifs='
+' {
+	winname=`{cleanname -d `{pwd} $1}
+	fifo=`{mktemp -u /tmp/Editor.XXXXXX}
+}
+
+fn sighup sigint { exit note }
+
+fn sigexit {
+	if (~ $#apid 1)
+		kill $apid | rc >[2]/dev/null
+	rm -f $fifo
+}
+
+mkfifo -m 0600 $fifo || exit mkfifo
+
+9p read acme/log >$fifo >[2]/dev/null &
+
+newwindow
+winctl name $winname
+winctl get
+
+awk -v winid=$winid '
+	$1 == winid && $2 == "del" { exit }
+' $fifo

@@ -1,11 +1,16 @@
 #!/usr/bin/env rc
+. 9.rc
 
-switch ($%) {
-case *.[ch] *.go; comment=//
-case *; comment='#'
-}
+prefix='#'
+if (! ~ $#* 0) { prefix=$1; shift }
 
-exec sed '
-	s,^'$comment',,; t
-	s,^,'$comment',
+# Since awk(1) treats some file names specially, pass them to cat(1).
+cat $* | awk -v prefix=$prefix '
+	BEGIN { prefixlen = length(prefix) }
+	{
+		if (index($0, prefix) == 1)
+			print substr($0, prefixlen+1, length($0)-prefixlen)
+		else
+			print prefix $0
+	}
 '

@@ -1,0 +1,29 @@
+#!/usr/bin/env rc
+. 9.rc
+
+. $PLAN9/lib/acme.rc
+
+fn winexists { 9p stat acme/$winid/ctl >/dev/null >[2=1] }
+
+newwindow
+winctl name /sys/class/power_supply/-
+winctl dump Battery
+
+while (winexists) {
+	winctl clean
+	winctl cleartag
+
+	tag=''
+	for (bat in /sys/class/power_supply/BAT*) {
+		if (test -e $bat)
+			tag=$tag' '`{basename $bat}:' '`{cat $bat/capacity}%
+	}
+
+	if (~ $tag '') tag=' No battery'
+
+	echo -n $tag | winwrite tag
+
+	sleep 30
+}
+
+exit ''

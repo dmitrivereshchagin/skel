@@ -1,5 +1,4 @@
 #!/usr/bin/env rc
-
 . env.rc
 
 exec $PLAN9/bin/9term $*

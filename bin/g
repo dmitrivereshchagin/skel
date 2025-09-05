@@ -1,0 +1,3 @@
+#!/usr/bin/env rc
+
+exec ack --nocolor --nogroup --nopager --no-recurse --with-filename $*

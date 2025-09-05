@@ -1,6 +1,7 @@
 #!/usr/bin/env rc
-
 . env.rc
+
+EDITOR=Editor
 
 if (hasfont GoMono) fixfont=/mnt/font/GoMono/18a/font
 if not fixfont=/mnt/font/DejaVuSansMono/18a/font

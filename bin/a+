@@ -1,3 +1,4 @@
 #!/usr/bin/env rc
+. 9.rc
 
-exec sed '/./ s/^/	/'
+exec sed '/./ s/^/	/' $*
