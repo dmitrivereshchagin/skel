@@ -5,7 +5,7 @@ if exists('g:loaded_plumb')
 endif
 let g:loaded_plumb = 1
 
-let s:ECHO = mine#echo#WithPrefix('Plumb:')
+let s:echo = mine#echo#WithPrefix('Plumb: ')
 
 if !exists('g:plumb_rules')
   let g:plumb_rules = []
@@ -18,7 +18,7 @@ function! s:MatchingCommand(data) abort
       return substitute(l:match, l:rule.matches, l:rule.execute, '')
     endif
   endfor
-  return "call s:ECHO.Error('No matching command')"
+  return "call s:echo.Error('No matching command')"
 endfunction
 
 command -nargs=1 Plumb

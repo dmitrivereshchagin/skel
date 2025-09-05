@@ -2,7 +2,7 @@
 
 function! s:Echo(echo, highlight, format, ...) abort
   execute 'echohl' a:highlight
-  echomsg a:echo.prefix call('s:Printf', [a:format] + a:000)
+  echomsg a:echo.prefix . call('s:Printf', [a:format] + a:000)
   echohl NONE
 endfunction
 

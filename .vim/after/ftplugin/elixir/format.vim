@@ -7,7 +7,7 @@ if exists('*s:Format')
   finish
 endif
 
-let s:ECHO = mine#echo#WithPrefix('Format:')
+let s:echo = mine#echo#WithPrefix('Format: ')
 
 function! s:Format() abort
   let l:view = winsaveview()
@@ -17,7 +17,7 @@ function! s:Format() abort
     silent undo
     call setqflist(l:errors)
     redraw
-    call s:ECHO.Error('mix format failed')
+    call s:echo.Error('mix format failed')
   endif
   call winrestview(l:view)
 endfunction
