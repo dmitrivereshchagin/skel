@@ -1,0 +1,15 @@
+#!/usr/bin/env rc
+. 9.rc
+
+if (! ~ $#* 1) {
+	echo usage: git/show object >[1=2]
+	exit usage
+}
+
+ifs='
+' {
+	dirname=`{git rev-parse --show-toplevel >[2]/dev/null || pwd}
+}
+
+git show --patch-with-stat $1 >[2=1] |
+	plumb -a filename=$dirname/+Git:$1 -d edit -i

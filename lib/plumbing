@@ -1,0 +1,19 @@
+# to update: 9p write plumb/rules <$home/lib/plumbing
+
+editor=acme
+include basic
+
+type is text
+data matches '[0-9A-Za-z]([ \-.0-9A-Za-z]*[0-9A-Za-z])?'
+data matches '(RFC|rfc)[ \-]?([0-9]+)\.([0-9]+(\.[0-9]+)*)'
+plumb start web 'https://datatracker.ietf.org/doc/html/rfc'$2'#section-'$3
+
+type is text
+data matches '[0-9A-Za-z]([ \-.0-9A-Za-z]*[0-9A-Za-z])?'
+data matches '(RFC|rfc)[ \-]?([0-9]+)'
+plumb start web 'https://datatracker.ietf.org/doc/html/rfc'$2
+
+type is text
+data matches '[0-9A-Za-z]+'
+data matches '[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f]+'
+plumb start rc -c 'cd $1 && git/show $2' $wdir $0

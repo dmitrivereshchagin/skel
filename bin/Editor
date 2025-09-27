@@ -3,12 +3,10 @@
 
 . $PLAN9/lib/acme.rc
 
-fn usage {
+if (! ~ $#* 1) {
 	echo usage: Editor file >[1=2]
 	exit usage
 }
-
-if (! ~ $#* 1) usage
 
 ifs='
 ' {
