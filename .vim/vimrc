@@ -179,7 +179,8 @@ let g:sneak#map_netrw = 0
 
 let g:surround_{char2nr('q')} = "`\r'"
 let g:surround_{char2nr('Q')} = "``\r''"
-let g:surround_{char2nr('u')} = "__\r__"
+let g:surround_{char2nr('u')} = "_\r_"
+let g:surround_{char2nr('U')} = "__\r__"
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_wq = 0
