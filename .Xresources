@@ -30,13 +30,13 @@ XTerm*vt100.pointerMode:	2
 XTerm*vt100.saveLines:	4096
 XTerm*vt100.scrollBar:	false
 
-XTerm*vt100.translations:	#override \n\
-	Ctrl Shift <KeyPress> c: copy-selection(CLIPBOARD) \n\
-	Ctrl Shift <KeyPress> v: insert-selection(CLIPBOARD) \n\
-	Ctrl Shift <KeyPress> y: insert-selection(PRIMARY) \n\
-	Ctrl Shift <KeyPress> 6: set-altscreen(toggle) \n\
-	Ctrl Shift <KeyPress> 0: set-vt-font(d) \n\
-	Ctrl Shift <KeyPress> minus: smaller-vt-font() \n\
-	Ctrl Shift <KeyPress> equal: larger-vt-font()
+XTerm*vt100.translations:	#override\n\
+	Ctrl Shift <KeyPress> 6: set-altscreen(toggle)\n\
+	Ctrl Shift <KeyPress> 0: set-vt-font(d)\n\
+	Ctrl Shift <KeyPress> -: smaller-vt-font()\n\
+	Ctrl Shift <KeyPress> =: larger-vt-font()\n\
+	Ctrl Shift <KeyPress> y: insert-selection(PRIMARY)\n\
+	Ctrl Shift <KeyPress> c: copy-selection(CLIPBOARD)\n\
+	Ctrl Shift <KeyPress> v: insert-selection(CLIPBOARD)
 
 XTerm*vt100.visualBell:	true
