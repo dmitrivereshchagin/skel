@@ -29,7 +29,7 @@ let g:plumb_rules += [
     \  'execute': 'Plumb https://www.php-fig.org/psr/psr-\1/'},
     \ ]
 "   \ {'matches': '\v\C%(RFC|rfc)-?([0-9]+)\.([0-9]+%(\.[0-9]+)*)',
-"   \  'execute': 'sview +/\\\\M^\2.\\\\?\\\\s/ ~/.local/share/rfcs/rfc\1.txt'},
+"   \  'execute': 'sview +/\\\\M^\2.\\\\?\\\\s\\\\.\\\\*/ ~/.local/share/rfcs/rfc\1.txt'},
 "   \
 "   \ {'matches': '\v\C%(RFC|rfc)-?([0-9]+)',
 "   \  'execute': 'sview ~/.local/share/rfcs/rfc\1.txt'},
