@@ -72,6 +72,21 @@
 
 ---
 
+    gsettings set org.gnome.desktop.background \
+        color-shading-type "'solid'"
+
+<!---->
+
+    gsettings set org.gnome.desktop.background \
+        picture-options "'none'"
+
+<!---->
+
+    gsettings set org.gnome.desktop.background \
+        primary-color "'#3a6ea5'"
+
+<!---->
+
     gsettings set org.gnome.desktop.input-sources \
         xkb-options "['ctrl:nocaps']"
 
