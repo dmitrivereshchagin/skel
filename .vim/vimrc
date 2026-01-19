@@ -142,6 +142,9 @@ let g:go_highlight_trailing_whitespace_error = 0
 " syntax/html.vim
 let g:html_no_rendering = 1
 
+" syntax/java.vim
+let g:java_ignore_javadoc = 1
+
 " syntax/perl.vim
 let g:perl_include_pod = 0
 

@@ -24,12 +24,12 @@ syntax region erlangSigil start=/\~[bsBS]\?\z(""""*\)/ end=/^\s*\z1/
 syntax match erlangDoc /^\s*-\s*\%(doc\|moduledoc\)\>/
 
 syntax region erlangDocString
-    \ start=/\%(^\s*-\s*\%(doc\|moduledoc\)\s\+\)\@<="/
+    \ start=/\%(^\s*-\s*\%(doc\|moduledoc\)\s*\)\@<="/
     \ skip=/\\\\\|\\"/
     \ end=/"/
     \ contains=erlangTodo,@Spell
 syntax region erlangDocString
-    \ start=/\%(^\s*-\s*\%(doc\|moduledoc\)\s\+\)\@<=\z(""""*\)/
+    \ start=/\%(^\s*-\s*\%(doc\|moduledoc\)\s*\)\@<=\z(""""*\)/
     \ end=/^\s*\z1/
     \ contains=erlangTodo,@Spell
     \ fold
@@ -42,6 +42,6 @@ syntax sync minlines=500
 
 highlight link erlangDoc        Comment
 highlight link erlangDocString  erlangDoc
-highlight link erlangEDocTodo   Todo
+highlight link erlangEDocTodo   erlangTodo
 highlight link erlangSigil      erlangString
 highlight link erlangType       Comment
