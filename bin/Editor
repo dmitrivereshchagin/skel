@@ -10,7 +10,7 @@ if (! ~ $#* 1) {
 
 ifs='
 ' {
-	winname=`{cleanname -d `{pwd} $1}
+	winname=`{cleanname -d `{pwd} -- $1}
 	fifo=`{mktemp -u /tmp/Editor.XXXXXX}
 }
 
