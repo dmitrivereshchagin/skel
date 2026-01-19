@@ -16,4 +16,4 @@ plumb start web 'https://datatracker.ietf.org/doc/html/rfc'$2
 type is text
 data matches '[0-9A-Za-z]+'
 data matches '[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f]+'
-plumb start rc -c 'cd $1 && git/show $2' $wdir $0
+plumb start rc -c 'cd $1 && git/show --patch-with-stat $2' $wdir $0
