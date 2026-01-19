@@ -3,10 +3,10 @@
 
 EDITOR=Editor
 
-if (hasfont GoMono) fixfont=/mnt/font/GoMono/18a/font
+if (fontexists GoMono) fixfont=/mnt/font/GoMono/18a/font
 if not fixfont=/mnt/font/DejaVuSansMono/18a/font
 
-if (hasfont GoRegular) varfont=/mnt/font/GoRegular/18a/font
+if (fontexists GoRegular) varfont=/mnt/font/GoRegular/18a/font
 if not varfont=/mnt/font/DejaVuSans/18a/font
 
 exec $PLAN9/bin/acme -a -f $varfont -F $fixfont $*
