@@ -1,10 +1,16 @@
 #!/bin/sh
 
-SCREEN_URLVIEW=/tmp/screen-urlview.$(id -u)
+screendir=$HOME/.screen
+
+( umask 0077 ; mkdir -p "$screendir" )
+
+SCREEN_URLVIEW=$screendir/urlview
 export SCREEN_URLVIEW
 
-touch -- "$SCREEN_URLVIEW"
-chmod 0600 -- "$SCREEN_URLVIEW" || exit
+( umask 0077 ; touch "$SCREEN_URLVIEW" )
+
+SCREENDIR=$screendir/sockets
+export SCREENDIR
 
 case $TERM in
 *-256color) set -- -T screen-256color "$@"
