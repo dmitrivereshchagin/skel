@@ -12,7 +12,7 @@ time            '%D %d %M %Y %0c:%s %H%? %1`%?'
 vbell           on
 vbell_msg       'Bell in current window'
 
-termcapinfo *  vb@
+termcapinfo * vb@
 termcapinfo xterm|xterm-* 'hs:ts=\E]0;:fs=\E\\:ds=\E]0;screen\E\\'
 
 caption string '%?%F%{=b bw}%?%3n %t'

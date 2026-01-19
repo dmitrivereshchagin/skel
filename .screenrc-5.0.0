@@ -11,7 +11,7 @@ startup_message off
 vbell           on
 vbell_msg       'Bell in current window'
 
-termcapinfo *  vb@
+termcapinfo * vb@
 termcapinfo xterm|xterm-* 'hs:ts=\E]0;:fs=\E\\:ds=\E]0;screen\E\\'
 
 caption string '%?%F%{b7;4}%?%3n %t'
