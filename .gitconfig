@@ -55,13 +55,6 @@
 	singleKey = true
 	diffFilter = diff-highlight
 
-[merge]
-	tool = vim-fugitive
-
-[mergetool "vim-fugitive"]
-	cmd = vim -c Gdiffsplit! "$MERGED"
-	trustExitCode = true
-
 [pull]
 	rebase = true
 
