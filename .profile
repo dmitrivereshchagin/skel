@@ -36,9 +36,11 @@ MANOPT='--no-hyphenation --no-justification'
 MANWIDTH=80
 export MANOPT MANWIDTH
 
-# shellcheck source=/dev/null
-test -d "$HOME/.asdf" &&
+if test -d "$HOME/.asdf"
+then
+    # shellcheck source=/dev/null
     . "$HOME/.asdf/asdf.sh"
+fi
 
 path_prepend "$HOME/bin"
 path_prepend "$HOME/.local/opt/mit-scheme/bin"
@@ -49,6 +51,8 @@ export PLAN9
 
 path_append "$PLAN9/bin"
 
-# shellcheck source=/dev/null
-test -f "$HOME/.profile.local" &&
+if test -f "$HOME/.profile.local"
+then
+    # shellcheck source=/dev/null
     . "$HOME/.profile.local"
+fi
