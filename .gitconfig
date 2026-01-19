@@ -15,6 +15,7 @@
 	cp = cherry-pick
 	dc = diff --cached
 	di = diff
+	dt = difftool
 	lo = log --oneline
 	lp = log --patch
 	mt = mergetool
