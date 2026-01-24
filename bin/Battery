@@ -5,7 +5,8 @@
 
 fn winexists { 9p stat acme/$winid/ctl >/dev/null >[2=1] }
 
-newwindow
+newwindow || exit newwindow
+
 winctl name /sys/class/power_supply/-
 winctl dump Battery
 
