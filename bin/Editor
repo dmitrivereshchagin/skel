@@ -23,10 +23,10 @@ fn sigexit {
 }
 
 mkfifo -m 0600 $fifo || exit mkfifo
+newwindow || exit newwindow
 
 9p read acme/log >$fifo >[2]/dev/null &
 
-newwindow
 winctl name $winname
 winctl get
 
