@@ -39,7 +39,8 @@
 	verbose = true
 
 [diff]
-	mnemonicPrefix = true
+	noPrefix = true
+	relative = true
 
 [fetch]
 	prune = true

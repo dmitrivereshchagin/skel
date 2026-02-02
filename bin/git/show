@@ -4,4 +4,5 @@
 ifs='
 ' { dirname=`{git rev-parse --show-toplevel >[2]/dev/null || pwd} }
 
-git show $* >[2=1] | plumb -a filename=$dirname/+Git -d edit -i
+git show --no-relative $* >[2=1] |
+	plumb -a filename=$dirname/+Git -d edit -i
