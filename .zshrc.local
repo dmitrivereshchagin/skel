@@ -9,6 +9,8 @@
 source xdg.sh
 
 HISTFILE=$XDG_STATE_HOME/zsh/history
+HISTSIZE=10000
+SAVEHIST=$HISTSIZE
 
 READNULLCMD=${PAGER:-less}
 
