@@ -1,0 +1,41 @@
+#!/usr/bin/env rc
+. 9.rc
+
+autostart=$home/.config/autostart
+mkdir -p $autostart
+
+cat >$autostart/plumber.desktop <<!
+[Desktop Entry]
+Type=Application
+Name=Plumber
+TryExec=plumber
+Exec=plumber
+!
+
+applications=$home/.local/share/applications
+mkdir -p $applications
+
+cat >$applications/9term.desktop <<!
+[Desktop Entry]
+Type=Application
+Name=9term
+Icon=$PLAN9/mac/spaceglenda.icns
+Exec=9term
+!
+
+cat >$applications/acme.desktop <<!
+[Desktop Entry]
+Type=Application
+Name=Acme
+Icon=$PLAN9/mac/spaceglenda.icns
+Exec=acme
+SingleMainWindow=true
+!
+
+cat >$applications/sam.desktop <<!
+[Desktop Entry]
+Type=Application
+Name=Sam
+Icon=$PLAN9/mac/spaceglenda.icns
+Exec=sam
+!
