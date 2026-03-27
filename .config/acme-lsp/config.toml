@@ -1,0 +1,15 @@
+FormatOnPut = true
+CodeActionsOnPut = ['source.organizeImports']
+
+[Servers.gopls]
+Command = ['gopls', 'serve']
+
+[[FilenameHandlers]]
+Pattern = '\.go$'
+LanguageID = 'go'
+ServerKey = 'gopls'
+
+[[FilenameHandlers]]
+Pattern = '/go\.mod$'
+LanguageID = 'go.mod'
+ServerKey = 'gopls'
