@@ -20,5 +20,12 @@ go install 9fans.net/go/acme/acmego@master
 go install golang.org/x/tools/cmd/goimports@latest
 acmego -f
 
+go install 9fans.net/acme-lsp/cmd/acme-lsp@master
+go install 9fans.net/acme-lsp/cmd/L@master
+go install golang.org/x/tools/gopls@latest
+Lassist Lcomp Ldef Lfmt Lhov Limpls Lrefs Lrn Lsig
+Lsyms Ltype Lws Lws+ Lws- Lwss
+acme-lsp
+
 go install robpike.io/ivy@latest
 win ivy -g
