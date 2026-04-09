@@ -19,25 +19,25 @@ let g:plumb_rules += [
     \ {'matches': '\v\CSC[0-9]{4}',
     \  'execute': 'Plumb https://github.com/koalaman/shellcheck/wiki/\0'},
     \
-    \ {'matches': '\v\C%(EEP|eep)-?([0-9]+)',
+    \ {'matches': '\v\C%(EEP|eep)[ -]?([0-9]+)',
     \  'execute': '\=printf("Plumb https://www.erlang.org/eeps/eep-%04d", str2nr(submatch(1)))'},
     \
-    \ {'matches': '\v\C%(PEP|pep)-?([0-9]+)',
+    \ {'matches': '\v\C%(PEP|pep)[ -]?([0-9]+)',
     \  'execute': '\=printf("Plumb https://peps.python.org/pep-%04d/", str2nr(submatch(1)))'},
     \
-    \ {'matches': '\v\C%(PSR|psr)-?([0-9]+)',
+    \ {'matches': '\v\C%(PSR|psr)[ -]?([0-9]+)',
     \  'execute': 'Plumb https://www.php-fig.org/psr/psr-\1/'},
     \ ]
-"   \ {'matches': '\v\C%(RFC|rfc)-?([0-9]+)\.([0-9]+%(\.[0-9]+)*)',
+"   \ {'matches': '\v\C%(RFC|rfc)[ -]?([0-9]+)\.([0-9]+%(\.[0-9]+)*)',
 "   \  'execute': 'sview +/\\\\M^\2.\\\\?\\\\s\\\\.\\\\*/ ~/.local/share/rfcs/rfc\1.txt'},
 "   \
-"   \ {'matches': '\v\C%(RFC|rfc)-?([0-9]+)',
+"   \ {'matches': '\v\C%(RFC|rfc)[ -]?([0-9]+)',
 "   \  'execute': 'sview ~/.local/share/rfcs/rfc\1.txt'},
 let g:plumb_rules += [
-    \ {'matches': '\v\C%(RFC|rfc)-?([0-9]+)\.([0-9]+%(\.[0-9]+)*)',
+    \ {'matches': '\v\C%(RFC|rfc)[ -]?([0-9]+)\.([0-9]+%(\.[0-9]+)*)',
     \  'execute': 'Plumb https://datatracker.ietf.org/doc/html/rfc\1#section-\2'},
     \
-    \ {'matches': '\v\C%(RFC|rfc)-?([0-9]+)',
+    \ {'matches': '\v\C%(RFC|rfc)[ -]?([0-9]+)',
     \  'execute': 'Plumb https://datatracker.ietf.org/doc/html/rfc\1'},
     \
     \ {'matches': '\v\C[0-9a-f]{7,}',
