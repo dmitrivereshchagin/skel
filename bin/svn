@@ -2,7 +2,10 @@
 
 svn=/usr/bin/svn
 
-test -t 1 || exec "$svn" "$@"
+if ! test -t 1 || test "${TERM:-dumb}" = dumb
+then
+    exec "$svn" "$@"
+fi
 
 case $1 in
 blame|ann|help|h|status|st)
