@@ -12,6 +12,11 @@ TryExec=plumber
 Exec=plumber
 !
 
+iconsize=128x128
+icons=$home/.local/share/icons/hicolor/$iconsize/apps
+mkdir -p $icons
+convert $PLAN9/mac/spaceglenda.png -resize $iconsize $icons/spaceglenda.png
+
 applications=$home/.local/share/applications
 mkdir -p $applications
 
@@ -19,7 +24,7 @@ cat >$applications/9term.desktop <<!
 [Desktop Entry]
 Type=Application
 Name=9term
-Icon=$PLAN9/mac/spaceglenda.icns
+Icon=spaceglenda
 Exec=9term
 !
 
@@ -27,7 +32,7 @@ cat >$applications/acme.desktop <<!
 [Desktop Entry]
 Type=Application
 Name=Acme
-Icon=$PLAN9/mac/spaceglenda.icns
+Icon=spaceglenda
 Exec=acme
 SingleMainWindow=true
 !
@@ -36,6 +41,6 @@ cat >$applications/sam.desktop <<!
 [Desktop Entry]
 Type=Application
 Name=Sam
-Icon=$PLAN9/mac/spaceglenda.icns
+Icon=spaceglenda
 Exec=sam
 !
