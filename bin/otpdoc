@@ -1,4 +1,6 @@
 #!/usr/bin/env escript
+%%! -noinput
+
 -mode(compile).
 
 -include_lib("kernel/include/eep48.hrl").
