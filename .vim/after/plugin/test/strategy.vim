@@ -6,8 +6,7 @@ endif
 
 function! s:Strategy(cmd) abort
   let l:cmd = ['/bin/sh', '-c', s:WithEcho(a:cmd)]
-  new
-  call term_start(l:cmd, {'term_name': a:cmd, 'curwin': 1})
+  call term_start(l:cmd, {'term_name': a:cmd})
 endfunction
 
 function! s:WithEcho(cmd) abort
