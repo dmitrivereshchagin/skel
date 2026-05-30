@@ -1,8 +1,3 @@
 #!/usr/bin/env rc
-. 9.rc
 
-ifs='
-' { dirname=`{git rev-parse --show-toplevel >[2]/dev/null || pwd} }
-
-git show --no-relative $* >[2=1] |
-	plumb -a filename=$dirname/+Git -d edit -i
+exec git/toedit show --no-relative $*

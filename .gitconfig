@@ -31,6 +31,9 @@
 	st = status
 	up = pull
 
+[blame]
+	date = short
+
 [color "diff-highlight"]
 	oldHighlight = bold
 	oldReset = no-bold
