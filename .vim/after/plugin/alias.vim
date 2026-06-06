@@ -22,6 +22,7 @@ Alias vv   VdebugEval
 
 Alias ct   Ctags
 Alias et   ErlangTags
+Alias ett  ErlangTags\ --ignore\ '**/test'
 
 Alias gb   Git\ blame
 Alias gd   Gdiffsplit
