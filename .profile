@@ -50,6 +50,7 @@ PLAN9=/usr/local/plan9
 export PLAN9
 
 path_append "$PLAN9/bin"
+path_append "$PLAN9/bin/games"
 
 if test -f "$HOME/.profile.local"
 then
