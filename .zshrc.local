@@ -51,6 +51,10 @@ unhash -a vim 2>/dev/null
 unhash -f vim 2>/dev/null
 alias vi=vim
 
+function otpdoc {
+    command otpdoc -ansi $@ | less -R
+}
+
 function source-env {
     setopt LOCAL_OPTIONS ALL_EXPORT
     source $@
