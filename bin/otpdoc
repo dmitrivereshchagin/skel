@@ -34,14 +34,12 @@ print_docs(#context{} = Ctx) ->
 print_module_doc(#context{} = Ctx) ->
     #context{module = Module, docs = Docs, config = Config} = Ctx,
     print(render_header(atom_to_list(Module), Config)),
-    print("\n"),
     print(trim_header(shell_docs:render(Module, Docs, Config))).
 
 print_entities(Kind, #context{} = Ctx) ->
     #context{docs = Docs, config = Config} = Ctx,
     case sorted_entities(Kind, Docs) of
         [_ | _] = Entities ->
-            print("\n"),
             print(render_header(entity_header(Kind), Config)),
             lists:foreach(
               fun(Entity) -> print(render_entity(Entity, Ctx)) end,
@@ -78,11 +76,11 @@ render_header(Header, Config) ->
     trim_header(shell_docs:render('', Docs, Config)).
 
 trim_header(String) ->
-    re:replace(String, "^.*?\n\n", "", [dotall]).
+    re:replace(String, ".*?\n\n", "\n", [dotall, unicode]).
 
 print(String) ->
     try
-        io:format(standard_io, "~ts", [String])
+        io:put_chars(String)
     catch
         error:Reason when
               Reason =:= badarg;        % EPIPE in OTP 26.
