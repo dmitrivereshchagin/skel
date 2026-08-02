@@ -40,3 +40,5 @@ XTerm*vt100.translations:	#override\n\
 	Ctrl Shift <KeyPress> v: insert-selection(CLIPBOARD)
 
 XTerm*vt100.visualBell:	true
+
+catclock.geometry:	150x300+0+0
