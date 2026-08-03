@@ -41,6 +41,9 @@ call mine#filetype#UndoPlugin('unlet! b:match_words')
 let b:surround_{char2nr('.')} = "<<\"\r\">>"
 call mine#filetype#UndoPlugin('unlet! b:surround_' . char2nr('.'))
 
+let b:surround_{char2nr('8')} = "<<\"\r\"/utf8>>"
+call mine#filetype#UndoPlugin('unlet! b:surround_' . char2nr('8'))
+
 let b:surround_{char2nr('>')} = "<<\r>>"
 call mine#filetype#UndoPlugin('unlet! b:surround_' . char2nr('>'))
 
