@@ -41,4 +41,7 @@ XTerm*vt100.translations:	#override\n\
 
 XTerm*vt100.visualBell:	true
 
+4s.geometry:	416x736
+5s.geometry:	416x736
+
 catclock.geometry:	150x300+0+0
