@@ -102,6 +102,16 @@
 
 ---
 
+    mkdir -p ~/.config/autostart &&
+        cat >~/.config/autostart/xrdb.desktop <<EOF
+    [Desktop Entry]
+    Type=Application
+    Name=Xrdb
+    Exec=xrdb -merge $HOME/.Xresources
+    EOF
+
+---
+
     git clone --branch=v0.14.0 \
         https://github.com/asdf-vm/asdf.git \
         ~/.asdf
