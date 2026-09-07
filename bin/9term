@@ -1,4 +1,7 @@
 #!/usr/bin/env rc
 . env.rc
 
+if (~ $#* 0)
+	exec $PLAN9/bin/9term -l
+
 exec $PLAN9/bin/9term $*

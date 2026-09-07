@@ -1,0 +1,4 @@
+if (~ $termprog 9term) {
+	9 fortune
+	echo
+}
