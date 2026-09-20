@@ -2,14 +2,30 @@
 # ~/.ackrc
 #
 
---ignore-file=is:tags
 --pager=less -R
 --smart-case
 --sort-files
 
---type-add=po:ext:po,pot
---type-add=scss:ext:sass,scss
---type-add=thrift:ext:thrift
---type-add=twig:ext:twig
+--ignore-directory=is:deps
+--ignore-directory=is:vendor
+--ignore-file=is:tags
 
---type=nopo
+--type-add=elixirtest:match:/(?-i)_test\.exs$/
+
+--type-add=erlangtest:match:/(?-i)_SUITE\.erl$/
+--type-add=erlangtest:match:/(?-i)_tests\.erl$/
+--type-add=erlangtest:match:/(?-i)^prop_.*\.erl$/
+
+--type-add=gettext:ext:po,pot
+--type=nogettext
+
+--type-add=gotest:match:/(?-i)_test\.go$/
+
+--type-add=phptest:match:/(?-i)Test\.php$/
+
+--type-add=rc:ext:rc
+--type-add=rc:firstlinematch:/^#!.*\brc\b/
+
+--type-add=thrift:ext:thrift
+
+--type-add=twig:ext:twig
