@@ -34,11 +34,11 @@ sudo apt install \
 ```
 git clone --recurse-submodules \
     https://github.com/dmitrivereshchagin/skel.git \
-    ~/.skel
+    $HOME/.skel
 ```
 
 ```
-rm -f ~/.profile
+rm -f $HOME/.profile
 ```
 
 ```
@@ -55,19 +55,19 @@ ln -s \
     .skel/.zshrc.local \
     .skel/.zshrc.pre \
     .skel/bin \
-    ~
+    $HOME
 ```
 
 ```
 git clone \
     https://github.com/grml/grml-etc-core.git \
-    ~/src/github.com/grml/grml-etc-core
+    $HOME/src/github.com/grml/grml-etc-core
 ```
 
 ```
 ln -s \
     src/github.com/grml/grml-etc-core/etc/zsh/zshrc \
-    ~/.zshrc
+    $HOME/.zshrc
 ```
 
 ```
@@ -109,8 +109,8 @@ gsettings set org.gnome.desktop.peripherals.pointingstick \
 ---
 
 ```
-mkdir -p ~/.config/autostart &&
-    cat >~/.config/autostart/xrdb.desktop <<EOF
+mkdir -p $HOME/.config/autostart &&
+    cat >$HOME/.config/autostart/xrdb.desktop <<EOF
 [Desktop Entry]
 Type=Application
 Name=Xrdb
@@ -123,7 +123,7 @@ EOF
 ```
 git clone --branch=v0.14.0 \
     https://github.com/asdf-vm/asdf.git \
-    ~/.asdf
+    $HOME/.asdf
 ```
 
 ```
