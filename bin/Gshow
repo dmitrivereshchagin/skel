@@ -1,0 +1,26 @@
+#!/usr/bin/env rc
+. 9.rc
+
+switch ($#*) {
+case 0
+	object=HEAD
+case 1
+	object=$1
+case *
+	echo 'usage: Gshow [object]' >[1=2]
+	exit usage
+}
+
+ifs='
+' {
+	dirname=`{git rev-parse --show-toplevel >[2]/dev/null || pwd}
+	sha=`{git rev-parse --short --end-of-options $object >[2]/dev/null}
+}
+
+ifs='' {
+	if (~ $#sha 1) filename=`{echo -n $dirname/+Gshow.$sha | q}
+	if not filename=`{echo -n $dirname/+Gshow.$object | q}
+}
+
+git show --no-relative -p --numstat --end-of-options $object -- >[2=1] |
+	plumb -a filename=$filename -d edit -i
