@@ -1,0 +1,6 @@
+#!/usr/bin/env rc
+. 9.rc
+
+echo -n ''''
+ssam 'x/''/ c/''''/' $*
+echo -n ''''
