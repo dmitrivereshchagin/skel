@@ -1,3 +1,20 @@
 #!/usr/bin/env rc
+. 9.rc
 
-exec git/toedit blame $%
+switch ($#*) {
+case 0
+	if (! ~ $#% 1) {
+		echo 'Gblame: $% not set' >[1=2]
+		exit '$%'
+	}
+case 1
+	%=$1
+case *
+	echo 'usage: Gblame [file]' >[1=2]
+	exit usage
+}
+
+ifs='' { filename=`{echo -n $%+Gblame | q} }
+
+git blame -- $% >[2=1] |
+	plumb -a filename=$filename -d edit -i
