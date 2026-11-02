@@ -1,4 +1,4 @@
 #!/usr/bin/env rc
 . env.rc
 
-exec $PLAN9/bin/sam -a $*
+exec $PLAN9/bin/sam $*
