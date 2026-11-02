@@ -5,7 +5,7 @@ prefix='# '
 if (! ~ $#* 0) { prefix=$1; shift }
 
 # Since awk(1) treats some file names specially, pass them to cat(1).
-cat $* | awk -v prefix=$prefix '
+cat $* | awk -v 'prefix='$prefix '
 	BEGIN { uncomment = 1 }
 	uncomment {
 		t = text($0)

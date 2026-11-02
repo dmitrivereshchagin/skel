@@ -17,7 +17,7 @@ while (winexists) {
 	tag=''
 	for (bat in /sys/class/power_supply/BAT*) {
 		if (test -e $bat)
-			tag=$tag' '`{basename $bat}:' '`{cat $bat/capacity}%
+			tag=$tag' '`{basename $bat}^:' '`{cat $bat/capacity}^%
 	}
 
 	if (~ $tag '') tag=' No battery'

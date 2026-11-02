@@ -30,6 +30,6 @@ newwindow || exit newwindow
 winctl name $winname
 winctl get
 
-awk -v winid=$winid '
+awk -v 'winid='$winid '
 	$1 == winid && $2 == "del" { exit }
 ' $fifo

@@ -17,4 +17,4 @@ case *
 ifs='' { filename=`{echo -n $%+Gblame | q} }
 
 git blame -- $% >[2=1] |
-	plumb -a filename=$filename -d edit -i
+	plumb -a 'filename='$filename -d edit -i
