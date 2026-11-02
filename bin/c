@@ -1,16 +1,46 @@
 #!/usr/bin/env rc
 . 9.rc
 
-prefix='#'
+prefix='# '
 if (! ~ $#* 0) { prefix=$1; shift }
 
 # Since awk(1) treats some file names specially, pass them to cat(1).
 cat $* | awk -v prefix=$prefix '
-	BEGIN { prefixlen = length(prefix) }
-	{
-		if (index($0, prefix) == 1)
-			print substr($0, prefixlen+1, length($0)-prefixlen)
-		else
-			print prefix $0
+	BEGIN { uncomment = 1 }
+	uncomment {
+		t = text($0)
+		if (t && index(t, prefix) != 1)
+			uncomment = 0
+	}
+	{ lines[NR] = $0 }
+	END {
+		for (i = 1; i <= length(lines); i++) {
+			t = text(lines[i])
+			if (!t) {
+				print lines[i]
+				continue
+			}
+			if (uncomment) {
+				if (index(t, prefix) == 1)
+					t = substr(t, length(prefix)+1)
+				print indent(lines[i]) t
+				continue
+			}
+			d = indent(lines[1])
+			if (index(lines[i], d) != 1)
+				d = indent(lines[i])
+			t = substr(lines[i], length(d)+1)
+			print d prefix t
+		}
+	}
+	function text(s) {
+		return matchstr(s, "[^\t ].*")
+	}
+	function indent(s) {
+		return matchstr(s, "^[\t ]*")
+	}
+	function matchstr(s, r) {
+		match(s, r)
+		return substr(s, RSTART, RLENGTH)
 	}
 '
